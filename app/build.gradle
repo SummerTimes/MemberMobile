@@ -27,12 +27,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.deps.login
-    implementation rootProject.ext.deps.mine
-    implementation rootProject.ext.deps.recommend
+    implementation "com.klcw.app:login:${login}"
+    implementation "com.klcw.app:mine:${mine}"
+    implementation "com.klcw.app:recommend:${recommend}"
 
-    implementation rootProject.ext.deps.lib_image
-    implementation rootProject.ext.deps.lib_widget
-    implementation rootProject.ext.deps.lib_network
+    implementation "com.klcw.app:lib_image:$lib_image"
+    implementation "com.klcw.app:lib_widget:$lib_widget"
+    implementation "com.klcw.app:lib_network:$lib_network"
 }
 

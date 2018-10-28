@@ -7,7 +7,6 @@ import android.content.Intent;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.klcw.app.util.StringUtils;
 
 /**
  * 组件调用/我的模块
@@ -21,7 +20,6 @@ public class MineComponent implements IComponent {
 
     @Override
     public boolean onCall(CC cc) {
-        StringUtils.print("----onCall-----");
 
         Context context = cc.getContext();
         Intent intent = new Intent(context, MineActivity.class);

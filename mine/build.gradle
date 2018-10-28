@@ -41,5 +41,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.deps.lib_recyclerview
+    implementation "com.klcw.app:lib_recyclerview:$lib_recyclerview"
 }

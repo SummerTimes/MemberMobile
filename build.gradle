@@ -74,24 +74,7 @@ ext {
             //----------------RX-------------
 
             rxjava             : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            rxandroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
-
-            //----------------lib--------------
-            lib_util           : "com.klcw.app:lib_util:${lib_util}",
-            lib_image          : "com.klcw.app:lib_image:${lib_image}",
-            lib_widget         : "com.klcw.app:lib_widget:${lib_widget}",
-            lib_banner         : "com.klcw.app:lib_banner:${lib_banner}",
-            lib_refreshlayout  : "com.klcw.app:lib_refreshlayout:${lib_refreshlayout}",
-            lib_recyclerview   : "com.klcw.app:lib_recyclerview:${lib_recyclerview}",
-            cnetwork           : "com.klcw.app:cnetwork:${cnetwork}",
-            lib_network        : "com.klcw.app:lib_network:${lib_network}",
-            pre_loader         : "com.klcw.app:pre_loader:${pre_loader}",
-            lib_networkinterceptor   : "com.klcw.app:lib_networkinterceptor:${lib_networkinterceptor}",
-
-            //----------------Module--------------
-            login              : "com.klcw.app:login:${login}",
-            mine               : "com.klcw.app:mine:${mine}",
-            recommend          : "com.klcw.app:recommend:${recommend}"
+            rxandroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
     ]
 }
 

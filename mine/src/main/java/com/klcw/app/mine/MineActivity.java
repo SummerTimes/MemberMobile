@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
 import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
@@ -14,7 +13,6 @@ import com.klcw.app.lib.recyclerview.floormanager.IFloorCombine;
 import com.klcw.app.lib.recyclerview.floormanager.IUI;
 import com.klcw.app.mine.dataload.MinDataLoad;
 import com.klcw.app.mine.presenter.MinePresenter;
-import com.klcw.app.util.StringUtils;
 
 /**
  * 我的模块

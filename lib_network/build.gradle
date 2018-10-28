@@ -27,6 +27,6 @@ dependencies {
     implementation rootProject.ext.deps.support_annotations
 
     implementation rootProject.ext.deps.cc
-    implementation rootProject.ext.deps.cnetwork
-    implementation rootProject.ext.deps.lib_networkinterceptor
+    implementation "com.klcw.app:cnetwork:$cnetwork"
+    implementation "com.klcw.app:lib_networkinterceptor:$lib_networkinterceptor"
 }

@@ -7,7 +7,7 @@ import android.view.View;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponentCallback;
-import com.klcw.app.util.StringUtils;
+import com.klcw.app.util.StringUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
      * 初始化View
      */
     private void initView() {
-        StringUtils.print("初始化App");
     }
 
     /**
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
-                        StringUtils.print("-----onResult-----" + result.toString());
                     }
                 });
     }
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
-                        StringUtils.print("-----onResult-----" + result.toString());
                     }
                 });
     }
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
-                        StringUtils.print("-----onResult-----" + result.toString());
+                        StringUtil.print("打印数据" + result.toString());
                     }
                 });
     }

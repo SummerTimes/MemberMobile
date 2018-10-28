@@ -25,6 +25,6 @@ dependencies {
     implementation rootProject.ext.deps.supportV4
     implementation rootProject.ext.deps.appcompatv7
     implementation rootProject.ext.deps.recyclerviewV7
-    implementation rootProject.ext.deps.lib_util
+    implementation "com.klcw.app:lib_util:$lib_util"
 }
 

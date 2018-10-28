@@ -22,7 +22,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api rootProject.ext.deps.cc
-    implementation rootProject.ext.deps.lib_util
+    implementation "com.klcw.app:lib_util:$lib_util"
     implementation "com.google.code.gson:gson:2.8.2"
     implementation "com.jakewharton:disklrucache:2.0.2"
 }

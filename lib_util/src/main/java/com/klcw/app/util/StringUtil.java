@@ -21,6 +21,10 @@ public class StringUtil {
     public static int BUFFER_SIZE = 512;
     private static Pattern pattern = Pattern.compile("[0-9]*");
 
+    public static void print(String str) {
+        Log.e("xp", "----打印数据----" + str);
+    }
+
     /**
      * 字符串非空校验
      *
