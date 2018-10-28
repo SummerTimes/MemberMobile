@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProportionSimpleDrawView">
+
+        <attr name="proportion" format="float">-1f</attr>
+
+
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">lib_recyclerview</string>
+
+    <string name="lib_recy_load_more_tips">- 上拉加载更多商品 -</string>
+    <string name="lib_recy_load_more_tips2">- 释放加载更多 -</string>
+    <string name="lib_recy_load_more_tips3">- 加载中 -</string>
+    <string name="lib_recy_load_more_tips4">- 已无更多数据 -</string>
+
+</resources>

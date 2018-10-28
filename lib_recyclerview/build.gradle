@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion rootProject.compileVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minVersion
+        targetSdkVersion rootProject.compileVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.deps.lib_util
+    implementation rootProject.ext.deps.lib_image
+    implementation rootProject.ext.deps.lib_banner
+    implementation rootProject.ext.deps.lib_widget
+    implementation rootProject.ext.deps.lib_network
+    implementation rootProject.ext.deps.pre_loader
+    implementation rootProject.ext.deps.lib_refreshlayout
+}
+

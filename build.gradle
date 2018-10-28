@@ -1,0 +1,100 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    repositories {
+        maven { url rootProject.file("repo-local") }
+        maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
+        maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+        mavenCentral()
+        google()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.billy.android:cc-register:1.0.6'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+
+configurations.all {
+    //SNAPSHOT 依赖缓存刷新频率 0
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+allprojects {
+    repositories {
+        maven { url rootProject.file("repo-local") }
+        maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
+        maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
+        google()
+        maven { url "https://jitpack.io" }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+        mavenCentral()
+    }
+}
+
+subprojects { p ->
+    tasks.whenObjectAdded {
+        if (it.name == 'clean' && (p.pluginManager.hasPlugin('java') || p.pluginManager.hasPlugin('groovy'))
+                || it.name == 'preBuild' && p.pluginManager.hasPlugin('com.android.library')) {
+            println "============================ $p.name:$it.name"
+            p.apply from: p.rootProject.file('artifactory.gradle')
+        }
+    }
+}
+
+ext {
+    compileVersion = 28
+
+    minVersion = 19
+    supportVersion = '28.0.0'
+
+    rxAndroid = '2.0.1'
+    rxJavaVersion = '2.1.5'
+    kotlin_stdlib_jdk7 = '1.2.71'
+
+    deps = [
+            cc                 : 'com.billy.android:cc:2.1.1',
+            //  -------------   Android         -------------
+            appcompatv7        : "com.android.support:appcompat-v7:${supportVersion}",
+            supportV4          : "com.android.support:support-v4:${supportVersion}",
+            supportV7          : "com.android.support:appcompat-v7:${supportVersion}",
+            recyclerviewV7     : "com.android.support:recyclerview-v7:${supportVersion}",
+            cardviewV7         : "com.android.support:cardview-v7:${supportVersion}",
+            design             : "com.android.support:design:${supportVersion}",
+            percent            : "com.android.support:percent:${supportVersion}",
+            support_annotations: "com.android.support:support-annotations:${supportVersion}",
+            kotlin_stdlib_jdk7 : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_stdlib_jdk7}",
+            //----------------RX-------------
+
+            rxjava             : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxandroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
+
+            //----------------lib--------------
+            lib_util           : "com.klcw.app:lib_util:${lib_util}",
+            lib_image          : "com.klcw.app:lib_image:${lib_image}",
+            lib_widget         : "com.klcw.app:lib_widget:${lib_widget}",
+            lib_banner         : "com.klcw.app:lib_banner:${lib_banner}",
+            lib_refreshlayout  : "com.klcw.app:lib_refreshlayout:${lib_refreshlayout}",
+            lib_recyclerview   : "com.klcw.app:lib_recyclerview:${lib_recyclerview}",
+            cnetwork           : "com.klcw.app:cnetwork:${cnetwork}",
+            lib_network        : "com.klcw.app:lib_network:${lib_network}",
+            pre_loader         : "com.klcw.app:pre_loader:${pre_loader}",
+            lib_networkinterceptor   : "com.klcw.app:lib_networkinterceptor:${lib_networkinterceptor}",
+
+            //----------------Module--------------
+            login              : "com.klcw.app:login:${login}",
+            mine               : "com.klcw.app:mine:${mine}",
+            recommend          : "com.klcw.app:recommend:${recommend}"
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
