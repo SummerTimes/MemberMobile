@@ -1,5 +1,6 @@
-package com.klcw.app.login;
+package com.klcw.app.login.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.klcw.app.banner.listener.OnBannerListener;
 import com.klcw.app.lib.network.NetworkConfig;
 import com.klcw.app.lib.network.NetworkHelper;
 import com.klcw.app.lib.widget.BLToast;
+import com.klcw.app.login.R;
 import com.klcw.app.login.util.CustomFrescoImageLoader;
 
 import java.util.ArrayList;
@@ -62,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void onCkeckNet(View view) {
         BLToast.showToast(this,"登陆");
+        Intent  intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
 

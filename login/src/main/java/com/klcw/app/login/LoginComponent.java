@@ -7,6 +7,7 @@ import android.content.Intent;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
+import com.klcw.app.login.activity.LoginActivity;
 
 /**
  * 组件调用/我的模块

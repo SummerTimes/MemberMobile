@@ -43,4 +43,3 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.klcw.app:lib_recyclerview:$lib_recyclerview"
 }
-
