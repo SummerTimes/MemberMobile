@@ -64,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void onCkeckNet(View view) {
         BLToast.showToast(this,"登陆");
-        Intent  intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
     }
 
 
