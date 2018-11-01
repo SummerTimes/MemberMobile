@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
+                        StringUtil.print("登录模块" + result.toString());
                     }
                 });
     }
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
+                        StringUtil.print("我的模块" + result.toString());
                     }
                 });
     }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 .callAsync(new IComponentCallback() {
                     @Override
                     public void onResult(CC cc, CCResult result) {
-                        StringUtil.print("打印数据" + result.toString());
+                        StringUtil.print("推荐模块" + result.toString());
                     }
                 });
     }

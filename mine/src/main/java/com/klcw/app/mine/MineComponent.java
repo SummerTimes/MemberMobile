@@ -33,6 +33,6 @@ public class MineComponent implements IComponent {
         //返回值说明
         // false: 组件同步实现（onCall方法执行完之前会将执行结果CCResult发送给CC）
         // true: 组件异步实现（onCall方法执行完之后再将CCResult发送给CC，CC会持续等待组件调用CC.sendCCResult发送的结果，直至超时）
-        return false;
+        return true;
     }
 }

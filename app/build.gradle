@@ -27,9 +27,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.klcw.app:login:${login}"
-    implementation "com.klcw.app:mine:${mine}"
-    implementation "com.klcw.app:recommend:${recommend}"
+//    implementation "com.klcw.app:login:${login}"
+//    implementation "com.klcw.app:mine:${mine}"
+//    implementation "com.klcw.app:recommend:${recommend}"
+
+    addComponent 'login', project(':login')
+    addComponent 'mine', project(':mine')
+    addComponent 'recommend', project(':recommend')
 
     implementation "com.klcw.app:lib_image:$lib_image"
     implementation "com.klcw.app:lib_widget:$lib_widget"

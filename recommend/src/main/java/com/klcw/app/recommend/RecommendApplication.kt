@@ -10,6 +10,6 @@ class RecommendApplication : Application() {
         super.onCreate()
         CC.enableDebug(true)
         CC.enableVerboseLog(true)
-        CC.enableRemoteCC(true)
+//        CC.enableRemoteCC(true)
     }
 }
