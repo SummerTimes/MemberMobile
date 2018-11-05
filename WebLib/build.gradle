@@ -17,15 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.deps.appcompatv7
-    implementation rootProject.ext.deps.recyclerviewV7
-    implementation rootProject.ext.deps.kotlin_stdlib_jdk7
-    implementation rootProject.ext.deps.rxjava
-    implementation rootProject.ext.deps.rxandroid
+    implementation rootProject.ext.deps.support_annotations
+    implementation 'com.tencent.sonic:sdk:3.0.0'
 }
-
