@@ -19,12 +19,14 @@ android {
     }
 
 }
+/*
 
 repositories {
     flatDir {
         dirs 'libs'
     }
 }
+*/
 
 
 dependencies {
@@ -34,6 +36,6 @@ dependencies {
     implementation rootProject.ext.deps.kotlin_stdlib_jdk7
     implementation rootProject.ext.deps.rxjava
     implementation rootProject.ext.deps.rxandroid
-    implementation(name: 'AliyunSdk-RCE', ext: 'aar')
+//    implementation(name: 'AliyunSdk-RCE', ext: 'aar')
 }
 

@@ -58,7 +58,6 @@ public class NetworkConfig {
 
         getDeviceNum(context);
         sInstance.loadCSV(context, type);
-        DynamicKeyManager.initDynamicKey(context);
         getToken();
     }
 
@@ -75,28 +74,16 @@ public class NetworkConfig {
             InputStreamReader isr = new InputStreamReader(context.getAssets().open("network_config.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line;
-            String configKey[] = new String[0];
             Log.e("xp", "-----type-----" + type);
             while ((line = reader.readLine()) != null) {
                 Log.e("xp", "-----line-----" + line);
                 String tokens[] = line.split(";", -1);
-                if ("configKey".compareToIgnoreCase(tokens[0]) == 0) {
-                    configKey = tokens;
-                } else if ("configVal".compareToIgnoreCase(tokens[0]) == 0) {
-                    if ("openApi".compareToIgnoreCase(tokens[1]) == 0 && type.compareToIgnoreCase(tokens[2]) == 0) {
-                        for (int i = 3; i < tokens.length; i++) {
-                            openApiConfig.put(configKey[i], tokens[i]);
-                        }
-                    } else {
-                        if (type.compareToIgnoreCase(tokens[2]) == 0 && tokens.length > 3) {
-                            urlConfig.put(tokens[1], tokens[3]);
-                        }
+                if ("configVal".compareToIgnoreCase(tokens[0]) == 0) {
+                    if (type.compareToIgnoreCase(tokens[2]) == 0 && tokens.length > 3) {
+                        urlConfig.put(tokens[1], tokens[3]);
                     }
                 }
             }
-
-            openApiConfig.put("sn", deviceNum);
-            Log.e("xp", "-----openApiConfig-----" + openApiConfig.toString());
             Log.e("xp", "-----urlConfig-----" + urlConfig.toString());
             reader.close();
         } catch (IOException e) {
@@ -146,40 +133,12 @@ public class NetworkConfig {
         return result;
     }
 
-    public static String getH5Url()  {
+    public static String getH5Url() {
         return getUrl(UrlType.H5);
-    }
-
-    public static String getCloudH5Url() {
-        return getUrl(UrlType.CLOUD_H5);
-    }
-
-
-    public static String getPayUrl() {
-        return getUrl(UrlType.PAY);
-    }
-
-    public static String getMpUrl() {
-        return getUrl(UrlType.MP);
-    }
-
-    public static String getMpStoreUrl(String sid) {
-        return getMpUrl() + "?sid=" + sid + "&source=2";
-    }
-
-    public static String getLotteryUrl() {
-        return getUrl(UrlType.LOTTERY);
     }
 
     public static String getAppMwUrl() {
         return getUrl(UrlType.APP_MW);
     }
 
-    public static String getOpenApiUrl() {
-        return getUrl(UrlType.OPEN_API);
-    }
-
-    public static String getParkingUrl() {
-        return getUrl(UrlType.PARKING);
-    }
 }

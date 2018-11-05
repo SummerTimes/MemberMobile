@@ -33,6 +33,7 @@ import java.util.Set;
  * @since 17/8/16 18:14
  */
 public class NetworkHelper {
+
     public static final String HTTP_POST = "post";
     public static final String HTTP_GET = "get";
 
@@ -100,7 +101,7 @@ public class NetworkHelper {
         CC.Builder builder = CC.obtainBuilder("network")
                 .setActionName(HTTP_POST)
                 .addParam("retry", RETRY_NUM)
-                .addParam("headers",getPhoneIdHeader(null))
+                .addParam("headers", getPhoneIdHeader(null))
                 .addParam("data", data)
                 .addParam("config", config)
                 .addInterceptor(new NetworkGsonInterceptor(callback))
@@ -132,7 +133,7 @@ public class NetworkHelper {
                 .setActionName(HTTP_POST)
                 .setTimeout(0)
                 .addParam("retry", RETRY_NUM)
-                .addParam("headers",getPhoneIdHeader(null))
+                .addParam("headers", getPhoneIdHeader(null))
                 .addParam("data", data)
                 .addParam("config", config)
                 .addInterceptor(NetworkOpenApiInterceptor.get())
@@ -719,7 +720,7 @@ public class NetworkHelper {
                 .setTimeout(0)
                 .addParam("retry", RETRY_NUM)
                 .addParam("url", url)
-                .addParam("headers",getPhoneIdHeader(null))
+                .addParam("headers", getPhoneIdHeader(null))
                 .addParam("data", data)
                 .build()
                 .call();
@@ -783,7 +784,7 @@ public class NetworkHelper {
                 .setActionName(HTTP_POST)
                 .addParam("retry", RETRY_NUM)
                 .addParam("url", url)
-                .addParam("headers",getPhoneIdHeader(null))
+                .addParam("headers", getPhoneIdHeader(null))
                 .addParam("data", data)
                 .addInterceptor(new NetworkGsonInterceptor(callback))
                 .build();
@@ -805,7 +806,7 @@ public class NetworkHelper {
                 .setActionName(method)
                 .addParam("retry", RETRY_NUM)
                 .addParam("url", url)
-                .addParam("headers",getPhoneIdHeader(null))
+                .addParam("headers", getPhoneIdHeader(null))
                 .addParam("data", data)
                 .addInterceptor(new NetworkGsonInterceptor(callback))
                 .build();
@@ -862,35 +863,22 @@ public class NetworkHelper {
         return getPhoneIdHeader(header);
     }
 
-    private static JSONObject getPhoneIdHeader(JSONObject header){
-        if(header == null){
+    private static JSONObject getPhoneIdHeader(JSONObject header) {
+        if (header == null) {
             header = new JSONObject();
         }
-        try{
+        try {
             header.put("phoneid", TextUtils.isEmpty(NetworkConfig.phone) ? "" : NetworkConfig.phone);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return header;
     }
 
-    /***
-     * 获取当前App的VersionName
-     * @param context 当前上下文
-     * @return
-     */
-    private static String getCurrentVersionName(Context context) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return info.versionName;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
      * 获取access_token后重新发送openApi请求
+     * @param <T>
      */
     private static class OpenApiGetTokenAndRetryCallback<T> extends NetworkComponentCallback<T> {
 
@@ -956,6 +944,11 @@ public class NetworkHelper {
         }
     }
 
+    /**
+     * 调用Network Component 组件CallBack
+     *
+     * @param <T>
+     */
     private static class NetworkComponentCallback<T> implements IComponentCallback {
 
         NetworkCallback<T> callback;
@@ -992,6 +985,14 @@ public class NetworkHelper {
         }
     }
 
+    /**
+     * 获取Url 是否添加前缀
+     * 1：包含前缀不拼接AppMwUrl
+     * 2：不包含添加AppMwUrl 前缀
+     *
+     * @param url
+     * @return
+     */
     @NonNull
     private static String genAppMwUrl(String url) {
         if (!url.startsWith(NetworkConstant.HTTP) && !url.startsWith(NetworkConstant.HTTPS)) {
@@ -1001,6 +1002,27 @@ public class NetworkHelper {
         return url;
     }
 
+    /***
+     * 获取当前App的VersionName
+     * @param context 当前上下文
+     * @return
+     */
+    private static String getCurrentVersionName(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return info.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 设置生成关联生命周期
+     *
+     * @param builder
+     * @param activityOrFragment
+     */
     private static void setBuilderRelateLifecycle(CC.Builder builder, Object activityOrFragment) {
         if (activityOrFragment instanceof Activity) {
             builder.cancelOnDestroyWith((Activity) activityOrFragment);

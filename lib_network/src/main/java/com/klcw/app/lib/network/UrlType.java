@@ -10,10 +10,4 @@ public interface UrlType {
     String OPEN_API = "openApi";
     String APP_MW = "appMw";
     String H5 = "h5";
-    String PAY = "pay";
-    String MP = "mp";
-    String LOTTERY = "lottery";
-    String CLOUD_H5 = "cloud_h5";
-    String PARKING = "parking";
-    String RED_PACKAGE = "redPackage";
 }

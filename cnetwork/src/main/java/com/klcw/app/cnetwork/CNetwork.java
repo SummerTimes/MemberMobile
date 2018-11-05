@@ -68,7 +68,9 @@ public class CNetwork implements IComponent {
         try {
             String action = cc.getActionName();
             JSONObject params = new JSONObject(cc.getParams());
+            Log.e("xp", "-----params-----" + params);
             String url = params.optString(KEY_URL);
+            Log.e("xp", "-----url-----" + url);
             if (ACTION_GET.equalsIgnoreCase(action)) {
                 boolean networkConnected = NetworkUtil.isNetworkConnected(cc.getContext());
                 if (networkConnected) {
@@ -77,6 +79,7 @@ public class CNetwork implements IComponent {
                 } else {
                     result = CCResult.error(cc.getContext().getString(R.string.network_unconnected));
                 }
+                Log.e("xp", "-----GET---result--" + result);
             } else if (ACTION_POST.equalsIgnoreCase(action)) {
                 boolean networkConnected = NetworkUtil.isNetworkConnected(cc.getContext());
                 if (networkConnected) {
@@ -85,6 +88,7 @@ public class CNetwork implements IComponent {
                 } else {
                     result = CCResult.error(cc.getContext().getString(R.string.network_unconnected));
                 }
+                Log.e("xp", "-----POST---result--" + result);
             } else if (ACTION_SETTING.equalsIgnoreCase(action)) {
                 initOkHttpClient(params);
                 result = CCResult.success();
@@ -117,8 +121,8 @@ public class CNetwork implements IComponent {
     }
 
     private CCResult post(String url, JSONObject params) throws IOException {
-        Log.e("xp","----post--url--"+url);
-        Log.e("xp","----post--params--"+params);
+        Log.e("xp", "----post--url--" + url);
+        Log.e("xp", "----post--params--" + params);
         Request.Builder builder = new Request.Builder();
         addHeaders(builder, params);
         RequestBody body = buildRequestBody(params);

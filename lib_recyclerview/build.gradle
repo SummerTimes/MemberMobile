@@ -25,6 +25,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.klcw.app:lib_image:$lib_image"
