@@ -1,16 +1,13 @@
 package com.bailian.weblib.bljsbridge;
 
-import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 
-import org.json.JSONObject;
 
 /**
  * 作者：杨松
  * 日期：2018/1/9 14:57
  */
-
 public class DefaultJsBridgeMediator implements IJSBridgeMediator {
 
     private static final String TAG = "DefaultJsBridgeMediator";
@@ -24,34 +21,34 @@ public class DefaultJsBridgeMediator implements IJSBridgeMediator {
         this.mBridgeWebView = bridgeWebView;
     }
 
-
     @Override
     public void onDispatch(String urls) {
+        Log.e(TAG, "---urls------" + urls);
         String[] urlList = urls.split(BridgeConfig.SPERATE);
-        for (String url : urlList
-                ) {
+        for (String url : urlList) {
+            Log.e(TAG, "---url------" + url);
             String[] strings = url.split(BridgeConfig.METHOD_NAME);
             if (strings.length != 2) {
                 Log.e(TAG, url + "必须是" + BridgeConfig.METHOD_NAME + "加注册的方法结尾");
                 return;
             }
             String method = strings[1];
+            Log.e(TAG, "---method------" + method);
             INativeCallBack callNative = mFunctionContainer.get(method);
 
             String data = null;
             if (url.contains(BridgeConfig.API_BRIDGE_HEADER)) {
                 String[] ss = url.split(BridgeConfig.DATA);
                 data = ss[1].split(BridgeConfig.API_NAME)[0];
+                Log.e(TAG, "--1-data------" + data);
             } else if (url.contains(BridgeConfig.TITLE_BRIDGE_HEADER)) {
                 String[] ss = url.split(BridgeConfig.DATA);
                 data = ss[1].split(BridgeConfig.METHOD_NAME)[0];
+                Log.e(TAG, "--2-data------" + data);
             } else if (url.contains(BridgeConfig.METHOD_BRIDGE_HEADER)) {
                 String[] ss = url.split(BridgeConfig.DATA);
                 data = ss[1].split(BridgeConfig.TARGET_NAME)[0];
-            }
-
-            if(!TextUtils.isEmpty(data)&&data.contains("pageId") && data.contains("AndroidComponent")){
-                callNative = mFunctionContainer.get(BridgeConfig.DEFAULT_METHOD_NAME);
+                Log.e(TAG, "--3-data------" + data);
             }
 
             if (callNative == null) {
@@ -63,8 +60,6 @@ public class DefaultJsBridgeMediator implements IJSBridgeMediator {
             }
             callNative.onCall(method, data, url, new DefaultIJsCallBack(mBridgeWebView));
         }
-
-
     }
 
 
@@ -81,17 +76,22 @@ public class DefaultJsBridgeMediator implements IJSBridgeMediator {
             if (data == null) {
                 return;
             }
-
+            Log.e(TAG, "------data-----4-----" + data);
             String[] strings = url.split(BridgeConfig.METHOD_NAME);
+            Log.e(TAG, "------strings---5-------" + strings);
             if (strings.length != 2) {
                 Log.e(TAG, url + "必须是" + BridgeConfig.METHOD_NAME + "加注册的方法结尾");
                 return;
             }
             String indentifer;
             String[] ss = url.split(BridgeConfig.DATA);
+            Log.e(TAG, "------ss---5-------" + ss.toString());
             indentifer = ss[0].split(BridgeConfig.API_BRIDGE_HEADER)[0].split("=")[1];
             data.data = data.data.replace("\\\\", "\\").replace("\'", "\\'");
             final String jsonData = data.data;
+            Log.e(TAG, "------jsonData---6-------" + indentifer);
+            Log.e(TAG, "------jsonData---7-------" + jsonData);
+            Log.e(TAG, "------jsonData---8-------" + data.status);
             final String javascriptCommand = String.format(JS_HANDLE_MESSAGE_FROM_JAVA, indentifer, data.status, jsonData);
             mBridgeWebView.postDelayed(new Runnable() {
                 @Override

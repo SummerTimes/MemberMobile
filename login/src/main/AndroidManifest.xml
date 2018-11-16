@@ -14,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.RegisterActivity"
+        <activity android:name=".activity.WebActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

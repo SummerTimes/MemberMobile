@@ -8,5 +8,4 @@ public interface IJSCallFunction {
 
     void onCall(JSEntity data, String url);
 
-
 }

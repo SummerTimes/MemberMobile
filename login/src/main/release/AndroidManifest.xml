@@ -12,6 +12,10 @@
             android:name=".activity.RegisterActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.WebActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

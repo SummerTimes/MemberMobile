@@ -6,11 +6,12 @@ buildscript {
         maven { url rootProject.file("repo-local") }
         maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
         maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
-        mavenCentral()
+//        mavenCentral()
         google()
-        maven { url "https://jitpack.io" }
+//        maven { url "https://jitpack.io" }
+        maven { url 'http://localhost:8081/nexus/content/groups/android_public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -32,10 +33,11 @@ allprojects {
         maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
         maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
         google()
-        maven { url "https://jitpack.io" }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url "https://jitpack.io" }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
-        mavenCentral()
+//        mavenCentral()
+        maven { url 'http://localhost:8081/nexus/content/groups/android_public/' }
     }
 }
 

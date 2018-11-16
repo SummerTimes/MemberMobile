@@ -7,10 +7,11 @@ package com.bailian.weblib.bljsbridge;
 public interface BridgeConfig {
 
 
-    String API_BRIDGE_HEADER = "blbridge://api?callbackIdentifier=";
+    String API_BRIDGE_HEADER = "ctjsbridge://api?callbackIdentifier=";
 
-    String METHOD_BRIDGE_HEADER = "blbridge://component?callbackIdentifier=";
-    String TITLE_BRIDGE_HEADER = "blbridge://setTitle?callbackIdentifier=";
+    String METHOD_BRIDGE_HEADER = "ctjsbridge://component?callbackIdentifier=";
+
+    String TITLE_BRIDGE_HEADER = "ctjsbridge://setTitle?callbackIdentifier=";
 
 
     String DATA = "&data=";

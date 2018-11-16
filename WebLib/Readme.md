@@ -29,7 +29,7 @@ JAVA:
 
     boolean shouldOverrideUrlLoading(WebView view, String url){
     
-            //当拦截到我们定义的     blbridge://就说明我们的数据来了需要处理了
+            //当拦截到我们定义的     ctjsbridge://就说明我们的数据来了需要处理了
             
     
     }
@@ -55,20 +55,19 @@ JAVA:
      
                      window.CTCallBackList[identifier] = callback;
                      var methodName=targetName+"#"+actionName;
-                     var url = "blbridge://component?callbackIdentifier=" + identifier + "&data=" + dataString + "&targetName=" + targetName + "&actionName=" + actionName+"&methodName="+methodName;
+                     var url = "ctjsbridge://component?callbackIdentifier=" + identifier + "&data=" + dataString + "&targetName=" + targetName + "&actionName=" + actionName+"&methodName="+methodName;
      
      
                      if(window.CTMethodList.length==0){
                           setTimeout(function(){
                                 console.log("初始方法");
-                                var startUrl="blbridge://component?callbackIdentifier="+"&startMethod";//当methodList为空时加入startMethod作为有方法需要调用的通知
+                                var startUrl="ctjsbridge://component?callbackIdentifier="+"&startMethod";//当methodList为空时加入startMethod作为有方法需要调用的通知
                                 LoadNative(startUrl);
                              },30);
                       }
      
                       window.CTMethodList.push(url);//推入数据
       }
-
 
 Java收到startMethod后就调用JSBridge的flateMethod方法取CTMethodList的第一个数据同时把该数据移除；
 这样周而复始就会把所有的都取完从而把所有数据都处理完毕；

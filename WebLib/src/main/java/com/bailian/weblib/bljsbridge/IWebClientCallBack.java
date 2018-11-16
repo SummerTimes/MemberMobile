@@ -11,5 +11,4 @@ public interface IWebClientCallBack {
 
     void onReload(WebView webView);
 
-
 }

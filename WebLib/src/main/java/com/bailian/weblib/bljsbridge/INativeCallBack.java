@@ -6,7 +6,6 @@ package com.bailian.weblib.bljsbridge;
 
 public interface INativeCallBack {
 
-
     void onCall(String method, String data, String url, IJSCallFunction ijsCallFunction);
 
 }

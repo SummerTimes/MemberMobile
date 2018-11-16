@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface IFunctionRegisterManager {
 
-
     void onBind(List<IFunction> functions);
-
 
 }

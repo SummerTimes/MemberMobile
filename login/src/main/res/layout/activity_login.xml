@@ -17,7 +17,13 @@
         android:onClick="onCkeckNet"
         android:layout_width="match_parent"
         android:text="获取网络信息"
-        android:layout_height="100dp" />
+        android:layout_height="60dp" />
+
+    <Button
+        android:onClick="onWebView"
+        android:layout_width="match_parent"
+        android:text="跳转WebView"
+        android:layout_height="60dp" />
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/siv_pic"

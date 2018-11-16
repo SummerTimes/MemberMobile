@@ -5,6 +5,9 @@ package com.bailian.weblib.bljsbridge;
  */
 
 public interface PageCall {
+
     void onPageStarted(String url);
+
     void onPageFinished(String url);
+
 }

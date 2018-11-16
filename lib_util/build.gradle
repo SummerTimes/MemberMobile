@@ -17,8 +17,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -27,5 +27,6 @@ dependencies {
     implementation rootProject.ext.deps.kotlin_stdlib_jdk7
     implementation rootProject.ext.deps.rxjava
     implementation rootProject.ext.deps.rxandroid
+    implementation "com.klcw.app:AliyunSdk-RCE:0.0.2"
 }
 

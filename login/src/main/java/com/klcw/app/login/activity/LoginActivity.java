@@ -1,5 +1,6 @@
 package com.klcw.app.login.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,9 @@ import com.klcw.app.login.R;
 import com.klcw.app.login.bean.CommonBean;
 import com.klcw.app.login.bean.CommonList;
 import com.klcw.app.login.util.CustomFrescoImageLoader;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,5 +121,20 @@ public class LoginActivity extends AppCompatActivity {
         String reqParams = new Gson().toJson(otherResource);
         String result = NetworkHelper.query(NetworkConfig.getAppMwUrl() + "app/site/queryAdDeploy.htm", reqParams, NetworkHelper.HTTP_POST);
         Log.e("xp", "请求数据列表-----" + result);
+    }
+
+    public void onWebView(View view) {
+        JSONObject data = new JSONObject();
+        try {
+            data.put(WebActivity.URL, "http://m.bl.com/h5-web/cms/shortcut/registAgreement/view.html");
+            data.put(WebActivity.TITLE, "注册协议");
+            data.put(WebActivity.HIDE_TITLE, true);
+
+            Intent intent = new Intent(this, WebActivity.class);
+            intent.putExtra(WebActivity.PARAMS, data.toString());
+            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

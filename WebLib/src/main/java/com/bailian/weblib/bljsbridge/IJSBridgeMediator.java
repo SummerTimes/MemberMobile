@@ -9,9 +9,7 @@ import android.util.ArrayMap;
 
 public interface IJSBridgeMediator {
 
-
     void onDispatch(String data);
-
 
     ArrayMap<String, INativeCallBack> produceFunctionContainer();
 

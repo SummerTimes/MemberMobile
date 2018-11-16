@@ -16,14 +16,26 @@ dependencies {
         //说明：需要兼容的情况有3种(单独组件作为app运行、打包在主app内、组件在多个app上复用但全局拦截器不同)
         //     为了兼容以上3种情况，建议将全局拦截器作为一个单独的module，在此处给不同app添加不同拦截器module
 //        implementation project(':demo_interceptors')
+
+
     }
 }
 
 //也可以按照上述格式继续添加你自己的自动注册需求，俗称：搭顺风车
-ccregister.registerInfo.add([
+ccregister.registerInfo.add(
+        [
           'scanInterface'        : 'com.klcw.app.lib.recyclerview.IFloorHolderFactory'
         , 'scanSuperClasses'     : ['com.klcw.app.lib.recyclerview.BaseFloorHolderFactory']
         , 'codeInsertToClassName': 'com.klcw.app.lib.recyclerview.FloorViewHolderMaker'
         , 'registerMethodName'   : 'registerFloorFactory'
-])
+        ]
+)
+ccregister.registerInfo.add(
+        [
+                  'scanInterface'        : 'bl.web.function.register.IFunctionRegisterManager'
+                , 'codeInsertToClassName': 'com.klcw.app.web.FunctionRegister'
+                , 'registerMethodName'   : 'autoRegisterFunction'
+        ]
+)
+
 

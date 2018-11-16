@@ -200,7 +200,6 @@ public class BridgeWebView extends WebView {
         this.mIJsMediator = ijsBridgeMediator;
     }
 
-
     public void dispatch(String urls) {
         if (mIJsMediator == null) {
             mIJsMediator = new DefaultJsBridgeMediator(this);

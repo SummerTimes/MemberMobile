@@ -3,6 +3,9 @@ package com.klcw.app.util;
 import android.text.TextUtils;
 import android.util.Log;
 
+
+import com.aliyun.common.global.AliyunTag;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +25,9 @@ public class StringUtil {
     private static Pattern pattern = Pattern.compile("[0-9]*");
 
     public static void print(String str) {
-        Log.e("xp", "----打印数据----" + str);
+        Log.e("xp", "----打印数据--1--" + str);
+        Log.e("xp", "----打印数据--2--" + str);
+        Log.d("xp", "----打印数据--3--" + AliyunTag.TAG);
     }
 
     /**

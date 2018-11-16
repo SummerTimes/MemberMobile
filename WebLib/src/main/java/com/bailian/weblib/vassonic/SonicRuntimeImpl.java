@@ -77,7 +77,7 @@ public class SonicRuntimeImpl extends SonicRuntime {
      */
     @Override
     public String getCurrentUserAccount() {
-        return "ibailian";
+        return "klcw";
     }
 
     @Override
