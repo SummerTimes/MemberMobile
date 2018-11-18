@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/WebLib" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cnetwork" />
             <option value="$PROJECT_DIR$/lib_banner" />
@@ -22,6 +23,7 @@
             <option value="$PROJECT_DIR$/mine" />
             <option value="$PROJECT_DIR$/pre_loader" />
             <option value="$PROJECT_DIR$/recommend" />
+            <option value="$PROJECT_DIR$/web" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

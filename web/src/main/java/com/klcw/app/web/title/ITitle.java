@@ -22,7 +22,7 @@ public interface ITitle {
 
     boolean onGoBack();
 
-    void setInitData(TitleBean titleBean, IJSCallFunction function, String url);
+    void setInitData(IJSCallFunction function, String url);
 
 
     void setTitle(String title);

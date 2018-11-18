@@ -107,8 +107,6 @@ public class BuyListTitle extends BaseTitle {
                 bridgeWebView.callJs("window.commShare");
             }
         });
-
-
     }
 
     @Override

@@ -124,12 +124,12 @@ public final class RechargeTitle extends BaseTitle {
                             .callAsync();*/
                 }
 
-                if (mTitleBean != null) {
+               /* if (mTitleBean != null) {
                     JSEntity jsEntity = new JSEntity();
                     jsEntity.data = mTitleBean.getWidgets().get(0).getWidgetIndex();
                     jsEntity.status = BridgeConfig.SUCCESS;
                     mCallFunction.onCall(jsEntity, mMethodUrl);
-                }
+                }*/
 
 
             }
@@ -183,7 +183,7 @@ public final class RechargeTitle extends BaseTitle {
     }
 
 
-    @Override
+   /* @Override
     public void setInitData(TitleBean titleBean, IJSCallFunction callFunction, String url) {
         super.setInitData(titleBean, callFunction, url);
 
@@ -191,7 +191,7 @@ public final class RechargeTitle extends BaseTitle {
         tv_right.setText(titleBean.getWidgets().get(0).getText());
 
     }
-
+*/
     public void setTitle(String title) {
         onSetTitle(title);
     }

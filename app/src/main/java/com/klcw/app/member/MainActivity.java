@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("title", "商家客服");
+//            jsonObject.put("noTitle", "noTitle");
             jsonObject.put("url", "http://summertimes.top/2013/06/13/%E6%90%AD%E5%BB%BA:%E5%8D%9A%E5%AE%A2/");
         } catch (JSONException e) {
             e.printStackTrace();

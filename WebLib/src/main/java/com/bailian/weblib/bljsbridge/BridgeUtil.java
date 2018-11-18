@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
  */
 public class BridgeUtil {
 
-
     static void webViewLoadLocalJs(WebView view, String path) {
         String jsContent = assetFile2Str(view.getContext(), path);
         view.loadUrl("javascript:" + jsContent);

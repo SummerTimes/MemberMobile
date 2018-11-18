@@ -26,23 +26,16 @@ import java.util.Stack;
 
 public abstract class BaseTitle implements ITitle {
 
-
-    String SET_TITLE = "title" + "#" + "title";
-
-    private WeakReference<Activity> mActivity;
-
-
-    private Stack<String> mTitleStack = new Stack<>();
-    protected TitleBean mTitleBean;
-    protected IJSCallFunction mCallFunction;
-    protected String mMethodUrl;
     private View mView;
-
+    protected String mMethodUrl;
+    protected IJSCallFunction mCallFunction;
+    private WeakReference<Activity> mActivity;
+    private Stack<String> mTitleStack = new Stack<>();
+    String SET_TITLE = "title" + "#" + "title";
 
     public BaseTitle(Activity activity) {
         this.mActivity = new WeakReference<>(activity);
     }
-
 
     @Override
     public final View createTitle(Context context, ViewGroup parent) {
@@ -57,31 +50,9 @@ public abstract class BaseTitle implements ITitle {
 
     protected abstract void initOnCreateTitle();
 
+    protected abstract @LayoutRes int getLayout();
 
-    protected final TitleBean.WidgetsBean getButtonWidget(View view, String tag) {
-        if (mTitleBean == null || mTitleBean.getWidgets() == null) {
-            return null;
-        }
-
-        for (TitleBean.WidgetsBean widget : mTitleBean.getWidgets()) {
-            if (TextUtils.equals(widget.getWidgetIndex(), tag)) {
-                view.setTag(widget);
-                return widget;
-            }
-        }
-        return null;
-    }
-
-    protected abstract @LayoutRes
-    int getLayout();
-
-
-    public Activity getActivity() {
-        if (mActivity == null) {
-            return null;
-        }
-        return mActivity.get();
-    }
+    protected abstract void onSetTitle(String data);
 
     @CallSuper
     @Override
@@ -89,9 +60,7 @@ public abstract class BaseTitle implements ITitle {
         bridgeWebView.registerFunction(SET_TITLE, new INativeCallBack() {
             @Override
             public void onCall(String method, String data, String url, IJSCallFunction ijsCallFunction) {
-                Log.e("xp", "----registerFunction---data--" + data);
-                Log.e("xp", "----registerFunction---method--" + method);
-                Log.e("xp", "----registerFunction---url--" + url);
+                Log.e("xp", "设置头布局");
                 if (!TextUtils.isEmpty(data)) {
                     data = data.substring(1, data.length() - 1);
                 }
@@ -100,9 +69,6 @@ public abstract class BaseTitle implements ITitle {
             }
         });
     }
-
-    protected abstract void onSetTitle(String data);
-
 
     @Override
     public boolean onGoBack() {
@@ -134,12 +100,18 @@ public abstract class BaseTitle implements ITitle {
 
     }
 
-
     protected void finish() {
         Activity activity = getActivity();
         if (activity != null) {
             activity.finish();
         }
+    }
+
+    public Activity getActivity() {
+        if (mActivity == null) {
+            return null;
+        }
+        return mActivity.get();
     }
 
     protected View findView(int id) {
@@ -158,8 +130,7 @@ public abstract class BaseTitle implements ITitle {
     }
 
     @Override
-    public void setInitData(TitleBean titleBean, IJSCallFunction callFunction, String url) {
-        this.mTitleBean = titleBean;
+    public void setInitData(IJSCallFunction callFunction, String url) {
         this.mCallFunction = callFunction;
         this.mMethodUrl = url;
     }

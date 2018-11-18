@@ -2,48 +2,25 @@ package com.klcw.app.web;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.webkit.GeolocationPermissions;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.bailian.weblib.bljsbridge.BridgeWebView;
-import com.bailian.weblib.bljsbridge.IJSCallFunction;
-import com.bailian.weblib.bljsbridge.INativeCallBack;
 import com.bailian.weblib.vassonic.SonicRuntimeImpl;
 import com.bailian.weblib.vassonic.SonicSessionClientImpl;
-import com.billy.cc.core.component.CC;
-import com.billy.cc.core.component.CCResult;
-import com.billy.cc.core.component.IComponentCallback;
 import com.klcw.app.util.log.Logger;
 import com.klcw.app.web.title.ITitle;
-import com.klcw.app.web.title.RechargeTitle;
 import com.klcw.app.web.title.WebTitleFactory;
 import com.klcw.app.web.utils.NetUtils;
 import com.tencent.sonic.sdk.SonicConfig;
@@ -54,7 +31,6 @@ import com.tencent.sonic.sdk.SonicSessionConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.Stack;
 
 
@@ -64,20 +40,17 @@ import java.util.Stack;
  *
  * @author kk
  */
-
 public class BLWebActivity extends AppCompatActivity {
-
 
     private @Nullable
     ITitle mITitle;
     private CardView cardView;
 
-    private String mTitleStr;
-
     private String mNoNeedTitle;
     boolean mIsFirstIn = true;
 
     private String mUrl;
+    private String mTitle;
     private String params = null;
 
     private SonicSession sonicSession;
@@ -166,24 +139,15 @@ public class BLWebActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             params = intent.getStringExtra(PARAM);
-            Log.e("xp", "-----params-------" + params);
             try {
-
                 JSONObject jsonObject = new JSONObject(params);
                 if (!jsonObject.isNull("url")) {
                     mUrl = jsonObject.getString("url");
                 }
-
                 if (!jsonObject.isNull("title")) {
-                    setTitle(jsonObject.getString("title"));
+                    mTitle = jsonObject.getString("title");
                 }
-
-                if (!TextUtils.isEmpty(jsonObject.optString("finalTitle"))) {
-                    mTitleStr = jsonObject.optString("finalTitle");
-                }
-
                 mNoNeedTitle = jsonObject.optString("noTitle");
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -206,13 +170,15 @@ public class BLWebActivity extends AppCompatActivity {
         cardView = findViewById(R.id.title_container);
         bridgeWebView = findViewById(R.id.web);
         bridgeWebView.setSonicSession(sonicSession);
-
         if (TextUtils.equals("noTitle", mNoNeedTitle)) {
             cardView.setVisibility(View.GONE);
         } else {
             mITitle = WebTitleFactory.produceWebTitle(mUrl, this, bridgeWebView);
             mITitle.createTitle(this, cardView);
             mITitle.registerFunction(bridgeWebView);
+            if (!TextUtils.isEmpty(mTitle) && mITitle != null) {
+                mITitle.setTitle(mTitle);
+            }
         }
     }
 
@@ -235,7 +201,6 @@ public class BLWebActivity extends AppCompatActivity {
         // 设置可以使用localStorage
         settings.setDomStorageEnabled(true);
         // 应用可以有缓存
-
         String appCaceDir = this.getApplicationContext().getDir("cache", Context.MODE_PRIVATE).getPath();
         settings.setAppCachePath(appCaceDir);
         settings.setAppCacheEnabled(true);
@@ -251,24 +216,6 @@ public class BLWebActivity extends AppCompatActivity {
         settings.setGeolocationDatabasePath(dir);
         //启用地理定位
         settings.setGeolocationEnabled(true);
-
-        bridgeWebView.setWebChromeClient(new WebChromeClient() {
-
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-
-                Log.e("xp", "----onReceivedTitle-----" + title);
-                if (mITitle != null) {
-                    mITitle.setTitle(mTitleStr);
-                    return;
-                }
-
-                if (!TextUtils.isEmpty(view.getTitle()) && !view.getTitle().contains("http") && mITitle != null) {
-                    mITitle.setTitle(view.getTitle());
-                }
-            }
-        });
 
         if (!TextUtils.isEmpty(mUrl)) {
             mUrl = mUrl.replaceAll(" ", "");

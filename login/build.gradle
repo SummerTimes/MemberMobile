@@ -41,6 +41,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.klcw.app:ViewPagerIndicator:0.0.1'
     implementation "com.klcw.app:lib_recyclerview:$lib_recyclerview"
 }

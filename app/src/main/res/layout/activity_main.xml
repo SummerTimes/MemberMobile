@@ -11,6 +11,7 @@
         android:layout_height="50dp"
         android:onClick="onLoginClick"
         android:text="登陆/注册模块" />
+    ，
 
     <Button
         android:layout_width="match_parent"

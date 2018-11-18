@@ -3,6 +3,7 @@ package com.klcw.app.web.title;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.bailian.weblib.bljsbridge.BridgeWebView;
 
@@ -15,12 +16,13 @@ import org.json.JSONObject;
 
 public class WebTitleFactory {
 
-
     public static ITitle produceWebTitle(String url, Activity activity, BridgeWebView bridgeWebView) {
 
         Intent intent = activity.getIntent();
 
         String params = intent.getStringExtra("params");
+        Log.e("xp", "---------params---------" + params);
+        Log.e("xp", "---------url---------" + url);
         try {
             JSONObject jsonObject = new JSONObject(params);
             String address = jsonObject.optString("address");
@@ -59,15 +61,15 @@ public class WebTitleFactory {
             return new RedShareTitle(activity);
         } else if (url.contains("/buyList")) {
             return new BuyListTitle(activity);
-        }else if (isCmsUrl(url)){
+        } else if (isCmsUrl(url)) {
             return new CmsTitle(activity);
-        }else if(url.contains("#/mybookings")){
+        } else if (url.contains("#/mybookings")) {
             return new RightMoreTitle(activity);
         }
         return new CommonTitle(activity);
     }
 
-    private static boolean isCmsUrl(String url){
+    private static boolean isCmsUrl(String url) {
         return url.contains("http://promotion.st.bl.com")
                 || url.contains("http://promotion.ut.bl.com")
                 || url.contains("http://promotion.bl.com");
