@@ -60,7 +60,6 @@ public class WebActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.tv_title);
         ivBack = findViewById(R.id.iv_back);
         neterror = findViewById(R.id.neterror);
-//        loadingProgressDialog = LoadingProgressDialog.createDialog(this);
         initialWebSetting();
     }
 
@@ -79,11 +78,9 @@ public class WebActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             webContent.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-
         // 设置可以使用localStorage
         settings.setDomStorageEnabled(true);
         // 应用可以有缓存
-
         String appCacheDir = this.getApplicationContext().getDir("cache", Context.MODE_PRIVATE).getPath();
         settings.setAppCachePath(appCacheDir);
         settings.setAppCacheEnabled(true);
@@ -147,29 +144,6 @@ public class WebActivity extends AppCompatActivity {
                 Uri parse = Uri.parse(url);
                 String scheme = parse.getScheme();
                 Log.e(TAG, "--------scheme------" + scheme);
-                /*try {
-                    if ("blmodule".equals(scheme) && url.contains("blmodule://login/oklogin")) {
-                        NotifyMessage notifyMessage = new NotifyMessage();
-                        notifyMessage.setMsgCode(LoginConstants.OK_LOGIN_CODE);
-                        NotifyMessageManager.getInstance().sendNotifyMessage(notifyMessage);
-
-                        finish();
-                        return true;
-                    } else if ("blmodule".equals(scheme) && url.contains("blmodule://login/okbind")) {
-                        NotifyMessage notifyMessage = new NotifyMessage();
-                        notifyMessage.setMsgCode(LoginConstants.OK_BIND_CODE);
-                        NotifyMessageManager.getInstance().sendNotifyMessage(notifyMessage);
-
-                        finish();
-                        return true;
-                    } else if ("blmodule".equals(scheme) && url.contains("blmodule://okCardHomePage")) {
-                        finish();
-                        return true;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return false;
-                }*/
 
                 return false;
             }
@@ -178,9 +152,6 @@ public class WebActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 Log.d(TAG, "----------onPageStarted-----------");
-//                if (loadingProgressDialog != null) {
-//                    loadingProgressDialog.show();
-//                }
             }
 
             @Override
@@ -191,10 +162,6 @@ public class WebActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(webContent.getTitle()) && !webContent.getTitle().contains("http")) {
                     tvTitle.setText(webContent.getTitle());
                 }
-
-//                if (loadingProgressDialog != null && loadingProgressDialog.isShowing()) {
-//                    loadingProgressDialog.cancel();
-//                }
             }
         });
 
@@ -227,11 +194,9 @@ public class WebActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         if (webContent != null) {
             webContent.clearCache(true);
         }
-//        loadingProgressDialog = null;
     }
 
 }
