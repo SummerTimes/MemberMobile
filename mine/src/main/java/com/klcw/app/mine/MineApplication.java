@@ -9,8 +9,6 @@ public class MineApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CC.enableDebug(true);
-        CC.enableVerboseLog(true);
-//        CC.enableRemoteCC(true);
+
     }
 }

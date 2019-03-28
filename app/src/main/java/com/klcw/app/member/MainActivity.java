@@ -9,6 +9,8 @@ import com.aliyun.common.global.AliyunTag;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponentCallback;
+import com.klcw.app.util.QMUIDisplayHelper;
+import com.klcw.app.util.QMUIStatusBarHelper;
 import com.klcw.app.util.StringUtil;
 
 import org.json.JSONException;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
      * 初始化View
      */
     private void initView() {
+        QMUIStatusBarHelper.translucent(this);
         Log.d("xp", "----打印数据--3--" + AliyunTag.TAG);
     }
 
@@ -36,11 +39,24 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onLoginClick(View view) {
+
+       /* CC.obtainBuilder("loginComponent")
+                .setContext(this)
+                .build()
+                .callAsync(new IComponentCallback() {
+                    @Override
+                    public void onResult(CC cc, CCResult result) {
+                        StringUtil.print("登陆" + result.toString());
+                    }
+                });
+*/
+
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("title", "商家客服");
 //            jsonObject.put("noTitle", "noTitle");
-            jsonObject.put("url", "http://summertimes.top/2013/06/13/%E6%90%AD%E5%BB%BA:%E5%8D%9A%E5%AE%A2/");
+//            jsonObject.put("url", "http://summertimes.top/2013/06/13/%E6%90%AD%E5%BB%BA:%E5%8D%9A%E5%AE%A2/");
+            jsonObject.put("url", "http://172.16.9.28/shop_car");
         } catch (JSONException e) {
             e.printStackTrace();
         }

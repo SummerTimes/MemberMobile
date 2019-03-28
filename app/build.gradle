@@ -38,6 +38,7 @@ dependencies {
 //        addComponent 'mine', project(':mine')
 //        addComponent 'recommend', project(':recommend')
 
+        implementation "com.klcw.app:lib_util:$lib_util"
         implementation "com.klcw.app:lib_image:$lib_image"
         implementation "com.klcw.app:lib_widget:$lib_widget"
         implementation "com.klcw.app:lib_network:$lib_network"

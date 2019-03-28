@@ -71,38 +71,32 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void onCkeckNet(View view) {
-        new Thread(new Runnable() {
+        String Url = "http://wanandroid.com/wxarticle/chapters/json";
+        NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_GET, new NetworkCallback<CommonList>() {
             @Override
-            public void run() {
+            public void onSuccess(@NonNull CCResult rawResult, CommonList commonList) {
+                Log.e("xp", "---str-----" + commonList.toString());
 
-                String Url = "http://wanandroid.com/wxarticle/chapters/json";
-                NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_GET, new NetworkCallback<String>() {
-                    @Override
-                    public void onSuccess(@NonNull CCResult rawResult, String str) {
-                        Log.e("xp", "---str-----" + str);
+//                CommonList commonList = new Gson().fromJson(str, CommonList.class);
+//                Log.e("xp", "---onSuccess-----" + commonList.toString());
 
-                        CommonList commonList = new Gson().fromJson(str, CommonList.class);
-                        Log.e("xp", "---onSuccess-----" + commonList.toString());
+                List<CommonBean> data = commonList.data;
+                for (int i = 0; i < data.size(); i++) {
+                    Log.e("xp", "---单条数据----" + data.get(i).toString());
+                }
 
-                        List<CommonBean> data = commonList.data;
-                        for (int i = 0; i < data.size(); i++) {
-                            Log.e("xp", "---单条数据----" + data.get(i).toString());
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailed(@NonNull CCResult result) {
-                        Log.e("xp", "--onFailed------" + result.getData().toString());
-                    }
-
-                    @Override
-                    public void onFinally(@NonNull CCResult result) {
-//                        Log.e("xp", "----onFinally----" + result.getData().toString());
-                    }
-                });
             }
-        }).start();
+
+            @Override
+            public void onFailed(@NonNull CCResult result) {
+                Log.e("xp", "--onFailed------" + result.getData().toString());
+            }
+
+            @Override
+            public void onFinally(@NonNull CCResult result) {
+//                        Log.e("xp", "----onFinally----" + result.getData().toString());
+            }
+        });
     }
 
 
@@ -126,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onWebView(View view) {
         JSONObject data = new JSONObject();
         try {
-            data.put(WebActivity.URL, "http://m.bl.com/h5-web/cms/shortcut/registAgreement/view.html");
+            data.put(WebActivity.URL, "http://172.24.3.94:8080/report");
             data.put(WebActivity.TITLE, "注册协议");
             data.put(WebActivity.HIDE_TITLE, true);
 
