@@ -1,39 +1,34 @@
 package com.klcw.app.login.activity;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.billy.cc.core.component.CCResult;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.klcw.app.banner.Banner;
 import com.klcw.app.banner.listener.OnBannerListener;
 import com.klcw.app.lib.network.NetworkCallback;
-import com.klcw.app.lib.network.NetworkConfig;
 import com.klcw.app.lib.network.NetworkHelper;
 import com.klcw.app.login.R;
 import com.klcw.app.login.bean.CommonBean;
 import com.klcw.app.login.bean.CommonList;
-import com.klcw.app.login.util.CustomFrescoImageLoader;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.klcw.app.login.util.LoginImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author kk
+ * @datetime: 2018/10/24
+ * @desc:
+ */
 public class LoginActivity extends AppCompatActivity {
 
-    private SimpleDraweeView mSivPic;
     private Banner mBanner;
+    private SimpleDraweeView mSivPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
         urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
         urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
-
         mBanner.setImages(urls)
-                .setImageLoader(new CustomFrescoImageLoader())
+                .setImageLoader(new LoginImageLoader())
                 .setOnBannerListener(new OnBannerListener() {
                     @Override
                     public void OnBannerClick(int position) {
-                        Toast.makeText(LoginActivity.this, "---position---" + position, Toast.LENGTH_SHORT).show();
                     }
                 }).start();
     }
@@ -70,65 +63,25 @@ public class LoginActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void onCkeckNet(View view) {
+    public void onCheckNet(View view) {
         String Url = "http://wanandroid.com/wxarticle/chapters/json";
         NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_GET, new NetworkCallback<CommonList>() {
             @Override
             public void onSuccess(@NonNull CCResult rawResult, CommonList commonList) {
-                Log.e("xp", "---str-----" + commonList.toString());
-
-//                CommonList commonList = new Gson().fromJson(str, CommonList.class);
-//                Log.e("xp", "---onSuccess-----" + commonList.toString());
-
                 List<CommonBean> data = commonList.data;
                 for (int i = 0; i < data.size(); i++) {
                     Log.e("xp", "---单条数据----" + data.get(i).toString());
                 }
-
             }
 
             @Override
             public void onFailed(@NonNull CCResult result) {
-                Log.e("xp", "--onFailed------" + result.getData().toString());
             }
 
             @Override
             public void onFinally(@NonNull CCResult result) {
-//                        Log.e("xp", "----onFinally----" + result.getData().toString());
+
             }
         });
-    }
-
-
-    /**
-     * 同步请求资源位
-     *
-     * @param id 资源位id
-     * @return 资源位实体
-     */
-    public void getResourceEntity(String id) {
-        JsonObject otherResource = new JsonObject();
-        JsonObject resource = new JsonObject();
-        resource.addProperty("resourceId", id);
-        otherResource.add("activity", new JsonArray());
-        otherResource.addProperty("otherresource", new Gson().toJson(resource));
-        String reqParams = new Gson().toJson(otherResource);
-        String result = NetworkHelper.query(NetworkConfig.getAppMwUrl() + "app/site/queryAdDeploy.htm", reqParams, NetworkHelper.HTTP_POST);
-        Log.e("xp", "请求数据列表-----" + result);
-    }
-
-    public void onWebView(View view) {
-        JSONObject data = new JSONObject();
-        try {
-            data.put(WebActivity.URL, "http://172.24.3.94:8080/report");
-            data.put(WebActivity.TITLE, "注册协议");
-            data.put(WebActivity.HIDE_TITLE, true);
-
-            Intent intent = new Intent(this, WebActivity.class);
-            intent.putExtra(WebActivity.PARAMS, data.toString());
-            startActivity(intent);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 }

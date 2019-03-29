@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".activity.LoginActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登陆模块" />
-    onCkeckNet
-    <Button
-        android:onClick="onCkeckNet"
-        android:layout_width="match_parent"
-        android:text="获取网络信息"
-        android:layout_height="60dp" />
+    android:orientation="vertical">
 
     <Button
-        android:onClick="onWebView"
         android:layout_width="match_parent"
-        android:text="跳转WebView"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:onClick="onCheckNet"
+        android:text="获取网络信息" />
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/siv_pic"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:scaleType="centerInside" />
 
     <com.klcw.app.banner.Banner
@@ -37,8 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginLeft="15dp"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical" />
 

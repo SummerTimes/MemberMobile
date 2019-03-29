@@ -1,4 +1,4 @@
-//ext.alwaysLib = true
+ext.alwaysLib = true
 apply from: rootProject.file('cc-settings-2.gradle')
 
 android {
@@ -41,10 +41,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.billy.android:gloading:1.0.0'
-    implementation rootProject.ext.deps.supportV4
-    implementation rootProject.ext.deps.appcompatv7
-    implementation rootProject.ext.deps.recyclerviewV7
-    implementation "com.klcw.app:lib_recyclerview:$lib_recyclerview"
+    implementation "com.klcw.app:lib_image:${lib_image}"
+    implementation "com.klcw.app:lib_banner:${lib_banner}"
+    implementation "com.klcw.app:lib_widget:${lib_widget}"
+    implementation "com.klcw.app:lib_network:${lib_network}"
+    implementation "com.klcw.app:lib_recyclerview:${lib_recyclerview}"
 }

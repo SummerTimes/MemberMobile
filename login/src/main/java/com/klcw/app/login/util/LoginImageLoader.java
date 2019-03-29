@@ -9,9 +9,11 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.klcw.app.banner.loader.ImageLoader;
 
 /**
- * 设置加载的ImageView
+ * @author kk
+ * @datetime: 2018/11/14
+ * @desc:设置加载的ImageView
  */
-public class CustomFrescoImageLoader extends ImageLoader {
+public class LoginImageLoader extends ImageLoader {
 
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
@@ -22,12 +24,16 @@ public class CustomFrescoImageLoader extends ImageLoader {
         imageView.setImageURI(uri);
     }
 
-    //提供createImageView 方法，方便fresco自定义ImageView
+    /**
+     * 提供createImageView 方法，方便fresco自定义ImageView
+     *
+     * @param context
+     * @return
+     */
     @Override
     public ImageView createImageView(Context context) {
         SimpleDraweeView simpleDraweeView = new SimpleDraweeView(context);
-        GenericDraweeHierarchyBuilder builder =
-                new GenericDraweeHierarchyBuilder(context.getResources());
+        GenericDraweeHierarchyBuilder builder = new GenericDraweeHierarchyBuilder(context.getResources());
         simpleDraweeView.setHierarchy(builder.build());
         return simpleDraweeView;
     }

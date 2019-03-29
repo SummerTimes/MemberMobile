@@ -27,7 +27,11 @@ import com.klcw.app.util.NetUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * @author kk
+ * @datetime: 2018/10/24
+ * @desc:
+ */
 public class WebActivity extends AppCompatActivity {
 
     public static final String PARAMS = "params";
@@ -144,7 +148,6 @@ public class WebActivity extends AppCompatActivity {
                 Uri parse = Uri.parse(url);
                 String scheme = parse.getScheme();
                 Log.e(TAG, "--------scheme------" + scheme);
-
                 return false;
             }
 

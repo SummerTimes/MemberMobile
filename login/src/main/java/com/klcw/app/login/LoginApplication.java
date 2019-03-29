@@ -6,6 +6,11 @@ import com.billy.cc.core.component.CC;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.klcw.app.lib.network.NetworkConfig;
 
+/**
+ * @author kk
+ * @datetime: 2018/10/24
+ * @desc:
+ */
 public class LoginApplication extends Application {
 
     @Override
@@ -13,7 +18,6 @@ public class LoginApplication extends Application {
         super.onCreate();
         CC.enableDebug(true);
         CC.enableVerboseLog(true);
-//        CC.enableRemoteCC(true);
         Fresco.initialize(this);
         NetworkConfig.setup(this, "prd");
     }

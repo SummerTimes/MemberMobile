@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 
-import com.aliyun.common.global.AliyunTag;
 import com.bailian.weblib.vassonic.SonicRuntimeImpl;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
@@ -46,7 +45,7 @@ public class WebComponent implements IComponent {
                     String url = jsonObject.optString("url");
                     if (!TextUtils.isEmpty(url)) {
                         if (!SonicEngine.isGetInstanceAllowed()) {
-                            SonicEngine.createInstance(new SonicRuntimeImpl(cc.getApplication()), new SonicConfig.Builder().build());
+                            SonicEngine.createInstance(new SonicRuntimeImpl(cc.getContext()), new SonicConfig.Builder().build());
                             SonicEngine.getInstance().preCreateSession(url, new SonicSessionConfig.Builder().setSupportLocalServer(true).build());
                         }
                     }

@@ -9,26 +9,21 @@ import java.util.*
  * @desc:
  */
 
-class  TestPresenter(key:Int) : AbstractPresenter(key){
-
+class TestPresenter(key: Int) : AbstractPresenter(key) {
 
 
     override fun visitNet(isPullDown: Boolean) {
-
     }
 
     override fun provideCombinesProvider(): ICombinesProvider {
-
-        return  Provider();
+        return Provider()
     }
 
 
     fun getFloorManager(): FloorManager {
         return floorManager
     }
-
 }
-
 
 
 class Provider : ICombinesProvider {

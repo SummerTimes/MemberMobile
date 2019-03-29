@@ -3,7 +3,6 @@ package com.klcw.app.recommend
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.klcw.app.lib.widget.BLToast
 
 /**
@@ -21,10 +20,10 @@ class RecommendActivity : AppCompatActivity() {
 
     }
 
-    fun OnButtonClick(view: View) {
-        BLToast.showToast(this, "提示");
+    fun OnButtonClick() {
+        BLToast.showToast(this, "提示")
         val intent = Intent(this, TestActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent);
+        startActivity(intent)
     }
 }

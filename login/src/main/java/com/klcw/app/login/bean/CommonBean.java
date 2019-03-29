@@ -3,8 +3,8 @@ package com.klcw.app.login.bean;
 import java.util.List;
 
 /**
- * @Auther: yd
- * @datetime: 2018/11/5
+ * @author kk
+ * @datetime: 2018/10/24
  * @desc:
  */
 public class CommonBean {
