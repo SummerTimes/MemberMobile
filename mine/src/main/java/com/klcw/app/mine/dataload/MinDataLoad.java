@@ -3,7 +3,7 @@ package com.klcw.app.mine.dataload;
 import com.billy.android.preloader.interfaces.GroupedDataLoader;
 
 /**
- * @Auther: yd
+ * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */

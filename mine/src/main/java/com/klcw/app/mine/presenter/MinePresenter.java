@@ -3,11 +3,11 @@ package com.klcw.app.mine.presenter;
 import com.billy.android.preloader.PreLoader;
 import com.klcw.app.lib.recyclerview.floormanager.AbstractPresenter;
 import com.klcw.app.lib.recyclerview.floormanager.ICombinesProvider;
-import com.klcw.app.mine.container.MineContainer;
+import com.klcw.app.mine.combines.MineContainer;
 import com.klcw.app.mine.dataload.MinDataLoad;
 
 /**
- * @Auther: yd
+ * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */

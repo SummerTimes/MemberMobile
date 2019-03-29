@@ -1,4 +1,4 @@
-package com.klcw.app.mine.container;
+package com.klcw.app.mine.combines;
 
 import com.klcw.app.lib.recyclerview.floormanager.ICombinesProvider;
 import com.klcw.app.lib.recyclerview.floormanager.IFloorCombine;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Auther: yd
+ * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */

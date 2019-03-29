@@ -1,4 +1,4 @@
-package com.klcw.app.mine;
+package com.klcw.app.mine.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,32 +11,37 @@ import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
 import com.klcw.app.lib.recyclerview.floormanager.IFloorCombine;
 import com.klcw.app.lib.recyclerview.floormanager.IUI;
+import com.klcw.app.mine.R;
+import com.klcw.app.mine.constant.MineConstant;
 import com.klcw.app.mine.dataload.MinDataLoad;
 import com.klcw.app.mine.presenter.MinePresenter;
 
 /**
- * 我的模块
+ * @author kk
+ * @datetime: 2018/10/24
+ * @desc:
  */
 public class MineActivity extends AppCompatActivity implements IUI {
 
-    private RecyclerView mRvView;
     private int mKey;
+    private RecyclerView mRvView;
     private MinePresenter mMinePresenter;
     private RecyclerView.Adapter mAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mKey = MinePresenter.preLoad(getParams());
         initPresenter();
-        setContentView(R.layout.activity_mine);
+        setContentView(R.layout.mine_main_activity);
         initView();
         initListener();
     }
 
+    /**
+     * 监听是否有数据
+     */
     private void initListener() {
-        // 监听是否有数据
         PreLoader.listenData(mKey, new GroupedDataListener<String>() {
             @Override
             public String keyInGroup() {
@@ -60,7 +65,6 @@ public class MineActivity extends AppCompatActivity implements IUI {
 
     private void initView() {
         mRvView = findViewById(R.id.rv_view);
-
         mAdapter = mMinePresenter.getAdapter();
         mRvView.setLayoutManager(new LinearLayoutManager(this));
         mRvView.setAdapter(mAdapter);
@@ -73,7 +77,7 @@ public class MineActivity extends AppCompatActivity implements IUI {
      * @return
      */
     private String getParams() {
-        String mParams = getIntent().getStringExtra("param");
+        String mParams = getIntent().getStringExtra(MineConstant.KRY_PARAM);
         if (TextUtils.isEmpty(mParams)) {
             return "";
         }
@@ -91,5 +95,4 @@ public class MineActivity extends AppCompatActivity implements IUI {
     public void onCombineRequestInflateUI(IFloorCombine combine) {
         mMinePresenter.notifyDataChanged(combine);
     }
-
 }
