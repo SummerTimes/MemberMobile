@@ -8,8 +8,5 @@ class RecommendApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        CC.enableDebug(true)
-        CC.enableVerboseLog(true)
-//        CC.enableRemoteCC(true)
     }
 }

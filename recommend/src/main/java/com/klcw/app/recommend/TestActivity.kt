@@ -28,7 +28,7 @@ class  TestActivity:Activity(), IUI {
         val layoutManager = RobustLinearLayoutManager(this)
         testPresenter = TestPresenter(1)
         setContentView(R.layout.activity_test)
-        val recyclerView = findViewById(R.id.container) as RecyclerView
+        val recyclerView = findViewById<RecyclerView>(R.id.container)
         recyclerView.adapter = testPresenter.adapter
         recyclerView.layoutManager = layoutManager
         testPresenter.onUIReady(this)

@@ -28,15 +28,22 @@ import okhttp3.ResponseBody;
  * @author billy.qi
  * @since 17/7/13 09:43
  */
-public class CNetwork implements IComponent {
-    public static final int MAX_RETRY_COUNT = 5;//最大重试次数
+public class Network implements IComponent {
+
+    /**
+     * 最大重试次数
+     */
+    public static final int MAX_RETRY_COUNT = 5;
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
     private static final String KEY_URL = "url";
     private static final String KEY_HEADER = "headers";
     private static final String KEY_DATA = "data";
-    private static final String KEY_RETRY = "retry";//失败重试次数
+    /**
+     * 失败重试次数
+     */
+    private static final String KEY_RETRY = "retry";
 
     private static final String ACTION_GET = "GET";
     private static final String ACTION_POST = "POST";
@@ -47,13 +54,18 @@ public class CNetwork implements IComponent {
     private static final String KEY_READ_TIMEOUT = "readTimeout";
     private static final String KEY_HTTP_CODE = "httpCode";
 
-    //以下key为内部使用的key
+    /**
+     * 以下key为内部使用的key
+     */
     private static final String PRIVATE_KEY_CONTENT_TYPE = "Content-type";
-    private static final String PRIVATE_KEY_RETRY_COUNT = "retry_count";//已重试的次数计数
+    /**
+     * 已重试的次数计数
+     */
+    private static final String PRIVATE_KEY_RETRY_COUNT = "retry_count";
 
     private static final String KEY_RESULT = "result";
 
-    public CNetwork() {
+    public Network() {
         createOkHttpClient(10, 10, 30);
     }
 
@@ -68,7 +80,6 @@ public class CNetwork implements IComponent {
         try {
             String action = cc.getActionName();
             JSONObject params = new JSONObject(cc.getParams());
-            Log.e("xp", "-----params-----" + params);
             String url = params.optString(KEY_URL);
             Log.e("xp", "-----url-----" + url);
             if (ACTION_GET.equalsIgnoreCase(action)) {
@@ -103,6 +114,11 @@ public class CNetwork implements IComponent {
         return false;
     }
 
+    /**
+     * 初始化OkHttp
+     *
+     * @param params
+     */
     private void initOkHttpClient(JSONObject params) {
         int connectTimeout = params.optInt(KEY_CONNECT_TIMEOUT, 10);
         int writeTimeout = params.optInt(KEY_WRITE_TIMEOUT, 10);
@@ -110,6 +126,13 @@ public class CNetwork implements IComponent {
         createOkHttpClient(connectTimeout, writeTimeout, readTimeout);
     }
 
+    /**
+     * 创建OkHttpClient
+     *
+     * @param connectTimeout
+     * @param writeTimeout
+     * @param readTimeout
+     */
     private void createOkHttpClient(int connectTimeout, int writeTimeout, int readTimeout) {
         client = new OkHttpClient.Builder()
                 .connectTimeout(connectTimeout, TimeUnit.SECONDS)
@@ -120,21 +143,67 @@ public class CNetwork implements IComponent {
                 .build();
     }
 
-    private CCResult post(String url, JSONObject params) throws IOException {
-        Log.e("xp", "----post--url--" + url);
-        Log.e("xp", "----post--params--" + params);
-        Request.Builder builder = new Request.Builder();
+    /**
+     * get 请求
+     *
+     * @param url
+     * @param params
+     * @return
+     * @throws IOException
+     */
+    private CCResult get(String url, JSONObject params) throws IOException {
+        Object data = params.opt(KEY_DATA);
+        if (data != null) {
+            if (data instanceof JSONObject) {
+                //在url后面追加参数列表
+                url = buildGetUrl(url, (JSONObject) data);
+            } else {
+                if (!url.contains("?")) {
+                    url += "?";
+                }
+                url += data;
+            }
+        }
+        Request.Builder builder = new Request.Builder().url(url).get();
         addHeaders(builder, params);
-        RequestBody body = buildRequestBody(params);
-        Request request = builder
-                .url(url)
-                .post(body)
-                .build();
+        Request request = builder.build();
         Response response = client.newCall(request).execute();
-
         return processResponse(url, params, response);
     }
 
+    /**
+     * 拼接参数：url后面追加参数列表
+     *
+     * @param url
+     * @param data
+     * @return
+     */
+    private String buildGetUrl(String url, JSONObject data) {
+        StringBuilder sb = new StringBuilder(url);
+        boolean first = !url.contains("?");
+        Iterator<String> keys = data.keys();
+        while (keys.hasNext()) {
+            if (first) {
+                first = false;
+                sb.append("?");
+            } else {
+                sb.append("&");
+            }
+            String key = keys.next();
+            sb.append(key).append('=').append(data.optString(key));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 过程响应
+     *
+     * @param url
+     * @param params
+     * @param response
+     * @return
+     * @throws IOException
+     */
     private CCResult processResponse(String url, JSONObject params, Response response) throws IOException {
         CCResult result = getResult(response);
         //请求失败，处理重试逻辑
@@ -149,14 +218,43 @@ public class CNetwork implements IComponent {
                     params.put(PRIVATE_KEY_RETRY_COUNT, retryCount);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return result; //设置重试次数失败，为避免死循环，不进行重试
+                    //设置重试次数失败，为避免死循环，不进行重试
+                    return result;
                 }
-                return post(url, params);//开始重试
+                //开始重试
+                return post(url, params);
             }
         }
         return result;
     }
 
+    /**
+     * post 请求
+     *
+     * @param url
+     * @param params
+     * @return
+     * @throws IOException
+     */
+    private CCResult post(String url, JSONObject params) throws IOException {
+        Request.Builder builder = new Request.Builder();
+        addHeaders(builder, params);
+        RequestBody body = buildRequestBody(params);
+        Request request = builder
+                .url(url)
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        return processResponse(url, params, response);
+    }
+
+
+    /**
+     * 构建Body
+     *
+     * @param params
+     * @return
+     */
     private RequestBody buildRequestBody(JSONObject params) {
         MediaType mediaType;
         String contentType = params.optString(PRIVATE_KEY_CONTENT_TYPE);
@@ -179,42 +277,6 @@ public class CNetwork implements IComponent {
         return RequestBody.create(mediaType, content);
     }
 
-    private CCResult get(String url, JSONObject params) throws IOException {
-        Object data = params.opt(KEY_DATA);
-        if (data != null) {
-            if (data instanceof JSONObject) {
-                //在url后面追加参数列表
-                url = buildGetUrl(url, (JSONObject) data);
-            } else {
-                if (!url.contains("?")) {
-                    url += "?";
-                }
-                url += data;
-            }
-        }
-        Request.Builder builder = new Request.Builder().url(url).get();
-        addHeaders(builder, params);
-        Request request = builder.build();
-        Response response = client.newCall(request).execute();
-        return processResponse(url, params, response);
-    }
-
-    private String buildGetUrl(String url, JSONObject data) {
-        StringBuilder sb = new StringBuilder(url);
-        boolean first = !url.contains("?");
-        Iterator<String> keys = data.keys();
-        while (keys.hasNext()) {
-            if (first) {
-                first = false;
-                sb.append("?");
-            } else {
-                sb.append("&");
-            }
-            String key = keys.next();
-            sb.append(key).append('=').append(data.optString(key));
-        }
-        return sb.toString();
-    }
 
     /**
      * 给网络请求添加head

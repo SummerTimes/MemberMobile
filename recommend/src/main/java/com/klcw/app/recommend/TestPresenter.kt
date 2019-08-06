@@ -13,6 +13,7 @@ class TestPresenter(key: Int) : AbstractPresenter(key) {
 
 
     override fun visitNet(isPullDown: Boolean) {
+
     }
 
     override fun provideCombinesProvider(): ICombinesProvider {
@@ -27,7 +28,6 @@ class TestPresenter(key: Int) : AbstractPresenter(key) {
 
 
 class Provider : ICombinesProvider {
-
     override fun createCombines(key: Int): MutableList<IFloorCombine> {
         val arrayList = ArrayList<IFloorCombine>()
         arrayList.add(TestCombine(key))

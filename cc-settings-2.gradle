@@ -30,6 +30,7 @@ ccregister.registerInfo.add(
         , 'registerMethodName'   : 'registerFloorFactory'
         ]
 )
+
 ccregister.registerInfo.add(
         [
                   'scanInterface'        : 'bl.web.function.register.IFunctionRegisterManager'

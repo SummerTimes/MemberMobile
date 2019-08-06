@@ -1,4 +1,4 @@
-//ext.alwaysLib = true
+ext.alwaysLib = true
 apply from: rootProject.file('cc-settings-2.gradle')
 
 android {
@@ -41,6 +41,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.klcw.app:lib_recyclerview:$lib_recyclerview"
+    implementation "com.klcw.app:lib_recyclerview:${lib_recyclerview}"
 }
 

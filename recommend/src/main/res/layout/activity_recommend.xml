@@ -8,8 +8,8 @@
     tools:context=".RecommendActivity">
 
     <Button
+        android:id="@+id/btn_kt"
         android:layout_width="wrap_content"
-        android:onClick="OnButtonClick"
         android:layout_height="wrap_content"
         android:text="推荐模块-kt" />
 

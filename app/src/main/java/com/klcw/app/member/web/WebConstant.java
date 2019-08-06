@@ -1,9 +1,10 @@
 package com.klcw.app.member.web;
 
 /**
- * Created by kk on 2017/3/8.
+ * @author kk
+ * @datetime 2019-08-06
+ * @desc
  */
-
 public interface WebConstant {
 
     /**

@@ -3,6 +3,7 @@ package com.klcw.app.recommend
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.text.TextUtils
 import android.util.Log
 
 import com.billy.cc.core.component.CC
@@ -19,19 +20,18 @@ class RecommendComponent : IComponent {
     }
 
     override fun onCall(cc: CC): Boolean {
-        Log.e("xp","---推荐---onCall----")
-        val context = cc.context
-        val intent = Intent(context, RecommendActivity::class.java)
-        if (context !is Activity) {
-            //调用方没有设置context或app间组件跳转，context为application
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        if (TextUtils.equals("recommendActivity", cc.actionName)) {
+            Log.e("xp", "---推荐---onCall----")
+            val context = cc.context
+            val intent = Intent(context, RecommendActivity::class.java)
+            if (context !is Activity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            context.startActivity(intent)
+            CC.sendCCResult(cc.callId, CCResult.success())
+        } else {
+            CC.sendCCResult(cc.callId, CCResult.error(""))
         }
-        context.startActivity(intent)
-        //发送组件调用的结果（返回信息）
-        CC.sendCCResult(cc.callId, CCResult.success())
-        //返回值说明
-        // false: 组件同步实现（onCall方法执行完之前会将执行结果CCResult发送给CC）
-        // true: 组件异步实现（onCall方法执行完之后再将CCResult发送给CC，CC会持续等待组件调用CC.sendCCResult发送的结果，直至超时）
-        return true
+        return false
     }
 }

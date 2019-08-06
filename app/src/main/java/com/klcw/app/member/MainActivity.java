@@ -8,6 +8,8 @@ import android.view.View;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponentCallback;
+import com.klcw.app.image.GlideImageView;
+import com.klcw.app.member.utils.AppJumpUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,10 +21,19 @@ import org.json.JSONObject;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private GlideImageView mSivPic;
+    String url = "http://img1.imgtn.bdimg.com/it/u=4027212837,1228313366&fm=23&gp=0.jpg";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+    }
+
+    private void initView() {
+        mSivPic = findViewById(R.id.siv_pic);
+        mSivPic.load(url);
     }
 
     /**
@@ -31,17 +42,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onLoginClick(View view) {
-        CC.obtainBuilder("loginComponent")
-                .setContext(this)
-                .setActionName("LoginActivity")
-                .addParam("param", "登陆/模块")
-                .build()
-                .callAsync(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        Log.e("xp", "登陆" + result.toString());
-                    }
-                });
+        AppJumpUtil.onStartLogin(this);
     }
 
     /**
@@ -50,17 +51,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onMineClick(View view) {
-        CC.obtainBuilder("mineComponent")
-                .setContext(this)
-                .setActionName("MineActivity")
-                .addParam("param", "个人中心/模块")
-                .build()
-                .callAsync(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        Log.e("xp", "个人中心" + result.toString());
-                    }
-                });
+        AppJumpUtil.onStartMine(this);
     }
 
     /**
@@ -69,40 +60,14 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onRecommendClick(View view) {
-        CC.obtainBuilder("recommendComponent")
-                .setContext(this)
-                .build()
-                .callAsync(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        Log.e("xp", "推荐模块" + result.toString());
-                    }
-                });
+        AppJumpUtil.onStartRecommend(this);
     }
 
     /**
      * 打开WebView
      */
     public void onWebViewClick(View view) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("title", "商家客服");
-            jsonObject.put("noTitle", "noTitle");
-            jsonObject.put("url", "http://summertimes.top/2013/06/13/%E6%90%AD%E5%BB%BA:%E5%8D%9A%E5%AE%A2/");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        CC.obtainBuilder("WebComponent")
-                .setActionName("startWeb")
-                .addParam("param", jsonObject)
-                .setContext(this)
-                .build()
-                .callAsync(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        Log.e("xp", "---------WebView--------" + result.toString());
-                    }
-                });
+        AppJumpUtil.onStartWebView(this);
     }
 
 }

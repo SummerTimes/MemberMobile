@@ -5,11 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.billy.cc.core.component.CCResult;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.klcw.app.banner.Banner;
 import com.klcw.app.banner.listener.OnBannerListener;
+import com.klcw.app.image.GlideImageView;
 import com.klcw.app.lib.network.NetworkCallback;
 import com.klcw.app.lib.network.NetworkHelper;
 import com.klcw.app.login.R;
@@ -28,7 +29,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private Banner mBanner;
-    private SimpleDraweeView mSivPic;
+    private GlideImageView mSivPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private void initView() {
         mSivPic = findViewById(R.id.siv_pic);
         mBanner = findViewById(R.id.banner);
-        mSivPic.setImageURI("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
+        mSivPic.load("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
 
         List<String> urls = new ArrayList<>();
         urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
@@ -54,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                 .setOnBannerListener(new OnBannerListener() {
                     @Override
                     public void OnBannerClick(int position) {
+
+
                     }
                 }).start();
     }
@@ -64,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void onCheckNet(View view) {
-        String Url = "http://wanandroid.com/wxarticle/chapters/json";
+        String Url = "https://wanandroid.com/wxarticle/chapters/json";
         NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_GET, new NetworkCallback<CommonList>() {
             @Override
             public void onSuccess(@NonNull CCResult rawResult, CommonList commonList) {

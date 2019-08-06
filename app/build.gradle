@@ -23,17 +23,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.klcw.app:web:${web}"
+
+    implementation project(':login')
     implementation "com.klcw.app:mine:${mine}"
-    implementation "com.klcw.app:login:${login}"
+//    implementation "com.klcw.app:login:${login}"
+    implementation "com.klcw.app:recommend:${recommend}"
+
+    implementation "com.klcw.app:web:${web}"
     implementation "com.klcw.app:lib_util:${lib_util}"
     implementation "com.klcw.app:lib_image:${lib_image}"
-    implementation "com.klcw.app:recommend:${recommend}"
     implementation "com.klcw.app:lib_widget:${lib_widget}"
+
     implementation "com.klcw.app:lib_network:${lib_network}"
     implementation 'com.android.support:multidex:1.0.3'
 }

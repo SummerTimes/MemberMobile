@@ -34,13 +34,13 @@ class HttpsUtil {
         return new X509TrustManager() {
             @SuppressLint("TrustAllX509TrustManager")
             @Override
-            public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+            public void checkClientTrusted(X509Certificate[] chain, String authType) {
 
             }
 
             @SuppressLint("TrustAllX509TrustManager")
             @Override
-            public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {
 
             }
 
@@ -61,22 +61,24 @@ class HttpsUtil {
         };
     }
 
-    // Create a trust manager that does not validate certificate chains
+    /**
+     * 创建不验证证书链的信任管理器
+     *
+     * @return
+     */
     private static SSLSocketFactory getTrustAllSSLSocketFactory() {
         try {
             final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 @SuppressLint("TrustAllX509TrustManager")
                 @Override
                 public void checkClientTrusted(
-                        java.security.cert.X509Certificate[] chain,
-                        String authType) throws CertificateException {
+                        java.security.cert.X509Certificate[] chain, String authType) {
                 }
 
                 @SuppressLint("TrustAllX509TrustManager")
                 @Override
                 public void checkServerTrusted(
-                        java.security.cert.X509Certificate[] chain,
-                        String authType) throws CertificateException {
+                        java.security.cert.X509Certificate[] chain, String authType) {
                 }
 
                 @Override
@@ -84,11 +86,9 @@ class HttpsUtil {
                     return null;
                 }
             }};
-
-            // Install the all-trusting trust manager
+            // 安装所有信任的信任管理器
             final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts,
-                    new java.security.SecureRandom());
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
             return sslContext.getSocketFactory();
         } catch (Exception e) {
             throw new RuntimeException(e);

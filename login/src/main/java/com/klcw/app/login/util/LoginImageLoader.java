@@ -1,12 +1,11 @@
 package com.klcw.app.login.util;
 
 import android.content.Context;
-import android.net.Uri;
 import android.widget.ImageView;
 
-import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.klcw.app.banner.loader.ImageLoader;
+import com.klcw.app.login.R;
 
 /**
  * @author kk
@@ -17,24 +16,12 @@ public class LoginImageLoader extends ImageLoader {
 
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
-        if (path == null || !(path instanceof String)) {
+        if (!(path instanceof String)) {
             return;
         }
-        Uri uri = Uri.parse((String) path);
-        imageView.setImageURI(uri);
-    }
-
-    /**
-     * 提供createImageView 方法，方便fresco自定义ImageView
-     *
-     * @param context
-     * @return
-     */
-    @Override
-    public ImageView createImageView(Context context) {
-        SimpleDraweeView simpleDraweeView = new SimpleDraweeView(context);
-        GenericDraweeHierarchyBuilder builder = new GenericDraweeHierarchyBuilder(context.getResources());
-        simpleDraweeView.setHierarchy(builder.build());
-        return simpleDraweeView;
+        Glide.with(context).load((String) path)
+                .placeholder(R.color.lg_F7F7F7)
+                .error(R.color.lg_F7F7F7)
+                .into(imageView);
     }
 }

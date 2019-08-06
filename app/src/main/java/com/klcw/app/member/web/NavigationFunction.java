@@ -14,9 +14,10 @@ import com.bailian.weblib.bljsbridge.JSEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 /**
- * Created by YD30 on 2017/10/31.
+ * @author kk
+ * @datetime 2019-08-06
+ * @desc
  */
 public class NavigationFunction extends AbstractFunction {
 

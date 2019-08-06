@@ -10,8 +10,9 @@ import bl.web.function.register.IFunction;
 import bl.web.function.register.IFunctionRegisterManager;
 
 /**
- * 作者：杨松
- * 日期：2017/10/9 14:24
+ * @author kk
+ * @datetime 2019-08-06
+ * @desc
  */
 public class FunctionRegisterManager implements IFunctionRegisterManager {
 
