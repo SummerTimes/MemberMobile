@@ -9,7 +9,7 @@ import com.klcw.app.lib.network.NetworkConfig;
 /**
  * @author kk
  * @datetime 2019-08-06
- * @desc
+ * @desc 程序入口
  */
 public class MemberApplication extends Application {
 

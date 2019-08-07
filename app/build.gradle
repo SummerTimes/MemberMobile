@@ -28,15 +28,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation project(':login')
+//    implementation project(':login')
     implementation "com.klcw.app:mine:${mine}"
-//    implementation "com.klcw.app:login:${login}"
+    implementation "com.klcw.app:login:${login}"
     implementation "com.klcw.app:recommend:${recommend}"
 
     implementation "com.klcw.app:web:${web}"

@@ -1,73 +1,75 @@
 package com.klcw.app.member;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
+import android.view.KeyEvent;
+import android.view.ViewStub;
+import android.widget.Toast;
 
-import com.billy.cc.core.component.CC;
-import com.billy.cc.core.component.CCResult;
-import com.billy.cc.core.component.IComponentCallback;
-import com.klcw.app.image.GlideImageView;
-import com.klcw.app.member.utils.AppJumpUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.klcw.app.member.constant.AppMethod;
+import com.klcw.app.member.utils.AppPageKit;
 
 /**
  * @author kk
- * @datetime: 2018/10/24
- * @desc:程序入口
+ * @datetime 2018/10/24
+ * @desc 程序入口
  */
 public class MainActivity extends AppCompatActivity {
 
-    private GlideImageView mSivPic;
-    String url = "http://img1.imgtn.bdimg.com/it/u=4027212837,1228313366&fm=23&gp=0.jpg";
+    private boolean mIsExit;
+    private AppPageKit mAppPageKit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.app_main_activity);
         initView();
     }
 
     private void initView() {
-        mSivPic = findViewById(R.id.siv_pic);
-        mSivPic.load(url);
+        ((ViewStub) findViewById(R.id.vs_mainPage)).inflate();
+        mAppPageKit = new AppPageKit(this);
     }
 
-    /**
-     * 登录
-     *
-     * @param view
-     */
-    public void onLoginClick(View view) {
-        AppJumpUtil.onStartLogin(this);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAppPageKit.onResume();
     }
 
-    /**
-     * 个人中心
-     *
-     * @param view
-     */
-    public void onMineClick(View view) {
-        AppJumpUtil.onStartMine(this);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        if (getIntent().getExtras() != null) {
+            if (null != mAppPageKit) {
+                mAppPageKit.onIntentAction(getIntent().getExtras().getString(AppMethod.KRY_PARAM));
+            }
+        }
     }
 
-    /**
-     * 跳转推荐模块
-     *
-     * @param view
-     */
-    public void onRecommendClick(View view) {
-        AppJumpUtil.onStartRecommend(this);
+    @Override
+    protected void onDestroy() {
+        if (null != mAppPageKit) {
+            mAppPageKit.release();
+        }
+        super.onDestroy();
     }
 
-    /**
-     * 打开WebView
-     */
-    public void onWebViewClick(View view) {
-        AppJumpUtil.onStartWebView(this);
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mIsExit) {
+                finish();
+            } else {
+                Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                mIsExit = true;
+                new Handler().postDelayed(() -> mIsExit = false, 2000);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
-
 }

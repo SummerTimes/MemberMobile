@@ -16,7 +16,6 @@ buildscript {
     }
 }
 
-
 configurations.all {
     //SNAPSHOT 依赖缓存刷新频率 0
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
@@ -44,14 +43,14 @@ subprojects { p ->
 }
 
 ext {
-    compileVersion = 28
+    compileVersion = 29
     minVersion = 19
-    supportVersion = '28.0.0'
+    supportVersion = '29.0.0'
     rxAndroid = '2.0.1'
     rxJavaVersion = '2.1.5'
     kotlin_stdlib_jdk7 = '1.2.71'
     deps = [
-            cc                 : 'com.billy.android:cc:2.1.1',
+            cc                 : 'com.billy.android:cc:2.1.5',
             appcompatv7        : "com.android.support:appcompat-v7:${supportVersion}",
             supportV4          : "com.android.support:support-v4:${supportVersion}",
             supportV7          : "com.android.support:appcompat-v7:${supportVersion}",
