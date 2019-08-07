@@ -17,9 +17,14 @@ public interface MineConstant {
     String KRY_MINE_COMPONENT = "mineComponent";
 
      /**
-     * Component
+     * MineActivity
      */
-    String KRY_MINE_ACTIVITY_ACTION = "MineActivity";
+    String KRY_MINE_ACTIVITY = "mineActivity";
+
+    /**
+     * MineFragment
+     */
+    String KRY_MINE_FRAGMENT = "mineFragment";
 
 
 }

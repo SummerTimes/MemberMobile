@@ -1,5 +1,7 @@
 ext.mainApp = true
 apply from: rootProject.file('cc-settings-2.gradle')
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 
@@ -33,11 +35,17 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.deps.kotlin_stdlib_jdk7
 
-//    implementation project(':login')
-    implementation "com.klcw.app:mine:${mine}"
-    implementation "com.klcw.app:login:${login}"
-    implementation "com.klcw.app:recommend:${recommend}"
+    implementation project(':mine')
+    implementation project(':login')
+    implementation project(':product')
+    implementation project(':lore')
+
+//    implementation "com.klcw.app:mine:${mine}"
+//    implementation "com.klcw.app:login:${login}"
+//    implementation "com.klcw.app:product:${product}"
+//    implementation "com.klcw.app:lore:${lore}"
 
     implementation "com.klcw.app:web:${web}"
     implementation "com.klcw.app:lib_util:${lib_util}"

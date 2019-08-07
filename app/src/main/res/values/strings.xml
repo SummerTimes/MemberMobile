@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">MemberMobile</string>
     <string name="bl_dynpermission_info">获取%s权限失败，请前往设置中心设置。</string>
     <string name="bl_dynpermission_storage">手机存储</string>

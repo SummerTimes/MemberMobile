@@ -55,23 +55,6 @@ public class AppJumpUtil {
                 });
     }
 
-    /**
-     * 跳转推荐模块
-     *
-     * @param context
-     */
-    public static void onStartRecommend(Context context) {
-        CC.obtainBuilder("recommendComponent")
-                .setActionName("recommendActivity")
-                .setContext(context)
-                .build()
-                .callAsync(new IComponentCallback() {
-                    @Override
-                    public void onResult(CC cc, CCResult result) {
-                        Log.e("xp", "推荐模块" + result.toString());
-                    }
-                });
-    }
 
     /**
      * 打开WebView

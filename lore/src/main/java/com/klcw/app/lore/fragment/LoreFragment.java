@@ -1,4 +1,4 @@
-package com.klcw.app.product.fragment;
+package com.klcw.app.lore.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,24 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.billy.cc.core.component.CC;
-import com.klcw.app.product.R;
-import com.klcw.app.product.constant.ProductConstant;
+import com.klcw.app.lore.R;
+import com.klcw.app.lore.constant.LoreConstant;
 
 /**
  * @author kk
  * @datetime: 2019/08/07
- * @desc: 我的
+ * @desc: Lore/Fragment
  */
-public class ProductFragment extends Fragment {
+public class LoreFragment extends Fragment {
 
     private View rootView;
 
     private String mParam;
 
-    public static ProductFragment newInstance(String param) {
-        ProductFragment fragment = new ProductFragment();
+    public static LoreFragment newInstance(String param) {
+        LoreFragment fragment = new LoreFragment();
         Bundle args = new Bundle();
-        args.putString(ProductConstant.KRY_PARAM, param);
+        args.putString(LoreConstant.KRY_PARAM, param);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,14 +33,14 @@ public class ProductFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam = getArguments().getString(ProductConstant.KRY_PARAM);
+            mParam = getArguments().getString(LoreConstant.KRY_PARAM);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.pt_main_fragment, container, false);
+            rootView = inflater.inflate(R.layout.lore_fragment, container, false);
         } else {
             ViewGroup viewGroup = (ViewGroup) rootView.getParent();
             if (viewGroup != null) {
@@ -55,19 +55,19 @@ public class ProductFragment extends Fragment {
         rootView.findViewById(R.id.tv_info).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CC.obtainBuilder("productComponent")
-                        .setActionName("productActivity")
-                        .addParam("param", "product/12345")
+                CC.obtainBuilder("loreComponent")
+                        .setActionName("loreActivity")
+                        .addParam("param", "Lore/12345")
                         .build()
                         .callAsync();
             }
         });
     }
 
-
     @Override
     public void onDetach() {
         super.onDetach();
     }
+
 
 }

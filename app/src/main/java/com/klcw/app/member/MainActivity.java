@@ -9,7 +9,7 @@ import android.view.ViewStub;
 import android.widget.Toast;
 
 import com.klcw.app.member.constant.AppMethod;
-import com.klcw.app.member.utils.AppPageKit;
+import com.klcw.app.member.kit.AppPageKit;
 
 /**
  * @author kk
