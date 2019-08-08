@@ -4,11 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-
-/***
+/**
  * @author kk
- * @datetime: 17/8/11 15:25
- * @desc:网络工具类
+ * @datetime 2019-08-08
+ * @desc 网络工具类
  */
 public class NetworkUtil {
 

@@ -21,11 +21,9 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * 使用okHttp实现的网络请求组件
- * https://github.com/square/okhttp/wiki/Recipes
- *
- * @author billy.qi
- * @since 17/7/13 09:43
+ * @author kk
+ * @datetime 2019-08-08
+ * @desc 使用okHttp实现的网络请求组件:https://github.com/square/okhttp/wiki/Recipes
  */
 public class Network implements IComponent {
 

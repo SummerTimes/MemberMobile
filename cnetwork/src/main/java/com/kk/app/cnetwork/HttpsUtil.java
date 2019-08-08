@@ -12,8 +12,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * @author billy.qi
- * @since 17/8/11 15:21
+ * @author kk
+ * @datetime 2019-08-08
+ * @desc
  */
 class HttpsUtil {
 
