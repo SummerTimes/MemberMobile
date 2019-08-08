@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.klcw.app.lib.refreshlayout" />
+<manifest package="com.kk.app.lib.refreshlayout" />

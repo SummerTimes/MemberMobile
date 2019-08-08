@@ -7,7 +7,7 @@
     android:clipChildren="false">
 
 
-    <com.klcw.app.banner.view.BannerViewPager
+    <com.kk.app.banner.view.BannerViewPager
         android:id="@id/bannerViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

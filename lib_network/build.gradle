@@ -22,10 +22,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.ext.deps.cc
-    implementation rootProject.ext.deps.supportV4
-    implementation rootProject.ext.deps.appcompatv7
-    implementation rootProject.ext.deps.recyclerviewV7
-    implementation rootProject.ext.deps.support_annotations
-    implementation "com.klcw.app:cnetwork:$cnetwork"
-    implementation "com.klcw.app:lib_networkinterceptor:$lib_networkinterceptor"
+    implementation "com.kk.app:cnetwork:$cnetwork"
+    implementation "com.kk.app:lib_networkinterceptor:$lib_networkinterceptor"
 }

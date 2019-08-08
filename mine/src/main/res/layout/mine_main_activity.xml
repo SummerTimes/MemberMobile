@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.MineActivity">
+    tools:context="com.kk.app.mine.activity.MineActivity">
 
 
     <android.support.v7.widget.RecyclerView

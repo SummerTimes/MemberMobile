@@ -25,17 +25,17 @@ dependencies {
 //也可以按照上述格式继续添加你自己的自动注册需求，俗称：搭顺风车
 ccregister.registerInfo.add(
         [
-          'scanInterface'        : 'com.klcw.app.lib.recyclerview.IFloorHolderFactory'
-        , 'scanSuperClasses'     : ['com.klcw.app.lib.recyclerview.BaseFloorHolderFactory']
-        , 'codeInsertToClassName': 'com.klcw.app.lib.recyclerview.FloorViewHolderMaker'
-        , 'registerMethodName'   : 'registerFloorFactory'
+          'scanInterface'        :  'com.kk.app.lib.recyclerview.IFloorHolderFactory'
+        , 'scanSuperClasses'     : ['com.kk.app.lib.recyclerview.BaseFloorHolderFactory']
+        , 'codeInsertToClassName':  'com.kk.app.lib.recyclerview.FloorViewHolderMaker'
+        , 'registerMethodName'   :  'registerFloorFactory'
         ]
 )
 
 ccregister.registerInfo.add(
         [
-                  'scanInterface'        : 'bl.web.function.register.IFunctionRegisterManager'
-                , 'codeInsertToClassName': 'com.klcw.app.web.FunctionRegister'
+                  'scanInterface'        : 'com.kk.app.web.function.register.IFunctionRegisterManager'
+                , 'codeInsertToClassName': 'com.kk.app.web.FunctionRegister'
                 , 'registerMethodName'   : 'autoRegisterFunction'
         ]
 )

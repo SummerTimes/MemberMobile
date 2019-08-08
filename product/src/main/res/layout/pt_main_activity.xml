@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.ProductMainActivity">
+    tools:context="com.kk.app.product.activity.ProductMainActivity">
 
     <TextView
         android:layout_width="wrap_content"

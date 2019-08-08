@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.RecommendActivity">
+    tools:context="com.kk.app.lore.activity.RecommendActivity">
 
     <Button
         android:id="@+id/btn_kt"

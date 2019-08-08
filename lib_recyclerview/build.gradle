@@ -28,11 +28,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.klcw.app:lib_image:$lib_image"
-    implementation "com.klcw.app:lib_banner:$lib_banner"
-    implementation "com.klcw.app:lib_widget:$lib_widget"
-    implementation "com.klcw.app:lib_network:$lib_network"
-    implementation "com.klcw.app:pre_loader:$pre_loader"
-    implementation "com.klcw.app:lib_refreshlayout:$lib_refreshlayout"
+    implementation "com.kk.app:lib_image:$lib_image"
+    implementation "com.kk.app:lib_banner:$lib_banner"
+    implementation "com.kk.app:lib_widget:$lib_widget"
+    implementation "com.kk.app:lib_network:$lib_network"
+    implementation "com.kk.app:pre_loader:$pre_loader"
+    implementation "com.kk.app:lib_refreshlayout:$lib_refreshlayout"
 }
 

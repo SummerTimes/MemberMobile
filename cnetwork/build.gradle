@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
-
 android {
-
     compileSdkVersion rootProject.compileVersion
 
     defaultConfig {
@@ -21,6 +19,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.squareup.okhttp3:okhttp:3.11.0"
     implementation rootProject.ext.deps.cc
+    implementation "com.squareup.okhttp3:okhttp:3.11.0"
 }

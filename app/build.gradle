@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         if (project.ext.runAsApp) {
-            applicationId "com.klcw.app.member"
+            applicationId "com.kk.app.mobile"
         }
         minSdkVersion rootProject.minVersion
         targetSdkVersion rootProject.compileVersion
@@ -42,17 +42,19 @@ dependencies {
     implementation project(':product')
     implementation project(':lore')
 
-//    implementation "com.klcw.app:mine:${mine}"
-//    implementation "com.klcw.app:login:${login}"
-//    implementation "com.klcw.app:product:${product}"
-//    implementation "com.klcw.app:lore:${lore}"
+//    implementation "com.kk.app:mine:${mine}"
+//    implementation "com.kk.app:login:${login}"
+//    implementation "com.kk.app:product:${product}"
+//    implementation "com.kk.app:lore:${lore}"
 
-    implementation "com.klcw.app:web:${web}"
-    implementation "com.klcw.app:lib_util:${lib_util}"
-    implementation "com.klcw.app:lib_image:${lib_image}"
-    implementation "com.klcw.app:lib_widget:${lib_widget}"
+    implementation "com.kk.app:webview:${webview}"
+    implementation "com.kk.app:lib_util:${lib_util}"
+    implementation "com.kk.app:lib_image:${lib_image}"
+    implementation "com.kk.app:lib_widget:${lib_widget}"
+    implementation "com.kk.app:lib_network:${lib_network}"
+    implementation project(':lib_recyclerview')
+//    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
 
-    implementation "com.klcw.app:lib_network:${lib_network}"
     implementation 'com.android.support:multidex:1.0.3'
 }
 

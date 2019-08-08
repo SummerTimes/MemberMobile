@@ -38,11 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.klcw.app.lib.widget.neterror.NeterrorLayout
+    <com.kk.app.lib.widget.neterror.NeterrorLayout
         android:id="@+id/neterror"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.klcw.app.lib.widget.neterror.NeterrorLayout>
+    </com.kk.app.lib.widget.neterror.NeterrorLayout>
 
 
 </LinearLayout>

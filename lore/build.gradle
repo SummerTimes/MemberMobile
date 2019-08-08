@@ -10,7 +10,7 @@ android {
     defaultConfig {
 
         if (project.ext.runAsApp) {
-            applicationId "com.klcw.app.lore"
+            applicationId "com.kk.app.lore"
         }
 
         minSdkVersion rootProject.minVersion
@@ -44,6 +44,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.ext.deps.kotlin_stdlib_jdk7
-    implementation "com.klcw.app:lib_recyclerview:${lib_recyclerview}"
+    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
 }
 

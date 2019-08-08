@@ -10,7 +10,7 @@
         android:onClick="onCheckNet"
         android:text="获取网络信息" />
 
-    <com.klcw.app.image.GlideImageView
+    <com.kk.app.image.GlideImageView
         android:id="@+id/siv_pic"
         android:layout_width="300dp"
         android:layout_height="150dp"
@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop" />
 
-    <com.klcw.app.banner.Banner
+    <com.kk.app.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="150dp"
