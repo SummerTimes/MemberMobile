@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * @author mlp00
  */
 public class CacheManager {
+
     private ICache memCache;
     private ICache diskCache;
 

@@ -1,6 +1,7 @@
 package com.kk.app.lib.networkinterceptor;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
@@ -51,7 +52,7 @@ public class NetworkEncryptInterceptor implements ICCInterceptor {
     private static final String RES_CODE_SUCCESS = "00100000";
 
     private static final NetworkEncryptInterceptor INSTANCE = new NetworkEncryptInterceptor();
-//    public static final String TAG = "NetworkEncryptInterceptor";
+    private static final String TAG = "xp";
 
     /**
      * 请求URL
@@ -95,8 +96,8 @@ public class NetworkEncryptInterceptor implements ICCInterceptor {
                     ccResult.setCode(CCResult.CODE_SUCCESS);
                     ccResult.addData("resCode", RES_CODE_SUCCESS);
                     ccResult.addData(KEY_RESULT, cacheBlock.getValue());
-//                    Log.i(TAG, "cache response, cacheType is " + cacheOption.cacheType + ", expire is " + cacheOption.expire
-//                            + "\nresponse data str=" + cacheBlock.getValue());
+                    Log.e(TAG, "cache response, cacheType is " + cacheOption.cacheType + ", expire is " + cacheOption.expire
+                            + "\nresponse data str=" + cacheBlock.getValue());
                     return ccResult;
                 }
             }
@@ -109,7 +110,7 @@ public class NetworkEncryptInterceptor implements ICCInterceptor {
 
     private void beforeCall(CC cc) {
         JSONObject params = new JSONObject(cc.getParams());
-//        Log.i(TAG, "request: url=" + getUrl(cc) + "\nparams=" + params.toString());
+        Log.e(TAG, "request: url=" + getUrl(cc) + "\nparams=" + params.toString());
         JSONObject headers = params.optJSONObject(KEY_HEADER);
         boolean hasContentType = hasContentType(headers);
         Object data = params.opt(KEY_DATA);
@@ -171,10 +172,11 @@ public class NetworkEncryptInterceptor implements ICCInterceptor {
     }
 
     private CCResult afterResult(CC cc, CCResult ccResult) {
-        JSONObject params = new JSONObject(cc.getParams());//params不会为null
+        //params不会为null
+        JSONObject params = new JSONObject(cc.getParams());
         JSONObject data = ccResult.getData();
         String url = getUrl(cc);
-//        Log.i(TAG, "response: url=" + url + "\ndata=" + data);
+       Log.e(TAG,"response: url=" + url + "\ndata=" + data);
         if (ccResult.isSuccess()) {
             if (data != null) {
                 String content = data.optString(KEY_RESULT);
@@ -197,7 +199,7 @@ public class NetworkEncryptInterceptor implements ICCInterceptor {
                 //obj里的内容有可能是jsonObject也可能是jsonArray或其它
                 if (!TextUtils.isEmpty(obj)) {
                     String jsonStr = DES.decryptDES(obj, key);
-//                    Log.i(TAG, "response data str=" + jsonStr);
+                   Log.e(TAG,"response data str=" + jsonStr);
                     ccResult.addData(KEY_RESULT, jsonStr);
 
                     if (cacheOption != null) {

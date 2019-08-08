@@ -16,9 +16,11 @@ class TypeUtil {
      * canonical form}.
      */
     static Type getSuperclassTypeParameter(Class<?> subclass, int index) {
-        Type superclass = subclass.getGenericSuperclass();//先获取父类
+        //先获取父类
+        Type superclass = subclass.getGenericSuperclass();
         if (superclass instanceof Class) {
-            Type[] genericInterfaces = subclass.getGenericInterfaces();//若不是父类的泛型，则取接口泛型
+            //若不是父类的泛型，则取接口泛型
+            Type[] genericInterfaces = subclass.getGenericInterfaces();
             for (Type type : genericInterfaces) {
                 if (!(type instanceof Class)) {
                     superclass = type;

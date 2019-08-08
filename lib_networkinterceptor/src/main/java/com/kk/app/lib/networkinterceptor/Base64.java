@@ -18,15 +18,14 @@ import java.io.OutputStream;
  */
 public class Base64 {
 
-	private static final char[] CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-            .toCharArray();
+	private static final char[] CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
 
     /**
      * data[]进行编码
      * 
      * @param data
      * @return
-*/
+     */
     public static String encode(byte[] data) {
         int start = 0;
         int len = data.length;

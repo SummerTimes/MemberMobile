@@ -6,6 +6,7 @@ package com.kk.app.lib.networkinterceptor.cache;
  * @author mlp00
  */
 public interface ICache {
+
     /**
      * 保存数据
      *

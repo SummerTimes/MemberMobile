@@ -7,16 +7,16 @@ include ':app'
 //include ':lib_widget'
 //include ':lib_banner'
 //include ':lib_refreshlayout'
-include ':lib_recyclerview'
+//include ':lib_recyclerview'
 
 //include ':cnetwork'
 //include ':pre_loader'
-//include ':lib_network'
-//include ':lib_networkinterceptor'
+include ':lib_network'
+include ':lib_networkinterceptor'
 
-include ':login'
-include ':lore'
-include ':mine'
-include ':product'
+//include ':login'
+//include ':lore'
+//include ':mine'
+//include ':product'
 
 

@@ -16,7 +16,6 @@ import java.io.InputStream;
  * author: mlp00
  * date: 2017/8/23 16:40
  */
-
 public class DynamicKeyManager {
 
     public static final String KEY_VERSION = "2";

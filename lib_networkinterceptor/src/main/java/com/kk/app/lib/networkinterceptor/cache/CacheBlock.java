@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author mlp00
  */
 public class CacheBlock implements Serializable {
+
     private static final long serialVersionUID = 8598435989810128154L;
 
     private String value;
