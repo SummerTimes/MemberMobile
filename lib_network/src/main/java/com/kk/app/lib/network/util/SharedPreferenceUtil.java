@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
  * @author mlp00
  */
 public class SharedPreferenceUtil {
+
     /**
      * 使用默认模式 Context.Context.MODE_PRIVATE=0 创造的文件仅能被调用的应用存取（或者共用相同user ID的所有应用）
      * 另外两种模式
@@ -24,8 +25,7 @@ public class SharedPreferenceUtil {
      * @param keyStr   要存入缓存中的key
      * @param valueStr 要存入缓存中的value
      */
-    public static void setStringDataIntoSP(Context context, String spName, String keyStr,
-                                           String valueStr) {
+    public static void setStringDataIntoSP(Context context, String spName, String keyStr, String valueStr) {
         SharedPreferences sp = context.getSharedPreferences(spName, MODE_PRIVATE);
         sp.edit().putString(keyStr, valueStr).apply();
     }
@@ -49,8 +49,7 @@ public class SharedPreferenceUtil {
      * @param defaultValue 缓存中对应参数key的默认值
      * @return 缓存中对应参数key的value，如果没有则返回defaultValue
      */
-    public static String getStringValueFromSP(Context context, String spName, String keyStr,
-                                              String defaultValue) {
+    public static String getStringValueFromSP(Context context, String spName, String keyStr, String defaultValue) {
         SharedPreferences sp = context.getSharedPreferences(spName, MODE_PRIVATE);
         return sp.getString(keyStr, defaultValue);
     }
@@ -74,8 +73,7 @@ public class SharedPreferenceUtil {
      * @param spName 缓存的名字
      */
     public static void deleteAllInSP(Context context, String spName) {
-        SharedPreferences sp = context
-                .getSharedPreferences(spName, MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(spName, MODE_PRIVATE);
         sp.edit().clear().apply();
     }
 }

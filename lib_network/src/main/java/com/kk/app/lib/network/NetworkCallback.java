@@ -12,6 +12,7 @@ import com.kk.app.lib.networkinterceptor.TypeToken;
  * @since 17/8/17 14:03
  */
 public abstract class NetworkCallback<T> extends TypeToken {
+
     /**
      * 成功时回调的方法
      * @param rawResult 组件调用的结果,不会为null

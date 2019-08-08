@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Token {
+
     /**
      * accessToken : d075c481-e68c-461f-9d95-68a7c831bb03
      * expiresIn : 1295997

@@ -44,7 +44,7 @@ public class DownloadClient {
         service.submit(new Runnable() {
             @Override
             public void run() {
-                downlaod(parent,url,callback);
+                download(parent,url,callback);
             }
         });
     }
@@ -77,8 +77,9 @@ public class DownloadClient {
      * @param parent 下载文件夹
      * @param url    下载地址
      */
-    public void downlaod(File parent, String url, DownloadCallback callback){
-        File realFile = null;//真实地址
+    public void download(File parent, String url, DownloadCallback callback){
+        //真实地址
+        File realFile = null;
         FileChannel channel = null;
         try {
             if(TextUtils.isEmpty(url)){
@@ -88,7 +89,8 @@ public class DownloadClient {
                 throw new NullPointerException("parent file is null");
             }
             long startPoints = 0;
-            File file = newFile(parent,url);//缓存地址
+            //缓存地址
+            File file = newFile(parent,url);
             realFile = new File(file.getParent(),file.getName() + END);
             if(!realFile.exists()) {
                 if (file.exists()) {

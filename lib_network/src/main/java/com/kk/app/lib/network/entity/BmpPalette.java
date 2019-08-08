@@ -7,7 +7,8 @@ package com.kk.app.lib.network.entity;
  */
 public class BmpPalette {
 
-	private byte[][] palettes;		//颜色索引映射表
+	//颜色索引映射表
+	private byte[][] palettes;
 
 	public byte[][] getPalettes() {
 		return palettes;

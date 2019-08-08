@@ -6,10 +6,19 @@ package com.kk.app.lib.network;
  * date: 2017/8/2 16:58
  */
 class NetworkSpKeys {
-    //缓存文件名称
+
+    /**
+     * 缓存文件名称
+     */
     static final String NETWORK_SP_NAME = "network_sp_name";
-    //设备号
+
+    /**
+     * 设备号
+     */
     static final String NETWORK_DEVICE_NUM = "network_device_num";
-    //access token 信息
+
+    /**
+     * access token 信息
+     */
     static final String NETWORK_TOKEN_INFO = "network_token_info";
 }

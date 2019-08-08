@@ -15,6 +15,7 @@ import java.util.UUID;
  */
 
 public class DeviceUtil {
+
     private static final List<String> M_INVALID_ANDROID_ID = new ArrayList<String>() {
         {
             this.add("9774d56d682e549c");
@@ -24,24 +25,20 @@ public class DeviceUtil {
 
     public static String getDeviceId(Context mContext) {
         String deviceId = getAndroidID(mContext);
-
         if (!isValidAndroidId(deviceId)) {
             deviceId = UUID.randomUUID().toString().replaceAll("-", "");
         }
-
         return deviceId;
     }
 
     @SuppressLint("HardwareIds")
     private static String getAndroidID(Context mContext) {
         String androidID = "";
-
         try {
             androidID = Settings.Secure.getString(mContext.getContentResolver(), "android_id");
         } catch (Exception var3) {
             var3.printStackTrace();
         }
-
         return androidID;
     }
 

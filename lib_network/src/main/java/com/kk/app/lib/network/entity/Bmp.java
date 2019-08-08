@@ -35,8 +35,8 @@ public class Bmp {
 	public byte[] getDatas() {
 		return datas;
 	}
-	public void setDatas(byte[] datas) {
-		this.datas = datas;
+	public void setDatas(byte[] data) {
+		this.datas = data;
 	}
 
 }

@@ -10,16 +10,14 @@
 
 -引入lib_network 
 
-    compile "cn.com.bailian.bailianmobile:lib_network:0.1.0"
+    compile "com.kk.app:lib_network:0.0.1"
 
 -执行初始化方法：
 
-    public class BLApplication extends Application {
-    
+    public class Application extends Application {
         @Override
         public void onCreate() {
             super.onCreate();
-
             //网络请求初始化
             NetworkConfig.setup(this, "prd");
             Fresco.initialize(this);
@@ -36,7 +34,7 @@
     public static <T> String queryOpenApi(Activity activity, String serviceName, JSONObject data, NetworkCallback<T> callback)
     public static <T> String queryOpenApi(Fragment fragment, String serviceName, JSONObject data, NetworkCallback<T> callback)
     
-请求i百联中间件接口(动态密钥／报文加密)
+请求接口(动态密钥／报文加密)
 
     public static <T> void query(String url, JSONObject data, NetworkCallback<T> callback)
     public static <T> void query(String url, JSONObject data, String method, NetworkCallback<T> callback)

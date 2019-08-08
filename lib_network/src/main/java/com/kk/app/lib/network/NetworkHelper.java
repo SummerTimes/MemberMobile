@@ -852,7 +852,8 @@ public class NetworkHelper {
         try {
             header.put("Connection", "Keep-Alive");
             header.put("chnflg", "Android");
-            header.put("version", getCurrentVersionName(CC.getApplication()));//2.5.0以下的密钥不一样
+            //2.5.0以下的密钥不一样
+            header.put("version", getCurrentVersionName(CC.getApplication()));
             header.put("timeStamp", currentTime);
             header.put("deskeyVersion", DynamicKeyManager.KEY_VERSION);
             header.put("deviceKey", DES.encryptDES(NetworkConfig.deviceNum, DynamicKeyManager.getEncryptKey(currentTime)));

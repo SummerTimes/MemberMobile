@@ -22,6 +22,7 @@ import java.util.Map;
  * @author mlp00
  */
 public class NetworkConfig {
+
     private static final String TAG = "NetworkConfig";
 
     private static NetworkConfig sInstance;
@@ -45,22 +46,31 @@ public class NetworkConfig {
         if (sInstance == null) {
             Log.e(TAG, "NetworkConfig should setup before first call");
         }
-
         return sInstance;
     }
 
+    /**
+     * 设置请求环境
+     *
+     * @param context
+     * @param type
+     */
     public static synchronized void setup(Context context, String type) {
         mContext = context;
         networkEnvType = type;
         if (sInstance == null) {
             sInstance = new NetworkConfig();
         }
-
         getDeviceNum(context);
         sInstance.loadCSV(context, type);
         getToken();
     }
 
+    /**
+     * 获取Device Num
+     *
+     * @param context
+     */
     private static void getDeviceNum(Context context) {
         deviceNum = SharedPreferenceUtil.getStringValueFromSP(context, NetworkSpKeys.NETWORK_SP_NAME, NetworkSpKeys.NETWORK_DEVICE_NUM);
         if (TextUtils.isEmpty(deviceNum)) {
@@ -69,14 +79,18 @@ public class NetworkConfig {
         }
     }
 
+    /**
+     * 加载域名/地址
+     *
+     * @param context
+     * @param type
+     */
     private void loadCSV(Context context, String type) {
         try {
             InputStreamReader isr = new InputStreamReader(context.getAssets().open("network_config.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line;
-            Log.e("xp", "-----type-----" + type);
             while ((line = reader.readLine()) != null) {
-                Log.e("xp", "-----line-----" + line);
                 String tokens[] = line.split(";", -1);
                 if ("configVal".compareToIgnoreCase(tokens[0]) == 0) {
                     if (type.compareToIgnoreCase(tokens[2]) == 0 && tokens.length > 3) {
@@ -84,26 +98,37 @@ public class NetworkConfig {
                     }
                 }
             }
-            Log.e("xp", "-----urlConfig-----" + urlConfig.toString());
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * @return
+     */
     public static Map<String, String> getOpenApiConfig() {
         return openApiConfig;
     }
 
+    /**
+     * 设置Token/并保存
+     *
+     * @param token
+     */
     public static void setToken(Token token) {
         NetworkConfig.token = token;
-
         if (token != null) {
             String strToken = new Gson().toJson(token);
             SharedPreferenceUtil.setStringDataIntoSP(mContext, NetworkSpKeys.NETWORK_SP_NAME, NetworkSpKeys.NETWORK_TOKEN_INFO, strToken);
         }
     }
 
+    /**
+     * 获取Token
+     *
+     * @return
+     */
     public static Token getToken() {
         if (token == null) {
             String strToken = SharedPreferenceUtil.getStringValueFromSP(mContext, NetworkSpKeys.NETWORK_SP_NAME, NetworkSpKeys.NETWORK_TOKEN_INFO, null);
@@ -114,29 +139,55 @@ public class NetworkConfig {
         return token;
     }
 
+    /**
+     * 获取网络环境
+     *
+     * @return
+     */
     public static String getNetworkEnvType() {
         return networkEnvType;
     }
 
+    /**
+     * 额外设置域名
+     *
+     * @param key
+     * @param value
+     */
     public static void setUrl(String key, String value) {
         if (!TextUtils.isEmpty(value)) {
             urlConfig.put(key, value);
         }
     }
 
+    /**
+     * 根据key获取url
+     *
+     * @param key
+     * @return
+     */
     public static String getUrl(String key) {
         String result = "";
         if (urlConfig != null && urlConfig.containsKey(key)) {
             result = urlConfig.get(key);
         }
-
         return result;
     }
 
+    /**
+     * 获取H5/域名
+     *
+     * @return
+     */
     public static String getH5Url() {
         return getUrl(UrlType.H5);
     }
 
+    /**
+     * 获取App/域名
+     *
+     * @return
+     */
     public static String getAppMwUrl() {
         return getUrl(UrlType.APP_MW);
     }

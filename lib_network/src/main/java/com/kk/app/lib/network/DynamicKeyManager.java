@@ -18,6 +18,7 @@ import java.io.InputStream;
  */
 
 public class DynamicKeyManager {
+
     public static final String KEY_VERSION = "2";
     private static String dynamicKey;
     private static final String TAG = "DynamicKeyManager";
@@ -26,7 +27,6 @@ public class DynamicKeyManager {
         try {
             InputStream inputStream = context.getAssets().open("dynamic_sun.bmp");
             dynamicKey = BmpUtilRefactoring.readStringFromInputStream(inputStream);
-
             Log.d(TAG, "dynamicKey:" + dynamicKey);
         } catch (IOException e) {
             e.printStackTrace();

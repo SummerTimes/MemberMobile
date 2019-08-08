@@ -78,7 +78,6 @@ public class StringUtil {
      * @return
      */
     public static String removeSpace(String str) {
-
         if (!TextUtils.isEmpty(str)) {
             return str.trim().replaceAll(" ", "");
         } else {
@@ -94,9 +93,7 @@ public class StringUtil {
      * @throws IOException
      * @author lvmeng
      */
-    public static String inputToString(InputStream inputStream, String encoding)
-            throws IOException {
-
+    public static String inputToString(InputStream inputStream, String encoding) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         int len = 0;
