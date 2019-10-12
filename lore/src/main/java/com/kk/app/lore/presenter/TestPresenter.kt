@@ -1,6 +1,6 @@
 package com.kk.app.lore.presenter
 
-import com.kk.app.lib.recyclerview.floormanager.*
+import com.kk.app.lib.recyclerview.manager.*
 import java.util.*
 
 /**

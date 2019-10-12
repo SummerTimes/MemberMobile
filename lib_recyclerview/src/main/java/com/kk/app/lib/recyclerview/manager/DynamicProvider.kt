@@ -1,11 +1,10 @@
-package com.kk.app.lib.recyclerview.floormanager
+package com.kk.app.lib.recyclerview.manager
 
 /**
  * 作者：杨松
  * 日期：2018/7/25 18:44
  */
 abstract class DynamicProvider : ICombinesProvider {
-
 
     override fun createCombines(key: Int): MutableList<IFloorCombine> {
         return emptyArray<IFloorCombine>().toMutableList()
@@ -28,6 +27,4 @@ abstract class DynamicProvider : ICombinesProvider {
         floorManager.clearCombines()
         floorManager.addAll(list, key, presenter)
     }
-
-
 }

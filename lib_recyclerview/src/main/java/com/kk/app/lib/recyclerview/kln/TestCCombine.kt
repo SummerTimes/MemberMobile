@@ -1,5 +1,5 @@
-import com.kk.app.lib.recyclerview.floormanager.AbstractFloorCombine
-import com.kk.app.lib.recyclerview.floormanager.IUI
+import com.kk.app.lib.recyclerview.manager.AbstractFloorCombine
+import com.kk.app.lib.recyclerview.manager.IUI
 import com.kk.app.lib.recyclerview.kln.TestFloor
 
 /**

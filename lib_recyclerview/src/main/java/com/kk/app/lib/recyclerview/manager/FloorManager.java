@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.floormanager;
+package com.kk.app.lib.recyclerview.manager;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -107,10 +107,7 @@ public class FloorManager {
 
 
     public synchronized void notifyDataChanged(final IFloorCombine iCombine, final IUI iui) {//todo
-        try {//多线程插入清除可能会产生数组越界，当越界的时候其实也是这个数据失效了，故这种方式可以解决问题
-//            return NotifyStrategy.diffUtilNotifyDataChanged(iCombine,mOldTotalList,mTotalFloors,mFloorCombines,mCurrentList,mAdapter);
-            int lastSize = mTotalFloors.size();
-
+        try {
             final List<Object> data = iCombine.getFloors();
             int num = mFloorCombines.indexOf(iCombine);
             if (num == -1) {
@@ -133,12 +130,7 @@ public class FloorManager {
             floors.addAll(data);
             iCombine.setAlreadyInsert(true);
 
-//            int nowSize = mTotalFloors.size();
             mAdapter.notifyDataSetChanged();
-//            if (nowSize < lastSize) {
-//                mAdapter.notifyItemRangeRemoved(nowSize, lastSize - nowSize);
-//            }
-//            mAdapter.notifyItemRangeChanged(indexStart, data.size());
         } catch (Exception e) {
             e.printStackTrace();
         }

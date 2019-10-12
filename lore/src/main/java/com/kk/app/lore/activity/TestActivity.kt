@@ -4,8 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.kk.app.lib.recyclerview.floormanager.IFloorCombine
-import com.kk.app.lib.recyclerview.floormanager.IUI
+import com.kk.app.lib.recyclerview.manager.IFloorCombine
+import com.kk.app.lib.recyclerview.manager.IUI
 import com.kk.app.lore.R
 import com.kk.app.lore.presenter.TestPresenter
 

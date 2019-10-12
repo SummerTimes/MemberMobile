@@ -1,8 +1,8 @@
 package com.kk.app.mine.presenter;
 
 import com.billy.android.preloader.PreLoader;
-import com.kk.app.lib.recyclerview.floormanager.AbstractPresenter;
-import com.kk.app.lib.recyclerview.floormanager.ICombinesProvider;
+import com.kk.app.lib.recyclerview.manager.AbstractPresenter;
+import com.kk.app.lib.recyclerview.manager.ICombinesProvider;
 import com.kk.app.mine.combines.MineContainer;
 import com.kk.app.mine.dataload.MinDataLoad;
 

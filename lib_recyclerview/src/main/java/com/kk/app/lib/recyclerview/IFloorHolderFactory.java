@@ -4,6 +4,8 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
+import com.kk.app.lib.recyclerview.BaseFloorHolder;
+
 /**
  * 楼层工厂接口
  *

@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.title.text;
+package com.kk.app.lib.recyclerview.title;
 
 /**
  * 标题数据

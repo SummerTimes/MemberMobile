@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.floormanager;
+package com.kk.app.lib.recyclerview.manager;
 
 import java.io.Externalizable;
 import java.io.IOException;

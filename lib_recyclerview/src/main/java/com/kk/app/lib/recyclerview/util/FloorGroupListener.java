@@ -3,7 +3,7 @@ package com.kk.app.lib.recyclerview.util;
 import android.support.annotation.NonNull;
 
 import com.billy.android.preloader.interfaces.GroupedDataListener;
-import com.kk.app.lib.recyclerview.floormanager.AbstractFloorCombine;
+import com.kk.app.lib.recyclerview.manager.AbstractFloorCombine;
 
 
 /**

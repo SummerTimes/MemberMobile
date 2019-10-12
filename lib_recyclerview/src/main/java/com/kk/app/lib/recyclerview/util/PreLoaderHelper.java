@@ -2,8 +2,6 @@ package com.kk.app.lib.recyclerview.util;
 
 import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
-import com.billy.android.preloader.interfaces.GroupedDataLoader;
-import com.kk.app.lib.recyclerview.loader.CacheLoaderAgent;
 
 
 /**
@@ -36,24 +34,4 @@ public class PreLoaderHelper {
 
         PreLoader.listenData(key, groupedDataListener);
     }
-
-
-
-
-    public static int preLoad(GroupedDataLoader... groupedDataLoaders){
-        int preLoad = PreLoader.preLoad(groupedDataLoaders);
-        for (GroupedDataLoader groupedDataLoader : groupedDataLoaders) {
-            if(groupedDataLoader instanceof CacheLoaderAgent){
-                ((CacheLoaderAgent) groupedDataLoader).bind(preLoad);
-            }
-        }
-        return preLoad;
-
-    }
-
-
-
-
-
-
 }

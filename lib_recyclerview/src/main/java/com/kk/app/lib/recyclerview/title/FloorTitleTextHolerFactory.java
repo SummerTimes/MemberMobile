@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.title.text;
+package com.kk.app.lib.recyclerview.title;
 
 import android.view.ViewGroup;
 

@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.floormanager;
+package com.kk.app.lib.recyclerview.manager;
 
 import android.support.annotation.NonNull;
 
@@ -29,8 +29,5 @@ public interface IFloorCombine {
     void infoCombineDataChanged();
 
     int getIndex();
-
-
-
 
 }

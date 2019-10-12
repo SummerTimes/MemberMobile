@@ -1,4 +1,4 @@
-package com.kk.app.lib.recyclerview.floormanager;
+package com.kk.app.lib.recyclerview.manager;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,7 +18,6 @@ import java.util.List;
  * 作者：杨松
  * 日期：2018/1/22 15:09
  */
-
 public abstract class AbstractFloorCombine implements IFloorCombine, Serializable {
 
     private final List<Object> mFloors = new ArrayList<>();

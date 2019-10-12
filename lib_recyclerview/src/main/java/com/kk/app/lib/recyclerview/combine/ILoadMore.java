@@ -1,7 +1,7 @@
 package com.kk.app.lib.recyclerview.combine;
 
 
-import com.kk.app.lib.recyclerview.floormanager.IUI;
+import com.kk.app.lib.recyclerview.manager.IUI;
 
 /**
  * 作者：杨松

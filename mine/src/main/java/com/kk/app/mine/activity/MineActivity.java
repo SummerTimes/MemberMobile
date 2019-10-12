@@ -9,8 +9,8 @@ import android.util.Log;
 
 import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
-import com.kk.app.lib.recyclerview.floormanager.IFloorCombine;
-import com.kk.app.lib.recyclerview.floormanager.IUI;
+import com.kk.app.lib.recyclerview.manager.IFloorCombine;
+import com.kk.app.lib.recyclerview.manager.IUI;
 import com.kk.app.mine.R;
 import com.kk.app.mine.constant.MineConstant;
 import com.kk.app.mine.dataload.MinDataLoad;

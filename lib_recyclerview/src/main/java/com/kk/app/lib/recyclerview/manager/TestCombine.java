@@ -1,8 +1,8 @@
-package com.kk.app.lib.recyclerview.floormanager;
+package com.kk.app.lib.recyclerview.manager;
 
 import com.kk.app.lib.recyclerview.Floor;
 import com.kk.app.lib.recyclerview.FloorViewType;
-import com.kk.app.lib.recyclerview.title.text.TitleTextUnit;
+import com.kk.app.lib.recyclerview.title.TitleTextUnit;
 
 
 /**
