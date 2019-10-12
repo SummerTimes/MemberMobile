@@ -129,6 +129,7 @@ public class NetRequester<In, Out> implements IRequest<Request<In>, Out> {
         return this;
     }
 
+    @Override
     public NetRequester<In, Out> doRequest() {
         return doRequest(this.inRequest);
     }

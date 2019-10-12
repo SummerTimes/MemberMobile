@@ -25,6 +25,7 @@ public class DataLoaderRequester<In, Out> extends NetRequester<In, Out> {
     }
 
 
+    @Override
     public DataLoaderRequester<In, Out> doRequest() {
         loadDataLoader();
         return this;

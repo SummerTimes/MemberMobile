@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.text.TextUtils
 import com.billy.cc.core.component.CC
-import com.kk.app.lib.widget.BLToast
 import com.kk.app.lore.activity.RecommendActivity
 import com.kk.app.lore.constant.LoreConstant
 
@@ -23,7 +22,6 @@ object LoreUtils {
     fun openLoreActivity(cc: CC) {
         val param = cc.getParamItem<String>(LoreConstant.KRY_PARAM)
         if (TextUtils.isEmpty(param)) {
-            BLToast.showToast(cc.context, "参数不能为空")
             return
         }
         val context = cc.context

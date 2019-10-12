@@ -12,6 +12,11 @@ public class BannerConfig {
     public static final int CIRCLE_INDICATOR_TITLE = 4;
     public static final int CIRCLE_INDICATOR_TITLE_INSIDE = 5;
     /**
+     * indicator  ImageView  invalid
+     */
+    public static final boolean INDICATOR_WH_INVALID = false;
+
+    /**
      * indicator gravity
      */
     public static final int LEFT = 5;

@@ -1,6 +1,7 @@
 package com.kk.app.lib.networkinterceptor.cache;
 
-import android.support.v4.util.LruCache;
+
+import android.util.LruCache;
 
 /**
  * 内存缓存

@@ -28,11 +28,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.deps.supportV4
+    implementation rootProject.ext.deps.appcompatv7
+    implementation rootProject.ext.deps.recyclerviewV7
+    implementation rootProject.ext.deps.kotlin_stdlib_jdk7
+
     implementation "com.kk.app:lib_image:$lib_image"
     implementation "com.kk.app:lib_banner:$lib_banner"
     implementation "com.kk.app:lib_widget:$lib_widget"
     implementation "com.kk.app:lib_network:$lib_network"
     implementation "com.kk.app:pre_loader:$pre_loader"
-    implementation "com.kk.app:lib_refreshlayout:$lib_refreshlayout"
 }
 

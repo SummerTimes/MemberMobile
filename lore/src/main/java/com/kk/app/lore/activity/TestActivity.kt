@@ -2,10 +2,10 @@ package com.kk.app.lore.activity
 
 import android.app.Activity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.kk.app.lib.recyclerview.floormanager.IFloorCombine
 import com.kk.app.lib.recyclerview.floormanager.IUI
-import com.kk.app.lib.widget.RobustLinearLayoutManager
 import com.kk.app.lore.R
 import com.kk.app.lore.presenter.TestPresenter
 
@@ -26,12 +26,11 @@ class  TestActivity:Activity(), IUI {
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val layoutManager = RobustLinearLayoutManager(this)
         testPresenter = TestPresenter(1)
         setContentView(R.layout.activity_test)
         val recyclerView = findViewById<RecyclerView>(R.id.container)
         recyclerView.adapter = testPresenter.adapter
-        recyclerView.layoutManager = layoutManager as RecyclerView.LayoutManager?
+        recyclerView.layoutManager = LinearLayoutManager(this)
         testPresenter.onUIReady(this)
     }
 

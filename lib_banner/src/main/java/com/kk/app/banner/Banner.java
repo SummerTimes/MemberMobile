@@ -45,6 +45,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
     private boolean isScroll = BannerConfig.IS_SCROLL;
     private int mIndicatorSelectedResId = R.drawable.select_back;
     private int mIndicatorUnselectedResId = R.drawable.white_radius;
+    private boolean mIndicatorWhInvalid = BannerConfig.INDICATOR_WH_INVALID;
     private int mLayoutResId = R.layout.banner;
     private int titleHeight;
     private int titleBackground;
@@ -116,6 +117,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_margin, BannerConfig.PADDING_SIZE);
         mIndicatorSelectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_selected, R.drawable.select_back);
         mIndicatorUnselectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_unselected, R.drawable.white_radius);
+        mIndicatorWhInvalid = typedArray.getBoolean(R.styleable.Banner_indicator_wh_invalid, BannerConfig.INDICATOR_WH_INVALID);
         scaleType = typedArray.getInt(R.styleable.Banner_image_scale_type, scaleType);
         delayTime = typedArray.getInt(R.styleable.Banner_delay_time, BannerConfig.TIME);
         scrollTime = typedArray.getInt(R.styleable.Banner_scroll_time, BannerConfig.DURATION);
@@ -140,6 +142,10 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         }
     }
 
+    public Banner setIndicatorWhInvalid(boolean status) {
+        this.mIndicatorWhInvalid = status;
+        return this;
+    }
 
     public Banner isAutoPlay(boolean isAutoPlay) {
         this.isAutoPlay = isAutoPlay;
@@ -398,7 +404,12 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         for (int i = 0; i < count; i++) {
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ScaleType.CENTER_CROP);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mIndicatorWidth, mIndicatorHeight);
+            LinearLayout.LayoutParams params;
+            if (mIndicatorWhInvalid) {
+                params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            } else {
+                params = new LinearLayout.LayoutParams(mIndicatorWidth, mIndicatorHeight);
+            }
             params.leftMargin = mIndicatorMargin;
             params.rightMargin = mIndicatorMargin;
             if (i == 0) {

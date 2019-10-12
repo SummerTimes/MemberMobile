@@ -15,7 +15,7 @@ import com.kk.app.lib.network.NetworkHelper;
 import com.kk.app.login.R;
 import com.kk.app.login.bean.CommonBean;
 import com.kk.app.login.bean.CommonList;
-import com.kk.app.login.util.LoginImageLoader;
+import com.kk.app.login.util.LoginUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private Banner mBanner;
+    private List<String> mUrls;
     private GlideImageView mSivPic;
 
     @Override
@@ -42,22 +42,12 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void initView() {
         mSivPic = findViewById(R.id.siv_pic);
-        mBanner = findViewById(R.id.banner);
         mSivPic.load("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
 
-        List<String> urls = new ArrayList<>();
-        urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
-        urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
-        urls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
-        mBanner.setImages(urls)
-                .setImageLoader(new LoginImageLoader())
-                .setOnBannerListener(new OnBannerListener() {
-                    @Override
-                    public void OnBannerClick(int position) {
-
-
-                    }
-                }).start();
+        mUrls = new ArrayList<>();
+        mUrls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
+        mUrls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
+        mUrls.add("http://seopic.699pic.com/photo/50055/5642.jpg_wh1200.jpg");
     }
 
     /**
@@ -70,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_GET, new NetworkCallback<CommonList>() {
             @Override
             public void onSuccess(@NonNull CCResult rawResult, CommonList commonList) {
+                Log.e("xp", "---onSuccess----" + commonList.toString());
                 List<CommonBean> data = commonList.data;
                 for (int i = 0; i < data.size(); i++) {
                     Log.e("xp", "---单条数据----" + data.get(i).toString());
@@ -78,11 +69,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailed(@NonNull CCResult result) {
+                Log.e("xp", "---onFailed----" + result.getData());
             }
 
             @Override
             public void onFinally(@NonNull CCResult result) {
-
+                Log.e("xp", "---onFinally----" + result.getData());
             }
         });
     }

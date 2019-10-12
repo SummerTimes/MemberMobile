@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/app_212020</item>
-        <item name="colorPrimaryDark">@color/app_212020</item>
-        <item name="colorAccent">@color/app_212020</item>
+    <style name="App_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/app_FFFFFF</item>
+        <item name="colorPrimaryDark">@color/app_FFFFFF</item>
+        <item name="colorAccent">@color/app_000000</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
     </style>
 

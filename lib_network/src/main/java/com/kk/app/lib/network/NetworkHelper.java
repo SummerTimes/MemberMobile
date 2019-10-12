@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
@@ -51,9 +52,9 @@ public class NetworkHelper {
      * @param callback    返回
      * @param <T>         数据类型
      */
-    public static <T> String queryOpenApi(String serviceName, JSONObject data, NetworkCallback<T> callback) {
-        return queryOpenApi(null, serviceName, data, callback, true);
-    }
+//    public static <T> String queryOpenApi(String serviceName, JSONObject data, NetworkCallback<T> callback) {
+//        return queryOpenApi(null, serviceName, data, callback, true);
+//    }
 
     /**
      * 关联生命周期请求openApi接口
@@ -64,9 +65,9 @@ public class NetworkHelper {
      * @param callback    返回
      * @param <T>         数据类型
      */
-    public static <T> String queryOpenApi(Activity activity, String serviceName, JSONObject data, NetworkCallback<T> callback) {
-        return queryOpenApi(activity, serviceName, data, callback, true);
-    }
+//    public static <T> String queryOpenApi(Activity activity, String serviceName, JSONObject data, NetworkCallback<T> callback) {
+//        return queryOpenApi(activity, serviceName, data, callback, true);
+//    }
 
     /**
      * 关联生命周期请求openApi接口
@@ -77,11 +78,11 @@ public class NetworkHelper {
      * @param callback    返回
      * @param <T>         数据类型
      */
-    public static <T> String queryOpenApi(Fragment fragment, String serviceName, JSONObject data, NetworkCallback<T> callback) {
-        return queryOpenApi(fragment, serviceName, data, callback, true);
-    }
+//    public static <T> String queryOpenApi(Fragment fragment, String serviceName, JSONObject data, NetworkCallback<T> callback) {
+//        return queryOpenApi(fragment, serviceName, data, callback, true);
+//    }
 
-    private static <T> String queryOpenApi(Object activityOrFragment, String serviceName, JSONObject data, NetworkCallback<T> callback, boolean retry) {
+    /*private static <T> String queryOpenApi(Object activityOrFragment, String serviceName, JSONObject data, NetworkCallback<T> callback, boolean retry) {
         JSONObject config = getOpenApiConfig();
         try {
             if (!TextUtils.isEmpty(serviceName)) {
@@ -110,7 +111,7 @@ public class NetworkHelper {
         setBuilderRelateLifecycle(builder, activityOrFragment);
 
         return builder.build().callAsyncCallbackOnMainThread(componentCallback);
-    }
+    }*/
 
     /**
      * 同步请求openApi接口
@@ -119,7 +120,7 @@ public class NetworkHelper {
      * @param data        请求数据
      * @param <T>         数据类型
      */
-    public static <T> String queryOpenApi(String serviceName, String data) {
+    /*public static <T> String queryOpenApi(String serviceName, String data) {
         JSONObject config = getOpenApiConfig();
         try {
             if (!TextUtils.isEmpty(serviceName)) {
@@ -145,9 +146,9 @@ public class NetworkHelper {
         } else {
             return handleOpenApiResult(serviceName, data, result);
         }
-    }
+    }*/
 
-    private static String handleOpenApiResult(String serviceName, String originData, CCResult result) {
+    /*private static String handleOpenApiResult(String serviceName, String originData, CCResult result) {
         if (result.isSuccess() && result.getCode() == CCResult.CODE_SUCCESS) {
             if (result.getData() != null) {
                 if (result.getData().has(NetworkConstant.KEY_DATA_RESPONSE)) {
@@ -194,14 +195,14 @@ public class NetworkHelper {
         }
 
         return null;
-    }
+    }*/
 
     /**
      * 获取access_token
      */
-    private static void queryOpenApiToken(NetworkCallback<Token> callback) {
-        queryOpenApi(null, "token", null, callback, false);
-    }
+//    private static void queryOpenApiToken(NetworkCallback<Token> callback) {
+//        queryOpenApi(null, "token", null, callback, false);
+//    }
 
     /**
      * 请求中间件接口(POST)
@@ -211,11 +212,11 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(String url, JSONObject data, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, callback);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
+//    public static <T> String query(String url, JSONObject data, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, callback);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
     /**
      * 关联生命周期请求中间件接口(POST)
@@ -226,13 +227,13 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(Activity activity, String url, JSONObject data, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, callback);
-
-        setBuilderRelateLifecycle(builder, activity);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
+//    public static <T> String query(Activity activity, String url, JSONObject data, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, callback);
+//
+//        setBuilderRelateLifecycle(builder, activity);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
     /**
      * 关联生命周期请求中间件接口(POST)
@@ -243,27 +244,82 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(Fragment fragment, String url, JSONObject data, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, callback);
+//    public static <T> String query(Fragment fragment, String url, JSONObject data, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, callback);
+//
+//        setBuilderRelateLifecycle(builder, fragment);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
-        setBuilderRelateLifecycle(builder, fragment);
 
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+    /**
+     * 请求中间件接口
+     *
+     * @param url      url
+     * @param data     请求数据
+     * @param method   请求方法（POST/GET）
+     * @param callback 返回
+     * @param <T>      数据类型
+     */
+//    public static <T> String query(String url, JSONObject data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
+
+    /**
+     * 关联生命周期请求中间件接口(POST)
+     *
+     * @param activity Activity
+     * @param url      url
+     * @param data     请求数据
+     * @param method   请求方法（POST/GET）
+     * @param callback 返回
+     * @param <T>      数据类型
+     */
+//    public static <T> String query(Activity activity, String url, JSONObject data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        setBuilderRelateLifecycle(builder, activity);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
+
+    /**
+     * 关联生命周期请求中间件接口(POST)
+     *
+     * @param fragment Fragment
+     * @param url      url
+     * @param data     请求数据
+     * @param method   请求方法（POST/GET）
+     * @param callback 返回
+     * @param <T>      数据类型
+     */
+//    public static <T> String query(Fragment fragment, String url, JSONObject data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        setBuilderRelateLifecycle(builder, fragment);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
+
+    /*private static <T> CC.Builder genAppMwBuilder(String url, JSONObject data, String method, NetworkCallback<T> callback) {
+        String currentTime = String.valueOf(System.currentTimeMillis());
+        return CC.obtainBuilder("network")
+                .setActionName(method)
+                .addParam("retry", RETRY_NUM)
+                .addParam("url", genAppMwUrl(url))
+                .addParam("headers", getHeaderForMiddle(currentTime))
+                .addParam("data", data)
+                .addParam("cryptoKey", DynamicKeyManager.getEncryptKey(currentTime))
+                .addInterceptor(new NetworkGsonInterceptor(callback))
+                .addInterceptor(NetworkEncryptInterceptor.get());
     }
 
     private static <T> CC.Builder genAppMwBuilder(String url, JSONObject data, NetworkCallback<T> callback) {
-        String currentTime = String.valueOf(System.currentTimeMillis());
-
-        return CC.obtainBuilder("network")
-                .setActionName(HTTP_POST)
-                .addParam("retry", RETRY_NUM)
-                .addParam("url", genAppMwUrl(url))
-                .addParam("headers", getHeaderForMiddle(currentTime))
-                .addParam("data", data)
-                .addParam("cryptoKey", DynamicKeyManager.getEncryptKey(currentTime))
-                .addInterceptor(new NetworkGsonInterceptor(callback))
-                .addInterceptor(NetworkEncryptInterceptor.get());
-    }
+        return genAppMwBuilder(url, data, HTTP_POST, callback);
+    }*/
 
     /**
      * 请求中间件接口
@@ -274,11 +330,11 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(String url, JSONObject data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
+//    public static <T> String query(String url, String data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
     /**
      * 关联生命周期请求中间件接口(POST)
@@ -290,77 +346,13 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(Activity activity, String url, JSONObject data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
-
-        setBuilderRelateLifecycle(builder, activity);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
-
-    /**
-     * 关联生命周期请求中间件接口(POST)
-     *
-     * @param fragment Fragment
-     * @param url      url
-     * @param data     请求数据
-     * @param method   请求方法（POST/GET）
-     * @param callback 返回
-     * @param <T>      数据类型
-     */
-    public static <T> String query(Fragment fragment, String url, JSONObject data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
-
-        setBuilderRelateLifecycle(builder, fragment);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
-
-    private static <T> CC.Builder genAppMwBuilder(String url, JSONObject data, String method, NetworkCallback<T> callback) {
-        String currentTime = String.valueOf(System.currentTimeMillis());
-        return CC.obtainBuilder("network")
-                .setActionName(method)
-                .addParam("retry", RETRY_NUM)
-                .addParam("url", genAppMwUrl(url))
-                .addParam("headers", getHeaderForMiddle(currentTime))
-                .addParam("data", data)
-                .addParam("cryptoKey", DynamicKeyManager.getEncryptKey(currentTime))
-                .addInterceptor(new NetworkGsonInterceptor(callback))
-                .addInterceptor(NetworkEncryptInterceptor.get());
-    }
-
-    /**
-     * 请求中间件接口
-     *
-     * @param url      url
-     * @param data     请求数据
-     * @param method   请求方法（POST/GET）
-     * @param callback 返回
-     * @param <T>      数据类型
-     */
-    public static <T> String query(String url, String data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
-
-    /**
-     * 关联生命周期请求中间件接口(POST)
-     *
-     * @param activity Activity
-     * @param url      url
-     * @param data     请求数据
-     * @param method   请求方法（POST/GET）
-     * @param callback 返回
-     * @param <T>      数据类型
-     */
-    public static <T> String query(Activity activity, String url, String data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
-
-        setBuilderRelateLifecycle(builder, activity);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
+//    public static <T> String query(Activity activity, String url, String data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        setBuilderRelateLifecycle(builder, activity);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
     /**
      * 关联生命周期请求中间件接口(POST)
@@ -372,26 +364,26 @@ public class NetworkHelper {
      * @param callback 返回
      * @param <T>      数据类型
      */
-    public static <T> String query(Fragment fragment, String url, String data, String method, NetworkCallback<T> callback) {
-        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//    public static <T> String query(Fragment fragment, String url, String data, String method, NetworkCallback<T> callback) {
+//        CC.Builder builder = genAppMwBuilder(url, data, method, callback);
+//
+//        setBuilderRelateLifecycle(builder, fragment);
+//
+//        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+//    }
 
-        setBuilderRelateLifecycle(builder, fragment);
-
-        return builder.build().callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
-    }
-
-    private static <T> CC.Builder genAppMwBuilder(String url, String data, String method, NetworkCallback<T> callback) {
-        String currentTime = String.valueOf(System.currentTimeMillis());
-        return CC.obtainBuilder("network")
-                .setActionName(method)
-                .addParam("retry", RETRY_NUM)
-                .addParam("url", genAppMwUrl(url))
-                .addParam("headers", getHeaderForMiddle(currentTime))
-                .addParam("data", data)
-                .addParam("cryptoKey", DynamicKeyManager.getEncryptKey(currentTime))
-                .addInterceptor(new NetworkGsonInterceptor(callback))
-                .addInterceptor(NetworkEncryptInterceptor.get());
-    }
+//    private static <T> CC.Builder genAppMwBuilder(String url, String data, String method, NetworkCallback<T> callback) {
+//        String currentTime = String.valueOf(System.currentTimeMillis());
+//        return CC.obtainBuilder("network")
+//                .setActionName(method)
+//                .addParam("retry", RETRY_NUM)
+//                .addParam("url", genAppMwUrl(url))
+//                .addParam("headers", getHeaderForMiddle(currentTime))
+//                .addParam("data", data)
+//                .addParam("cryptoKey", DynamicKeyManager.getEncryptKey(currentTime))
+//                .addInterceptor(new NetworkGsonInterceptor(callback))
+//                .addInterceptor(NetworkEncryptInterceptor.get());
+//    }
 
     public static <T> String query(String url, String data, String method, CacheOption cacheOption, NetworkCallback<T> callback) {
         CC.Builder builder = genAppMwBuilder(url, data, method, cacheOption, callback);
@@ -823,7 +815,7 @@ public class NetworkHelper {
         return rtn;
     }
 
-    private static JSONObject getOpenApiConfig() {
+    /*private static JSONObject getOpenApiConfig() {
         Map<String, String> openApiConfig = NetworkConfig.getOpenApiConfig();
         JSONObject config = new JSONObject();
         try {
@@ -839,7 +831,7 @@ public class NetworkHelper {
             e.printStackTrace();
         }
         return config;
-    }
+    }*/
 
     /**
      * 中间件请求的header
@@ -879,9 +871,10 @@ public class NetworkHelper {
 
     /**
      * 获取access_token后重新发送openApi请求
+     *
      * @param <T>
      */
-    private static class OpenApiGetTokenAndRetryCallback<T> extends NetworkComponentCallback<T> {
+    /*private static class OpenApiGetTokenAndRetryCallback<T> extends NetworkComponentCallback<T> {
 
         String serviceName;
         protected JSONObject data;
@@ -943,7 +936,7 @@ public class NetworkHelper {
             }
             super.onResult(cc, rawResult);
         }
-    }
+    }*/
 
     /**
      * 调用Network Component 组件CallBack
@@ -965,7 +958,9 @@ public class NetworkHelper {
             }
             try {
                 if (result.isSuccess() && result.getCode() == CCResult.CODE_SUCCESS) {
+                    Log.e("xp", "----result-----" + result.toString());
                     JSONObject data = result.getData();
+                    Log.e("xp", "-----data----" + data.toString());
                     T t = null;
                     if (data.has(RESULT_KEY)) {
                         try {

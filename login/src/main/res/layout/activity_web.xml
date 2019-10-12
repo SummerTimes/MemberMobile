@@ -39,10 +39,9 @@
         android:layout_height="match_parent" />
 
     <com.kk.app.lib.widget.neterror.NeterrorLayout
-        android:id="@+id/neterror"
+        android:id="@+id/nel_error"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.kk.app.lib.widget.neterror.NeterrorLayout>
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

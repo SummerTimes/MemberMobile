@@ -1,7 +1,4 @@
 configKey;envCategory;envType;url;grant_type;appid;secret;salt;channelId
-configVal;openApi;prd;https://mopenapi.bl.com/blgroup-openapi;client_credentials;xs679pUa8S;YX5S75jD1U1A30IDdnC4Sukj7X9342Y59;0;1
-configVal;openApi;pre;http://openapi3.ut.bl.com/blgroup-openapi:7010;client_credentials;Yn046239q1;Gz9N986366HMc22LaUPHV5P79ae1bb5ib;0;1
-configVal;openApi;sit;http://mopenapi.st.bl.com/blgroup-openapi;client_credentials;mobile;3M1R7bL4g24f2w247M9635Dod819L765N;0;1
 
 configVal;appMw;prd;https://mobile.bl.com/
 configVal;appMw;pre;http://mobile.ut.bl.com/

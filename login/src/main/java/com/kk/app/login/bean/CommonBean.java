@@ -8,6 +8,7 @@ import java.util.List;
  * @desc:
  */
 public class CommonBean {
+
     /**
      * children : []
      * courseId : 13
@@ -18,14 +19,15 @@ public class CommonBean {
      * userControlSetTop : false
      * visible : 1
      */
-    public int courseId;
-    public int id;
-    public String name;
-    public int order;
-    public int parentChapterId;
-    public boolean userControlSetTop;
-    public int visible;
-    public List<String> children;
+
+    private int courseId;
+    private int id;
+    private String name;
+    private int order;
+    private int parentChapterId;
+    private boolean userControlSetTop;
+    private int visible;
+    private List<?> children;
 
     @Override
     public String toString() {

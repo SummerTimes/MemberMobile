@@ -20,5 +20,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.ext.deps.cc
-    implementation "com.squareup.okhttp3:okhttp:3.11.0"
+    implementation "com.squareup.okhttp3:okhttp:4.2.0"
 }

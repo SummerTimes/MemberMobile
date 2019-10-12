@@ -19,7 +19,11 @@ import java.lang.reflect.Type;
  * @since 17/8/16 18:41
  */
 public class NetworkGsonInterceptor implements ICCInterceptor {
-    private static final String KEY_RESULT = "result";//对应network组件中保存请求结果的key
+
+    /**
+     * 对应network组件中保存请求结果的key
+     */
+    private static final String KEY_RESULT = "result";
     private Gson gson = new Gson();
     private Type type;
 

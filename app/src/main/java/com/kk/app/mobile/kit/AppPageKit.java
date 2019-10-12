@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
+import com.kk.app.lib.widget.utils.LxStatusBarUtil;
 import com.kk.app.mobile.R;
 
 import org.json.JSONObject;
@@ -69,6 +70,7 @@ public class AppPageKit implements View.OnClickListener {
         mTextViews = new TextView[]{mTvLore, mTvProduct, mTvMine};
         mImageViews = new ImageView[]{mImLore, mImProduct, mImMine};
         switchPage(sPages[0]);
+        setStatusBar();
     }
 
     /**
@@ -216,6 +218,7 @@ public class AppPageKit implements View.OnClickListener {
         } else if (R.id.ll_mine == id) {
             index = 2;
         }
+//        setStatusBar();
         if (index >= 0) {
             switchPage(sPages[index]);
         }
@@ -363,6 +366,13 @@ public class AppPageKit implements View.OnClickListener {
         if (fragment != null) {
             mActivity.get().getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
         }
+    }
+
+    /**
+     * 设置Status bar
+     */
+    private void setStatusBar() {
+        LxStatusBarUtil.setLightMode(mActivity.get());
     }
 
     /**

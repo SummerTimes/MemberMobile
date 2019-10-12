@@ -9,14 +9,25 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/cnetwork" />
+            <option value="$PROJECT_DIR$/lib_banner" />
+            <option value="$PROJECT_DIR$/lib_image" />
+            <option value="$PROJECT_DIR$/lib_network" />
+            <option value="$PROJECT_DIR$/lib_networkinterceptor" />
             <option value="$PROJECT_DIR$/lib_recyclerview" />
+            <option value="$PROJECT_DIR$/lib_util" />
+            <option value="$PROJECT_DIR$/lib_web" />
+            <option value="$PROJECT_DIR$/lib_widget" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/lore" />
             <option value="$PROJECT_DIR$/mine" />
+            <option value="$PROJECT_DIR$/pre_loader" />
             <option value="$PROJECT_DIR$/product" />
+            <option value="$PROJECT_DIR$/webview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

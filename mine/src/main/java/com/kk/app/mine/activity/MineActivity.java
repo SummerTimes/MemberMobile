@@ -1,7 +1,7 @@
 package com.kk.app.mine.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -25,6 +25,7 @@ public class MineActivity extends AppCompatActivity implements IUI {
 
     private int mKey;
     private RecyclerView mRvView;
+
     private MinePresenter mMinePresenter;
     private RecyclerView.Adapter mAdapter;
 
@@ -53,7 +54,6 @@ public class MineActivity extends AppCompatActivity implements IUI {
                 Log.e("xp", "---网络数据----" + str);
             }
         });
-
     }
 
     private void initPresenter() {
@@ -83,6 +83,7 @@ public class MineActivity extends AppCompatActivity implements IUI {
         }
         return mParams;
     }
+
 
 
     @Override

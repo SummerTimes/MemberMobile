@@ -63,7 +63,7 @@ public class WebActivity extends AppCompatActivity {
         rltTitle = findViewById(R.id.rlt_title);
         tvTitle = findViewById(R.id.tv_title);
         ivBack = findViewById(R.id.iv_back);
-        neterror = findViewById(R.id.neterror);
+        neterror = findViewById(R.id.nel_error);
         initialWebSetting();
     }
 
@@ -105,13 +105,11 @@ public class WebActivity extends AppCompatActivity {
 
     protected void initVariables() {
         String params = getIntent().getStringExtra(PARAMS);
-        Log.e("xp", "---------params--------" + params);
         try {
             JSONObject data = new JSONObject(params);
             mUrl = data.optString(URL);
             tvTitle.setText(data.optString(TITLE));
             boolean isHideTitle = data.optBoolean(HIDE_TITLE);
-            Log.e("xp", "---------mUrl--------" + mUrl);
 
             if (isHideTitle) {
                 rltTitle.setVisibility(View.GONE);
@@ -144,24 +142,19 @@ public class WebActivity extends AppCompatActivity {
         webContent.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.e(TAG, "-------url---------" + url);
                 Uri parse = Uri.parse(url);
                 String scheme = parse.getScheme();
-                Log.e(TAG, "--------scheme------" + scheme);
                 return false;
             }
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                Log.d(TAG, "----------onPageStarted-----------");
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                Log.d(TAG, "---------onPageFinished----------");
-                Log.d(TAG, "---------getTitle----------"+webContent.getTitle());
                 if (!TextUtils.isEmpty(webContent.getTitle()) && !webContent.getTitle().contains("http")) {
                     tvTitle.setText(webContent.getTitle());
                 }
