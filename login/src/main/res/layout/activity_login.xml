@@ -10,14 +10,4 @@
         android:onClick="onCheckNet"
         android:text="获取网络信息" />
 
-    <com.kk.app.image.GlideImageView
-        android:id="@+id/siv_pic"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerCrop" />
-
-
-
 </LinearLayout>

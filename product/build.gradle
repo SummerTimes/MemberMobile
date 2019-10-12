@@ -45,6 +45,5 @@ dependencies {
     implementation "com.kk.app:lib_banner:${lib_banner}"
     implementation "com.kk.app:lib_widget:${lib_widget}"
     implementation "com.kk.app:lib_network:${lib_network}"
-    implementation project(':lib_recyclerview')
-//    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
+    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
 }

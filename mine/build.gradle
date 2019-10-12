@@ -46,6 +46,5 @@ dependencies {
     implementation "com.kk.app:lib_widget:${lib_widget}"
     implementation "com.kk.app:lib_network:${lib_network}"
     implementation "com.kk.app:pre_loader:${pre_loader}"
-    implementation project(':lib_recyclerview')
-//    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
+    implementation "com.kk.app:lib_recyclerview:${lib_recyclerview}"
 }
