@@ -861,7 +861,7 @@ public class NetworkHelper {
             header = new JSONObject();
         }
         try {
-            header.put("phoneid", TextUtils.isEmpty(NetworkConfig.phone) ? "" : NetworkConfig.phone);
+            header.put("Cookie", "https://www.wanandroid.com/");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -958,9 +958,7 @@ public class NetworkHelper {
             }
             try {
                 if (result.isSuccess() && result.getCode() == CCResult.CODE_SUCCESS) {
-                    Log.e("xp", "----result-----" + result.toString());
                     JSONObject data = result.getData();
-                    Log.e("xp", "-----data----" + data.toString());
                     T t = null;
                     if (data.has(RESULT_KEY)) {
                         try {

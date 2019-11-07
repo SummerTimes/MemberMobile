@@ -56,13 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         String Url = "https://www.wanandroid.com/user/login";
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("username", "lxtimes");
+            jsonObject.put("username", "lxtime");
             jsonObject.put("password", "123456789");
-
-            NetworkHelper.queryApi(Url, null, NetworkHelper.HTTP_POST, new NetworkCallback<CommonList>() {
+            NetworkHelper.queryApi(Url, jsonObject.toString(), NetworkHelper.HTTP_POST, new NetworkCallback<String>() {
                 @Override
-                public void onSuccess(@NonNull CCResult rawResult, CommonList commonList) {
-                    Log.e("xp", "---onSuccess----" + commonList.toString());
+                public void onSuccess(@NonNull CCResult rawResult, String str) {
+                    Log.e("xp", "---onSuccess----" + str);
                 }
 
                 @Override
@@ -72,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinally(@NonNull CCResult result) {
+
                 }
             });
         } catch (JSONException e) {

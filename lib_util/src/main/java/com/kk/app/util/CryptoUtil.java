@@ -181,28 +181,6 @@ public class CryptoUtil {
     }
 
     /**
-     * AES解密，解密密钥key
-     *
-     * @param value 密文
-     * @param key   密钥
-     * @return 明文
-     */
-    public static String decryAES(String value, String key) {
-        byte[] data = null;
-        try {
-            data = StringUtil.hexStringToBytes(value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        data = decryAES(data, key);
-        if (data == null) {
-            return "";
-        }
-
-        return new String(data, CHAR_SET);
-    }
-
-    /**
      * 生成AESkey
      *
      * @param key 密钥

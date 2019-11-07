@@ -175,28 +175,6 @@ public class StringUtil {
     }
 
     /**
-     * 十六进制字符串转换为byte数据
-     *
-     * @param hexString 16进制串
-     * @return byte[] byte数组
-     */
-    public static byte[] hexStringToBytes(String hexString) {
-        if (hexString == null || "".equals(hexString)) {
-            return null;
-        }
-
-        String upperHexString = hexString.toUpperCase();
-        int length = upperHexString.length() / 2;
-        char[] hexChars = upperHexString.toCharArray();
-        byte[] d = new byte[length];
-        for (int i = 0; i < length; i++) {
-            int pos = i * 2;
-            d[i] = (byte) (charToByte(hexChars[pos]) << 4 | charToByte(hexChars[pos + 1]));
-        }
-        return d;
-    }
-
-    /**
      * char转换为byte
      *
      * @param ch

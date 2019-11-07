@@ -96,57 +96,6 @@ public class ApkUtil {
         return null;
     }
 
-    /***
-     * 获取未安装包的签名
-     * @param context 当前上下文
-     * @param apkPath 全路径+包名
-     * @return
-     */
-    public static String getUnInstalledApkSignature(Context context,
-                                                    String apkPath) {
-        String sign = null;
-
-        Class<?> clazz;
-        try {
-            clazz = Class.forName("android.content.pm.PackageParser");
-            Object packageParser = (Build.VERSION.SDK_INT >= 21 ? clazz
-                    .getConstructor().newInstance() : clazz.getConstructor(
-                    String.class).newInstance(""));
-
-            Object packag = null;
-            if (Build.VERSION.SDK_INT >= 21) {
-                Method method = clazz.getMethod("parsePackage", File.class,
-                        int.class);
-                packag = method
-                        .invoke(packageParser, new File(apkPath), 0x0004);
-            } else {
-                Method method = clazz.getMethod("parsePackage", File.class,
-                        String.class, DisplayMetrics.class, int.class);
-                packag = method.invoke(packageParser, new File(apkPath), null,
-                        context.getResources().getDisplayMetrics(), 0x0004);
-            }
-            Method collectCertificatesMethod = clazz.getMethod(
-                    "collectCertificates",
-                    Class.forName("android.content.pm.PackageParser$Package"),
-                    int.class);
-            collectCertificatesMethod.invoke(packageParser, packag,
-                    PackageManager.GET_SIGNATURES);
-            Signature mSignatures[] = (Signature[]) packag.getClass()
-                    .getField("mSignatures").get(packag);
-
-            Signature apkSignature = mSignatures.length > 0 ? mSignatures[0]
-                    : null;
-
-            if (apkSignature != null) {
-                sign = apkSignature.toCharsString();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return sign;
-    }
-
     /**
      * 获取已安装的应用的签名信息的MD5和SHA字符串
      *
