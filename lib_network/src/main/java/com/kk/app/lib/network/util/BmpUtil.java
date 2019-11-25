@@ -244,7 +244,7 @@ public class BmpUtil {
 //		for(int i = 0; i <bmp.getBmpPalette().getPalettes().length; i++) {
 //			System.out.println(ByteUtil.byteToHex(bmp.getBmpPalette().getPalettes()[i], 0, bmp.getBmpPalette().getPalettes()[i].length));
 //		}
-//		System.out.println(ByteUtil.byteToHex(bmp.getDatas(),0 ,bmp.getDatas().length));
+//		System.out.println(ByteUtil.byt eToHex(bmp.getDatas(),0 ,bmp.getDatas().length));
 
 		/*测试隐藏文件内容到bmp文件中*/
 		Bmp bmp = BmpUtil.readBmp(BmpUtil.class.getClassLoader().getResource("resource/SmallConfetti.bmp").getPath());

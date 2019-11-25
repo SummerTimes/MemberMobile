@@ -8,8 +8,7 @@ repositories {
     maven { url rootProject.file("repo-local") }
     maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
     maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-    jcenter()
+    maven { url 'http://localhost:8081/nexus/content/groups/android_public/' }
 }
 
 dependencies {
