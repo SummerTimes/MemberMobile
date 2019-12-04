@@ -56,5 +56,5 @@ dependencies {
     implementation "com.kk.app:lib_widget:${lib_widget}"
     implementation "com.kk.app:lib_network:${lib_network}"
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
-

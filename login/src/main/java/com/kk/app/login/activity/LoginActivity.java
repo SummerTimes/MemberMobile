@@ -12,6 +12,7 @@ import com.kk.app.banner.listener.OnBannerListener;
 import com.kk.app.image.GlideImageView;
 import com.kk.app.lib.network.NetworkCallback;
 import com.kk.app.lib.network.NetworkHelper;
+import com.kk.app.lib.widget.utils.LxStatusBarUtil;
 import com.kk.app.login.R;
 import com.kk.app.login.bean.CommonBean;
 import com.kk.app.login.bean.CommonList;
@@ -44,8 +45,9 @@ public class LoginActivity extends AppCompatActivity {
      * 初始化View
      */
     private void initView() {
-
+        LxStatusBarUtil.setLightMode(this);
     }
+
 
     /**
      * 测试获取网络信息数据接口

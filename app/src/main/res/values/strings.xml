@@ -10,4 +10,14 @@
     <string name="bl_dynpermission_location">定位</string>
     <string name="bl_dynpermission_contacts">读取联系人</string>
 
+    <string name="shortcuts_publish_weibo_short_name">发微博</string>
+    <string name="shortcuts_publish_weibo_long_name">发微博</string>
+    <string name="shortcuts_publish_weibo_long_disable_msg">发微博不可用</string>
+    <string name="shortcuts_popular_weibo_short_name">热门微博</string>
+    <string name="shortcuts_popular_weibo_long_name">热门微博</string>
+    <string name="shortcuts_popular_weibo_disable_msg">热门微博不可用</string>
+    <string name="shortcuts_qrcord_short_name">扫一扫</string>
+    <string name="shortcuts_qrcord_long_name">扫一扫</string>
+    <string name="shortcuts_qrcord_disable_msg">扫一扫不可用</string>
+
 </resources>
