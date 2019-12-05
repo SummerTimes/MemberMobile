@@ -1,23 +1,19 @@
 ext.alwaysLib = true
 apply from: rootProject.file('cc-settings-2.gradle')
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-
     compileSdkVersion rootProject.compileVersion
-
     defaultConfig {
-
         if (project.ext.runAsApp) {
             applicationId "com.kk.app.login"
         }
-
         minSdkVersion rootProject.minVersion
         targetSdkVersion rootProject.compileVersion
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     sourceSets {
@@ -36,7 +32,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {

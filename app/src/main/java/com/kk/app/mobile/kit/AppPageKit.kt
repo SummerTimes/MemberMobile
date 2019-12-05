@@ -1,102 +1,57 @@
-package com.kk.app.mobile.kit;
+package com.kk.app.mobile.kit
 
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.billy.cc.core.component.CC;
-import com.billy.cc.core.component.CCResult;
-import com.kk.app.lib.widget.utils.LxStatusBarUtil;
-import com.kk.app.mobile.R;
-
-import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
+import android.support.annotation.DrawableRes
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
+import android.support.v4.content.ContextCompat
+import android.text.TextUtils
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.billy.cc.core.component.CC
+import com.kk.app.lib.widget.utils.LxStatusBarUtil
+import com.kk.app.mobile.R
+import org.json.JSONObject
+import java.lang.ref.WeakReference
 
 /**
  * @author kk
  * @datetime: 2018/10/29
  * @desc:底部Kit
  */
-public class AppPageKit implements View.OnClickListener {
-
-    private final LinearLayout mLlLore;
-    private final ImageView mImLore;
-    private final TextView mTvLore;
-
-    private final LinearLayout mLlProduct;
-    private final ImageView mImProduct;
-    private final TextView mTvProduct;
-
-    private final LinearLayout mLlMine;
-    private final ImageView mImMine;
-    private final TextView mTvMine;
-
-    private String currentTag;
-    private TextView[] mTextViews;
-    private ImageView[] mImageViews;
-    private WeakReference<FragmentActivity> mActivity;
-    public static final String[] sPages = {"lore", "product", "mine"};
-
-    /**
-     * 初始化View
-     *
-     * @param activity
-     */
-    public AppPageKit(FragmentActivity activity) {
-        mActivity = new WeakReference<>(activity);
-
-        mLlLore = getView(R.id.ll_lore);
-        mImLore = getView(R.id.im_lore);
-        mTvLore = getView(R.id.tv_lore);
-        mLlLore.setOnClickListener(this);
-
-        mLlProduct = getView(R.id.ll_product);
-        mImProduct = getView(R.id.im_product);
-        mTvProduct = getView(R.id.tv_product);
-        mLlProduct.setOnClickListener(this);
-
-        mLlMine = getView(R.id.ll_mine);
-        mImMine = getView(R.id.im_mine);
-        mTvMine = getView(R.id.tv_mine);
-        mLlMine.setOnClickListener(this);
-
-        mTextViews = new TextView[]{mTvLore, mTvProduct, mTvMine};
-        mImageViews = new ImageView[]{mImLore, mImProduct, mImMine};
-        switchPage(sPages[0]);
-        setStatusBar();
-    }
-
+class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
+    private val mLlLore: LinearLayout
+    private val mImLore: ImageView
+    private val mTvLore: TextView
+    private val mLlProduct: LinearLayout
+    private val mImProduct: ImageView
+    private val mTvProduct: TextView
+    private val mLlMine: LinearLayout
+    private val mImMine: ImageView
+    private val mTvMine: TextView
+    private var currentTag: String? = null
+    private val mTextViews: Array<TextView>?
+    private val mImageViews: Array<ImageView>?
+    private var mActivity: WeakReference<FragmentActivity>?
     /**
      * Activity onResume
      */
-    public void onResume() {
-
-    }
+    fun onResume() {}
 
     /**
      * 页面切换 Fragment
      *
      * @param tag
      */
-    public void switchPage(String tag) {
+    fun switchPage(tag: String) {
         if (TextUtils.equals(tag, currentTag)) {
-            return;
+            return
         }
-        updateTextByTag(tag);
-        Fragment fragment = getTagFragment(tag);
-        if (fragment == null) {
-            createTagFragment(tag);
-        } else {
-            showFragment(fragment);
-        }
-        hideTagElseFragment(tag);
+        updateTextByTag(tag)
+        val fragment = getTagFragment(tag)
+        fragment?.let { showFragment(it) } ?: createTagFragment(tag)
+        hideTagElseFragment(tag)
     }
 
     /**
@@ -104,35 +59,43 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param tag
      */
-    private void updateTextByTag(String tag) {
-        currentTag = tag;
-        int tagIndex = getTagIndex(tag);
+    private fun updateTextByTag(tag: String) {
+        currentTag = tag
+        val tagIndex = getTagIndex(tag)
         if (tagIndex < 0 || null == mTextViews || null == mImageViews) {
-            return;
+            return
         }
         // 设置选中的颜色
-        for (int i = 0, size = mTextViews.length; i < size; i++) {
-            if (tagIndex == i) {
-                setTextViewColor(mTextViews[i], true);
-                mTextViews[tagIndex].setSelected(true);
-            } else {
-                setTextViewColor(mTextViews[i], false);
-                if (mTextViews[i].isSelected()) {
-                    mTextViews[i].setSelected(false);
+        run {
+            var i = 0
+            val size = mTextViews!!.size
+            while (i < size) {
+                if (tagIndex == i) {
+                    setTextViewColor(mTextViews[i], true)
+                    mTextViews[tagIndex].isSelected = true
+                } else {
+                    setTextViewColor(mTextViews[i], false)
+                    if (mTextViews[i].isSelected) {
+                        mTextViews[i].isSelected = false
+                    }
                 }
+                i++
             }
         }
         // 设置选中的图片
-        for (int i = 0, size = mImageViews.length; i < size; i++) {
+        var i = 0
+        val size = mImageViews.size
+        while (i < size) {
             if (tagIndex == i) {
-                setImageView(mImageViews[i], true);
-                mImageViews[tagIndex].setSelected(true);
+                setImageView(mImageViews[i], true)
+                mImageViews[tagIndex].isSelected = true
             } else {
-                setImageView(mImageViews[i], false);
-                if (mImageViews[i].isSelected()) {
-                    mImageViews[i].setSelected(false);
+                setImageView(mImageViews[i], false)
+                if (mImageViews[i].isSelected) {
+                    mImageViews[i].isSelected = false
                 }
             }
+            i++
         }
     }
 
@@ -142,11 +105,11 @@ public class AppPageKit implements View.OnClickListener {
      * @param textView
      * @param tag
      */
-    private void setTextViewColor(TextView textView, boolean tag) {
+    private fun setTextViewColor(textView: TextView, tag: Boolean) {
         if (tag) {
-            textView.setTextColor(ContextCompat.getColor(mActivity.get(), R.color.app_000000));
+            textView.setTextColor(ContextCompat.getColor(mActivity!!.get()!!, R.color.app_000000))
         } else {
-            textView.setTextColor(ContextCompat.getColor(mActivity.get(), R.color.app_999999));
+            textView.setTextColor(ContextCompat.getColor(mActivity!!.get()!!, R.color.app_999999))
         }
     }
 
@@ -156,18 +119,13 @@ public class AppPageKit implements View.OnClickListener {
      * @param imageView
      * @param tag
      */
-    private void setImageView(ImageView imageView, boolean tag) {
-        // 博客
-        if (imageView.getId() == R.id.im_lore) {
-            setImageViewColor(imageView, tag, R.mipmap.app_lore, R.mipmap.app_select_lore);
-        }
-        // 体系
-        else if (imageView.getId() == R.id.im_product) {
-            setImageViewColor(imageView, tag, R.mipmap.app_product, R.mipmap.app_select_product);
-        }
-        // 我的
-        else if (imageView.getId() == R.id.im_mine) {
-            setImageViewColor(imageView, tag, R.mipmap.app_mine, R.mipmap.app_select_mine);
+    private fun setImageView(imageView: ImageView, tag: Boolean) { // 博客
+        if (imageView.id == R.id.im_lore) {
+            setImageViewColor(imageView, tag, R.mipmap.app_lore, R.mipmap.app_select_lore)
+        } else if (imageView.id == R.id.im_product) {
+            setImageViewColor(imageView, tag, R.mipmap.app_product, R.mipmap.app_select_product)
+        } else if (imageView.id == R.id.im_mine) {
+            setImageViewColor(imageView, tag, R.mipmap.app_mine, R.mipmap.app_select_mine)
         }
     }
 
@@ -179,11 +137,11 @@ public class AppPageKit implements View.OnClickListener {
      * @param unSelectId
      * @param selectId
      */
-    private void setImageViewColor(ImageView imageView, boolean tag, @DrawableRes int unSelectId, @DrawableRes int selectId) {
+    private fun setImageViewColor(imageView: ImageView, tag: Boolean, @DrawableRes unSelectId: Int, @DrawableRes selectId: Int) {
         if (tag) {
-            imageView.setImageDrawable(ContextCompat.getDrawable(mActivity.get(), selectId));
+            imageView.setImageDrawable(ContextCompat.getDrawable(mActivity!!.get()!!, selectId))
         } else {
-            imageView.setImageDrawable(ContextCompat.getDrawable(mActivity.get(), unSelectId));
+            imageView.setImageDrawable(ContextCompat.getDrawable(mActivity!!.get()!!, unSelectId))
         }
     }
 
@@ -192,38 +150,36 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param params
      */
-    public void onIntentAction(String params) {
-        if (!TextUtils.isEmpty(params) && !"null".equals(params)) {
+    fun onIntentAction(params: String) {
+        if (!TextUtils.isEmpty(params) && "null" != params) {
             try {
-                JSONObject jsonObject = new JSONObject(params);
-                String action = jsonObject.optString("action");
+                val jsonObject = JSONObject(params)
+                val action = jsonObject.optString("action")
                 //过滤非法action
                 if (getTagIndex(action) >= 0) {
-                    switchPage(action);
+                    switchPage(action)
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        final int id = v.getId();
-        int index = -1;
+    override fun onClick(v: View) {
+        val id = v.id
+        var index = -1
         if (R.id.ll_lore == id) {
-            index = 0;
+            index = 0
         } else if (R.id.ll_product == id) {
-            index = 1;
+            index = 1
         } else if (R.id.ll_mine == id) {
-            index = 2;
+            index = 2
         }
-//        setStatusBar();
+        //        setStatusBar();
         if (index >= 0) {
-            switchPage(sPages[index]);
+            switchPage(sPages[index])
         }
     }
-
 
     /**
      * 根据Tag获取 int类型下标
@@ -231,15 +187,18 @@ public class AppPageKit implements View.OnClickListener {
      * @param tag
      * @return
      */
-    private int getTagIndex(String tag) {
-        int index = -1;
-        for (int i = 0, size = sPages.length; i < size; i++) {
+    private fun getTagIndex(tag: String): Int {
+        var index = -1
+        var i = 0
+        val size = sPages.size
+        while (i < size) {
             if (TextUtils.equals(sPages[i], tag)) {
-                index = i;
-                break;
+                index = i
+                break
             }
+            i++
         }
-        return index;
+        return index
     }
 
     /**
@@ -248,21 +207,18 @@ public class AppPageKit implements View.OnClickListener {
      * @param tag
      * @return
      */
-    private Fragment createTagFragment(String tag) {
-        Fragment fragment = null;
+    private fun createTagFragment(tag: String): Fragment? {
+        var fragment: Fragment? = null
         if (TextUtils.equals(tag, sPages[0])) {
-            fragment = getComponentFragment("loreComponent", "loreFragment", "fragment");
+            fragment = getComponentFragment("loreComponent", "loreFragment", "fragment")
         } else if (TextUtils.equals(tag, sPages[1])) {
-            fragment = getComponentFragment("productComponent", "productFragment", "fragment");
+            fragment = getComponentFragment("productComponent", "productFragment", "fragment")
         } else if (TextUtils.equals(tag, sPages[2])) {
-            fragment = getComponentFragment("mineComponent", "mineFragment", "fragment");
+            fragment = getComponentFragment("mineComponent", "mineFragment", "fragment")
         }
-        if (fragment != null) {
-            addTagFragment(fragment, tag);
-        }
-        return fragment;
+        fragment?.let { addTagFragment(it, tag) }
+        return fragment
     }
-
 
     /**
      * 获取对应的fragment
@@ -272,22 +228,21 @@ public class AppPageKit implements View.OnClickListener {
      * @param key           组件 KEY
      * @return
      */
-    private Fragment getComponentFragment(String componentName, String actionName, String key) {
-        Fragment fragment = null;
-        CCResult ccResult = CC.obtainBuilder(componentName)
+    private fun getComponentFragment(componentName: String, actionName: String, key: String): Fragment? {
+        var fragment: Fragment? = null
+        val ccResult = CC.obtainBuilder(componentName)
                 .setActionName(actionName)
                 .build()
-                .call();
-        if (ccResult != null && ccResult.isSuccess()) {
+                .call()
+        if (ccResult != null && ccResult.isSuccess) {
             try {
-                fragment = ccResult.getDataItem(key);
-            } catch (Exception e) {
-                e.printStackTrace();
+                fragment = ccResult.getDataItem<Fragment>(key)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
-        return fragment;
+        return fragment
     }
-
 
     /**
      * 根据tag 添加Fragment
@@ -295,9 +250,9 @@ public class AppPageKit implements View.OnClickListener {
      * @param fragment
      * @param tag
      */
-    private void addTagFragment(Fragment fragment, String tag) {
+    private fun addTagFragment(fragment: Fragment?, tag: String) {
         if (fragment != null) {
-            mActivity.get().getSupportFragmentManager().beginTransaction().add(R.id.content, fragment, tag).commitAllowingStateLoss();
+            mActivity!!.get()!!.supportFragmentManager.beginTransaction().add(R.id.content, fragment, tag).commitAllowingStateLoss()
         }
     }
 
@@ -307,8 +262,8 @@ public class AppPageKit implements View.OnClickListener {
      * @param tag
      * @return
      */
-    private Fragment getTagFragment(String tag) {
-        return mActivity.get().getSupportFragmentManager().findFragmentByTag(tag);
+    private fun getTagFragment(tag: String): Fragment? {
+        return mActivity!!.get()!!.supportFragmentManager.findFragmentByTag(tag)
     }
 
     /**
@@ -316,9 +271,9 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param fragment
      */
-    public void showFragment(Fragment fragment) {
+    fun showFragment(fragment: Fragment?) {
         if (fragment != null) {
-            mActivity.get().getSupportFragmentManager().beginTransaction().show(fragment).commitAllowingStateLoss();
+            mActivity!!.get()!!.supportFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss()
         }
     }
 
@@ -327,10 +282,10 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param tag
      */
-    private void hideTagElseFragment(String tag) {
-        for (String item : sPages) {
+    private fun hideTagElseFragment(tag: String) {
+        for (item in sPages) {
             if (!TextUtils.equals(item, tag)) {
-                hideFragment(getTagFragment(item));
+                hideFragment(getTagFragment(item))
             }
         }
     }
@@ -340,20 +295,20 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param fragment
      */
-    private void hideFragment(Fragment fragment) {
+    private fun hideFragment(fragment: Fragment?) {
         if (fragment != null) {
-            mActivity.get().getSupportFragmentManager().beginTransaction().hide(fragment).commitAllowingStateLoss();
+            mActivity!!.get()!!.supportFragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss()
         }
     }
 
     /**
      * 清除全部Fragment
      */
-    public void release() {
-        for (String tag : sPages) {
-            removeTagFragment(tag);
+    fun release() {
+        for (tag in sPages) {
+            removeTagFragment(tag)
         }
-        mActivity = null;
+        mActivity = null
     }
 
     /**
@@ -361,18 +316,18 @@ public class AppPageKit implements View.OnClickListener {
      *
      * @param tag
      */
-    private void removeTagFragment(String tag) {
-        Fragment fragment = getTagFragment(tag);
+    private fun removeTagFragment(tag: String) {
+        val fragment = getTagFragment(tag)
         if (fragment != null) {
-            mActivity.get().getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
+            mActivity!!.get()!!.supportFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
         }
     }
 
     /**
      * 设置Status bar
      */
-    private void setStatusBar() {
-        LxStatusBarUtil.setLightMode(mActivity.get());
+    private fun setStatusBar() {
+        LxStatusBarUtil.setLightMode(mActivity!!.get())
     }
 
     /**
@@ -381,8 +336,37 @@ public class AppPageKit implements View.OnClickListener {
      * @param id
      * @param <T>
      * @return
+    </T> */
+    private fun <T : View?> getView(id: Int): T {
+        return mActivity!!.get()!!.findViewById<View>(id) as T
+    }
+
+    companion object {
+        val sPages = arrayOf("lore", "product", "mine")
+    }
+
+    /**
+     * 初始化View
+     *
+     * @param activity
      */
-    private <T extends View> T getView(int id) {
-        return (T) mActivity.get().findViewById(id);
+    init {
+        mActivity = WeakReference(activity)
+        mLlLore = getView(R.id.ll_lore)
+        mImLore = getView(R.id.im_lore)
+        mTvLore = getView(R.id.tv_lore)
+        mLlLore.setOnClickListener(this)
+        mLlProduct = getView(R.id.ll_product)
+        mImProduct = getView(R.id.im_product)
+        mTvProduct = getView(R.id.tv_product)
+        mLlProduct.setOnClickListener(this)
+        mLlMine = getView(R.id.ll_mine)
+        mImMine = getView(R.id.im_mine)
+        mTvMine = getView(R.id.tv_mine)
+        mLlMine.setOnClickListener(this)
+        mTextViews = arrayOf(mTvLore, mTvProduct, mTvMine)
+        mImageViews = arrayOf(mImLore, mImProduct, mImMine)
+        switchPage(sPages[0])
+        setStatusBar()
     }
 }

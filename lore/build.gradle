@@ -4,24 +4,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-
     compileSdkVersion rootProject.compileVersion
-
     defaultConfig {
-
         if (project.ext.runAsApp) {
             applicationId "com.kk.app.lore"
         }
-
         minSdkVersion rootProject.minVersion
         targetSdkVersion rootProject.compileVersion
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
-
     sourceSets {
         main {
             if (project.ext.runAsApp) {
@@ -38,11 +31,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.deps.kotlin_stdlib_jdk7
     implementation "com.kk.app:lib_image:${lib_image}"
     implementation "com.kk.app:lib_banner:${lib_banner}"
     implementation "com.kk.app:lib_widget:${lib_widget}"

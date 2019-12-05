@@ -1,31 +1,27 @@
-package com.kk.app.product.constant;
+package com.kk.app.product.constant
 
 /**
  * @author kk
  * @datetime: 2019/3/29
  * @desc:
  */
-public interface ProductConstant {
-
-    /**
-     * 参数
-     */
-    String KRY_PARAM = "param";
-
-    /**
-     * Component
-     */
-    String KRY_PRODUCT_COMPONENT = "productComponent";
-
-    /**
-     * ProductActivity
-     */
-    String KRY_PRODUCT_ACTIVITY = "productActivity";
-
-    /**
-     * ProductFragment
-     */
-    String KRY_PRODUCT_FRAGMENT = "productFragment";
-
-
+interface ProductConstant {
+    companion object {
+        /**
+         * 参数
+         */
+        const val KRY_PARAM = "param"
+        /**
+         * Component
+         */
+        const val KRY_PRODUCT_COMPONENT = "productComponent"
+        /**
+         * ProductActivity
+         */
+        const val KRY_PRODUCT_ACTIVITY = "productActivity"
+        /**
+         * ProductFragment
+         */
+        const val KRY_PRODUCT_FRAGMENT = "productFragment"
+    }
 }

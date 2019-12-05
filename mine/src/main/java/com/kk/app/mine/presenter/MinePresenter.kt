@@ -1,41 +1,34 @@
-package com.kk.app.mine.presenter;
+package com.kk.app.mine.presenter
 
-import com.billy.android.preloader.PreLoader;
-import com.kk.app.lib.recyclerview.manager.AbstractPresenter;
-import com.kk.app.lib.recyclerview.manager.ICombinesProvider;
-import com.kk.app.mine.combines.MineContainer;
-import com.kk.app.mine.dataload.MinDataLoad;
+import com.billy.android.preloader.PreLoader
+import com.kk.app.lib.recyclerview.manager.AbstractPresenter
+import com.kk.app.lib.recyclerview.manager.ICombinesProvider
+import com.kk.app.mine.combines.MineContainer
+import com.kk.app.mine.dataload.MinDataLoad
 
 /**
  * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */
-public class MinePresenter extends AbstractPresenter {
-
-
-    public MinePresenter(int key) {
-        super(key);
+class MinePresenter(key: Int) : AbstractPresenter(key) {
+    override fun visitNet(isPullDown: Boolean) {
+        PreLoader.refresh(mKey)
     }
 
-    /**
-     * 加载数据
-     *
-     * @param par
-     * @return
-     */
-    public static int preLoad(String par) {
-        return PreLoader.preLoad(new MinDataLoad(par));
+    override fun provideCombinesProvider(): ICombinesProvider {
+        return MineContainer()
     }
 
-
-    @Override
-    public void visitNet(boolean isPullDown) {
-        PreLoader.refresh(mKey);
-    }
-
-    @Override
-    protected ICombinesProvider provideCombinesProvider() {
-        return new MineContainer();
+    companion object {
+        /**
+         * 加载数据
+         *
+         * @param par
+         * @return
+         */
+        fun preLoad(par: String?): Int {
+            return PreLoader.preLoad<String>(MinDataLoad(par))
+        }
     }
 }

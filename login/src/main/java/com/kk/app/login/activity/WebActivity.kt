@@ -1,198 +1,180 @@
-package com.kk.app.login.activity;
+package com.kk.app.login.activity
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.kk.app.lib.widget.NoDoubleClickListener;
-import com.kk.app.lib.widget.neterror.NeterrorLayout;
-import com.kk.app.login.R;
-import com.kk.app.util.NetUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
+import android.view.KeyEvent
+import android.view.View
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.TextView
+import com.kk.app.lib.widget.NoDoubleClickListener
+import com.kk.app.lib.widget.neterror.NeterrorLayout
+import com.kk.app.login.R
+import com.kk.app.util.NetUtil
+import org.json.JSONException
+import org.json.JSONObject
 
 /**
  * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */
-public class WebActivity extends AppCompatActivity {
-
-    public static final String PARAMS = "params";
-    public static final String URL = "url";
-    public static final String TITLE = "title";
-    public static final String HIDE_TITLE = "hide_title";
-    public static final String TAG = "xp";
-
-    public NeterrorLayout neterror;
-    public RelativeLayout rltTitle;
-    public TextView tvTitle;
-    public ImageView ivBack;
-    public WebView webContent;
-    public String mUrl;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
-        initView();
-        initView();
-        initListener();
-        initVariables();
-        checkNet();
+class WebActivity : AppCompatActivity() {
+    var neterror: NeterrorLayout? = null
+    var rltTitle: RelativeLayout? = null
+    var tvTitle: TextView? = null
+    var ivBack: ImageView? = null
+    var webContent: WebView? = null
+    var mUrl: String? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_web)
+        initView()
+        initView()
+        initListener()
+        initVariables()
+        checkNet()
     }
 
-    private void initView() {
-        webContent = findViewById(R.id.web_content);
-        rltTitle = findViewById(R.id.rlt_title);
-        tvTitle = findViewById(R.id.tv_title);
-        ivBack = findViewById(R.id.iv_back);
-        neterror = findViewById(R.id.nel_error);
-        initialWebSetting();
+    private fun initView() {
+        webContent = findViewById(R.id.web_content)
+        rltTitle = findViewById(R.id.rlt_title)
+        tvTitle = findViewById(R.id.tv_title)
+        ivBack = findViewById(R.id.iv_back)
+        neterror = findViewById(R.id.nel_error)
+        initialWebSetting()
     }
-
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void initialWebSetting() {
-        final WebSettings settings = webContent.getSettings();
-        settings.setJavaScriptEnabled(true);
+    private fun initialWebSetting() {
+        val settings = webContent!!.settings
+        settings.javaScriptEnabled = true
         //setCacheMode，有网络就是使用默认缓存策略
         if (!NetUtil.checkNet(this)) {
-            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         } else {
-            settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+            settings.cacheMode = WebSettings.LOAD_DEFAULT
         }
-
         if (Build.VERSION.SDK_INT >= 21) {
-            webContent.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            webContent!!.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
         // 设置可以使用localStorage
-        settings.setDomStorageEnabled(true);
+        settings.domStorageEnabled = true
         // 应用可以有缓存
-        String appCacheDir = this.getApplicationContext().getDir("cache", Context.MODE_PRIVATE).getPath();
-        settings.setAppCachePath(appCacheDir);
-        settings.setAppCacheEnabled(true);
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
-        settings.setSaveFormData(false);
-        settings.setBuiltInZoomControls(false);
+        val appCacheDir = this.applicationContext.getDir("cache", Context.MODE_PRIVATE).path
+        settings.setAppCachePath(appCacheDir)
+        settings.setAppCacheEnabled(true)
+        settings.useWideViewPort = true
+        settings.loadWithOverviewMode = true
+        settings.saveFormData = false
+        settings.builtInZoomControls = false
     }
 
-    private void initListener() {
-        ivBack.setOnClickListener(new NoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                onBack();
+    private fun initListener() {
+        ivBack!!.setOnClickListener(object : NoDoubleClickListener() {
+            override fun onNoDoubleClick(v: View) {
+                onBack()
             }
-        });
+        })
     }
 
-    protected void initVariables() {
-        String params = getIntent().getStringExtra(PARAMS);
+    protected fun initVariables() {
+        val params = intent.getStringExtra(PARAMS)
         try {
-            JSONObject data = new JSONObject(params);
-            mUrl = data.optString(URL);
-            tvTitle.setText(data.optString(TITLE));
-            boolean isHideTitle = data.optBoolean(HIDE_TITLE);
-
+            val data = JSONObject(params)
+            mUrl = data.optString(URL)
+            tvTitle!!.text = data.optString(TITLE)
+            val isHideTitle = data.optBoolean(HIDE_TITLE)
             if (isHideTitle) {
-                rltTitle.setVisibility(View.GONE);
+                rltTitle!!.visibility = View.GONE
             } else {
-                rltTitle.setVisibility(View.VISIBLE);
+                rltTitle!!.visibility = View.VISIBLE
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
     }
 
-    private void checkNet() {
+    private fun checkNet() {
         if (!NetUtil.checkNet(this)) {
-            noNet();
+            noNet()
         } else {
-            hasNet();
+            hasNet()
         }
     }
 
-    private void noNet() {
-        neterror.onTimeoutError();
-        webContent.setVisibility(View.GONE);
+    private fun noNet() {
+        neterror!!.onTimeoutError()
+        webContent!!.visibility = View.GONE
     }
 
-    private void hasNet() {
-        webContent.setVisibility(View.VISIBLE);
-        neterror.onConnected();
-
-        webContent.setWebChromeClient(new WebChromeClient());
-        webContent.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Uri parse = Uri.parse(url);
-                String scheme = parse.getScheme();
-                return false;
+    private fun hasNet() {
+        webContent!!.visibility = View.VISIBLE
+        neterror!!.onConnected()
+        webContent!!.webChromeClient = WebChromeClient()
+        webContent!!.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                val parse = Uri.parse(url)
+                val scheme = parse.scheme
+                return false
             }
 
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
+            override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
+                super.onPageStarted(view, url, favicon)
             }
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                if (!TextUtils.isEmpty(webContent.getTitle()) && !webContent.getTitle().contains("http")) {
-                    tvTitle.setText(webContent.getTitle());
+            override fun onPageFinished(view: WebView, url: String) {
+                super.onPageFinished(view, url)
+                if (!TextUtils.isEmpty(webContent!!.title) && !webContent!!.title.contains("http")) {
+                    tvTitle!!.text = webContent!!.title
                 }
             }
-        });
-
+        }
         if (!TextUtils.isEmpty(mUrl) && webContent != null) {
-            webContent.loadUrl(mUrl);
+            webContent!!.loadUrl(mUrl)
         }
     }
 
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBack();
-            return true;
+            onBack()
+            return true
         }
-        return super.onKeyDown(keyCode, event);
+        return super.onKeyDown(keyCode, event)
     }
 
-
-    private void onBack() {
+    private fun onBack() {
         if (webContent != null) {
-            if (webContent.canGoBack()) {
-                webContent.goBack();
+            if (webContent!!.canGoBack()) {
+                webContent!!.goBack()
             } else {
-                onBackPressed();
+                onBackPressed()
             }
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    override fun onDestroy() {
+        super.onDestroy()
         if (webContent != null) {
-            webContent.clearCache(true);
+            webContent!!.clearCache(true)
         }
     }
 
+    companion object {
+        const val PARAMS = "params"
+        const val URL = "url"
+        const val TITLE = "title"
+        const val HIDE_TITLE = "hide_title"
+        const val TAG = "xp"
+    }
 }

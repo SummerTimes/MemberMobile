@@ -33,6 +33,4 @@ class  TestActivity:Activity(), IUI {
         recyclerView.layoutManager = LinearLayoutManager(this)
         testPresenter.onUIReady(this)
     }
-
-
 }

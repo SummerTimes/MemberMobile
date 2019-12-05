@@ -1,74 +1,67 @@
-package com.kk.app.mine.activity;
+package com.kk.app.mine.activity
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.billy.android.preloader.PreLoader;
-import com.billy.android.preloader.interfaces.GroupedDataListener;
-import com.kk.app.lib.recyclerview.manager.IFloorCombine;
-import com.kk.app.lib.recyclerview.manager.IUI;
-import com.kk.app.mine.R;
-import com.kk.app.mine.constant.MineConstant;
-import com.kk.app.mine.dataload.MinDataLoad;
-import com.kk.app.mine.presenter.MinePresenter;
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
+import android.util.Log
+import com.billy.android.preloader.PreLoader
+import com.billy.android.preloader.interfaces.GroupedDataListener
+import com.kk.app.lib.recyclerview.manager.IFloorCombine
+import com.kk.app.lib.recyclerview.manager.IUI
+import com.kk.app.mine.R
+import com.kk.app.mine.constant.MineConstant
+import com.kk.app.mine.dataload.MinDataLoad
+import com.kk.app.mine.presenter.MinePresenter
 
 /**
  * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */
-public class MineActivity extends AppCompatActivity implements IUI {
-
-    private int mKey;
-    private RecyclerView mRvView;
-
-    private MinePresenter mMinePresenter;
-    private RecyclerView.Adapter mAdapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mKey = MinePresenter.preLoad(getParams());
-        initPresenter();
-        setContentView(R.layout.mine_main_activity);
-        initView();
-        initListener();
+class MineActivity : AppCompatActivity(), IUI {
+    private var mKey = 0
+    private var mRvView: RecyclerView? = null
+    private var mMinePresenter: MinePresenter? = null
+    private var mAdapter: RecyclerView.Adapter<*>? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mKey = MinePresenter.Companion.preLoad(params)
+        initPresenter()
+        setContentView(R.layout.mine_main_activity)
+        initView()
+        initListener()
     }
 
     /**
      * 监听是否有数据
      */
-    private void initListener() {
-        PreLoader.listenData(mKey, new GroupedDataListener<String>() {
-            @Override
-            public String keyInGroup() {
-                return MinDataLoad.MINE_LIST_KEY;
+    private fun initListener() {
+        PreLoader.listenData<String>(mKey, object : GroupedDataListener<String?> {
+            override fun keyInGroup(): String {
+                return MinDataLoad.Companion.MINE_LIST_KEY
             }
 
-            @Override
-            public void onDataArrived(String str) {
-                Log.e("xp", "---网络数据----" + str);
+            override fun onDataArrived(str: String) {
+                Log.e("xp", "---网络数据----$str")
             }
-        });
+        })
     }
 
-    private void initPresenter() {
+    private fun initPresenter() {
         if (null == mMinePresenter) {
-            mMinePresenter = new MinePresenter(mKey);
+            mMinePresenter = MinePresenter(mKey)
         }
-        mMinePresenter.bindActivity(this);
+        mMinePresenter!!.bindActivity(this)
     }
 
-    private void initView() {
-        mRvView = findViewById(R.id.rv_view);
-        mAdapter = mMinePresenter.getAdapter();
-        mRvView.setLayoutManager(new LinearLayoutManager(this));
-        mRvView.setAdapter(mAdapter);
-        mMinePresenter.onUIReady(this);
+    private fun initView() {
+        mRvView = findViewById(R.id.rv_view)
+        mAdapter = mMinePresenter!!.adapter
+        mRvView.setLayoutManager(LinearLayoutManager(this))
+        mRvView.setAdapter(mAdapter)
+        mMinePresenter!!.onUIReady(this)
     }
 
     /**
@@ -76,24 +69,20 @@ public class MineActivity extends AppCompatActivity implements IUI {
      *
      * @return
      */
-    private String getParams() {
-        String mParams = getIntent().getStringExtra(MineConstant.KRY_PARAM);
-        if (TextUtils.isEmpty(mParams)) {
-            return "";
+    private val params: String
+        private get() {
+            val mParams = intent.getStringExtra(MineConstant.Companion.KRY_PARAM)
+            return if (TextUtils.isEmpty(mParams)) {
+                ""
+            } else mParams
         }
-        return mParams;
+
+    public override fun onDestroy() {
+        super.onDestroy()
+        PreLoader.destroy(mKey)
     }
 
-
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        PreLoader.destroy(mKey);
-    }
-
-    @Override
-    public void onCombineRequestInflateUI(IFloorCombine combine) {
-        mMinePresenter.notifyDataChanged(combine);
+    override fun onCombineRequestInflateUI(combine: IFloorCombine) {
+        mMinePresenter!!.notifyDataChanged(combine)
     }
 }

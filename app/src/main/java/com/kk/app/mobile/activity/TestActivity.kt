@@ -1,15 +1,12 @@
-package com.kk.app.mobile.activity;
+package com.kk.app.mobile.activity
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.kk.app.mobile.R
 
-import com.kk.app.mobile.R;
-
-public class TestActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+class TestActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_test)
     }
 }

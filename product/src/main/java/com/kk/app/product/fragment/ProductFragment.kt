@@ -1,73 +1,61 @@
-package com.kk.app.product.fragment;
+package com.kk.app.product.fragment
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.billy.cc.core.component.CC;
-import com.kk.app.product.R;
-import com.kk.app.product.constant.ProductConstant;
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.billy.cc.core.component.CC
+import com.kk.app.product.R
+import com.kk.app.product.constant.ProductConstant
 
 /**
  * @author kk
  * @datetime: 2019/08/07
  * @desc: 我的
  */
-public class ProductFragment extends Fragment {
-
-    private View rootView;
-
-    private String mParam;
-
-    public static ProductFragment newInstance(String param) {
-        ProductFragment fragment = new ProductFragment();
-        Bundle args = new Bundle();
-        args.putString(ProductConstant.KRY_PARAM, param);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam = getArguments().getString(ProductConstant.KRY_PARAM);
+class ProductFragment : Fragment() {
+    private var rootView: View? = null
+    private var mParam: String? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null) {
+            mParam = arguments!!.getString(ProductConstant.Companion.KRY_PARAM)
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.pt_main_fragment, container, false);
+            rootView = inflater.inflate(R.layout.pt_main_fragment, container, false)
         } else {
-            ViewGroup viewGroup = (ViewGroup) rootView.getParent();
-            if (viewGroup != null) {
-                viewGroup.removeView(rootView);
-            }
+            val viewGroup = rootView!!.parent as ViewGroup
+            viewGroup?.removeView(rootView)
         }
-        initView();
-        return rootView;
+        initView()
+        return rootView
     }
 
-    private void initView() {
-        rootView.findViewById(R.id.tv_info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CC.obtainBuilder("productComponent")
-                        .setActionName("productActivity")
-                        .addParam("param", "product/12345")
-                        .build()
-                        .callAsync();
-            }
-        });
+    private fun initView() {
+        rootView!!.findViewById<View>(R.id.tv_info).setOnClickListener {
+            CC.obtainBuilder("productComponent")
+                    .setActionName("productActivity")
+                    .addParam("param", "product/12345")
+                    .build()
+                    .callAsync()
+        }
     }
 
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+    override fun onDetach() {
+        super.onDetach()
     }
 
+    companion object {
+        fun newInstance(param: String?): ProductFragment {
+            val fragment = ProductFragment()
+            val args = Bundle()
+            args.putString(ProductConstant.Companion.KRY_PARAM, param)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

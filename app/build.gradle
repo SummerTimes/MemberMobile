@@ -38,15 +38,15 @@ dependencies {
     implementation rootProject.ext.deps.kotlin_stdlib_jdk7
     implementation rootProject.ext.deps.appcompatv7
 
-//    implementation project(':mine')
+    implementation project(':mine')
     implementation project(':login')
-//    implementation project(':product')
-//    implementation project(':lore')
+    implementation project(':product')
+    implementation project(':lore')
 
-    implementation "com.kk.app:mine:${mine}"
+//    implementation "com.kk.app:mine:${mine}"
 //    implementation "com.kk.app:login:${login}"
-    implementation "com.kk.app:product:${product}"
-    implementation "com.kk.app:lore:${lore}"
+//    implementation "com.kk.app:product:${product}"
+//    implementation "com.kk.app:lore:${lore}"
 
     implementation "com.kk.app:ww:1.0.1"
     implementation "com.kk.app:webview:${webview}"
