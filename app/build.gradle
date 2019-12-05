@@ -4,9 +4,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-
     compileSdkVersion rootProject.compileVersion
-
     defaultConfig {
         if (project.ext.runAsApp) {
             applicationId "com.kk.app.mobile"
@@ -25,7 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,17 +35,15 @@ dependencies {
     implementation rootProject.ext.deps.kotlin_stdlib_jdk7
     implementation rootProject.ext.deps.appcompatv7
 
-    implementation project(':mine')
-    implementation project(':login')
-    implementation project(':product')
-    implementation project(':lore')
+//    implementation project(':mine')
+//    implementation project(':login')
+//    implementation project(':product')
+//    implementation project(':lore')
+    implementation "com.kk.app:mine:${mine}"
+    implementation "com.kk.app:login:${login}"
+    implementation "com.kk.app:product:${product}"
+    implementation "com.kk.app:lore:${lore}"
 
-//    implementation "com.kk.app:mine:${mine}"
-//    implementation "com.kk.app:login:${login}"
-//    implementation "com.kk.app:product:${product}"
-//    implementation "com.kk.app:lore:${lore}"
-
-    implementation "com.kk.app:ww:1.0.1"
     implementation "com.kk.app:webview:${webview}"
     implementation "com.kk.app:lib_util:${lib_util}"
     implementation "com.kk.app:lib_image:${lib_image}"
@@ -56,5 +51,4 @@ dependencies {
     implementation "com.kk.app:lib_widget:${lib_widget}"
     implementation "com.kk.app:lib_network:${lib_network}"
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

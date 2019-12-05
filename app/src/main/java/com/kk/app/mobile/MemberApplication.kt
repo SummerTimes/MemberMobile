@@ -10,9 +10,11 @@ import com.kk.app.lib.network.NetworkConfig
  * @desc 程序入口
  */
 class MemberApplication : Application() {
+
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
         NetworkConfig.setup(this, "prd")
     }
+
 }

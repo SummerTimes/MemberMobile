@@ -21,6 +21,7 @@ import java.lang.ref.WeakReference
  * @desc:底部Kit
  */
 class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
+
     private val mLlLore: LinearLayout
     private val mImLore: ImageView
     private val mTvLore: TextView
@@ -34,6 +35,7 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
     private val mTextViews: Array<TextView>?
     private val mImageViews: Array<ImageView>?
     private var mActivity: WeakReference<FragmentActivity>?
+    
     /**
      * Activity onResume
      */
@@ -44,7 +46,7 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
      *
      * @param tag
      */
-    fun switchPage(tag: String) {
+    private fun switchPage(tag: String) {
         if (TextUtils.equals(tag, currentTag)) {
             return
         }
@@ -55,7 +57,7 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
     }
 
     /**
-     * 根据Tag 更新文字的颜色值
+     * 根据Tag 更新文字的颜色值/图片
      *
      * @param tag
      */
@@ -65,7 +67,6 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
         if (tagIndex < 0 || null == mTextViews || null == mImageViews) {
             return
         }
-        // 设置选中的颜色
         run {
             var i = 0
             val size = mTextViews!!.size
@@ -82,7 +83,6 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
                 i++
             }
         }
-        // 设置选中的图片
         var i = 0
         val size = mImageViews.size
         while (i < size) {
@@ -175,7 +175,6 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
         } else if (R.id.ll_mine == id) {
             index = 2
         }
-        //        setStatusBar();
         if (index >= 0) {
             switchPage(sPages[index])
         }
@@ -271,7 +270,7 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
      *
      * @param fragment
      */
-    fun showFragment(fragment: Fragment?) {
+    private fun showFragment(fragment: Fragment?) {
         if (fragment != null) {
             mActivity!!.get()!!.supportFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss()
         }
@@ -330,17 +329,6 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
         LxStatusBarUtil.setLightMode(mActivity!!.get())
     }
 
-    /**
-     * 获取View
-     *
-     * @param id
-     * @param <T>
-     * @return
-    </T> */
-    private fun <T : View?> getView(id: Int): T {
-        return mActivity!!.get()!!.findViewById<View>(id) as T
-    }
-
     companion object {
         val sPages = arrayOf("lore", "product", "mine")
     }
@@ -348,21 +336,20 @@ class AppPageKit(activity: FragmentActivity) : View.OnClickListener {
     /**
      * 初始化View
      *
-     * @param activity
      */
     init {
         mActivity = WeakReference(activity)
-        mLlLore = getView(R.id.ll_lore)
-        mImLore = getView(R.id.im_lore)
-        mTvLore = getView(R.id.tv_lore)
+        mLlLore = activity.findViewById(R.id.ll_lore)
+        mImLore = activity.findViewById(R.id.im_lore)
+        mTvLore = activity.findViewById(R.id.tv_lore)
         mLlLore.setOnClickListener(this)
-        mLlProduct = getView(R.id.ll_product)
-        mImProduct = getView(R.id.im_product)
-        mTvProduct = getView(R.id.tv_product)
+        mLlProduct = activity.findViewById(R.id.ll_product)
+        mImProduct = activity.findViewById(R.id.im_product)
+        mTvProduct = activity.findViewById(R.id.tv_product)
         mLlProduct.setOnClickListener(this)
-        mLlMine = getView(R.id.ll_mine)
-        mImMine = getView(R.id.im_mine)
-        mTvMine = getView(R.id.tv_mine)
+        mLlMine = activity.findViewById(R.id.ll_mine)
+        mImMine = activity.findViewById(R.id.im_mine)
+        mTvMine = activity.findViewById(R.id.tv_mine)
         mLlMine.setOnClickListener(this)
         mTextViews = arrayOf(mTvLore, mTvProduct, mTvMine)
         mImageViews = arrayOf(mImLore, mImProduct, mImMine)

@@ -15,6 +15,7 @@ import org.json.JSONObject
  * @desc
  */
 class NavigationFunction : AbstractFunction() {
+
     override fun registerFunction(webView: BridgeWebView, context: Context) {
         super.registerFunction(webView, context)
         openSelfStoreMapPage(webView, context as Activity)

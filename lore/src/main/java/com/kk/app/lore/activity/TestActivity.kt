@@ -14,14 +14,9 @@ import com.kk.app.lore.presenter.TestPresenter
  * @datetime: 2018/10/24
  * @desc:
  */
-class  TestActivity:Activity(), IUI {
-
-    private lateinit  var testPresenter: TestPresenter
-
-    override fun onCombineRequestInflateUI(combine: IFloorCombine?) {
-        testPresenter.notifyDataChanged(combine)
-    }
-
+class TestActivity : Activity(), IUI {
+    
+    private lateinit var testPresenter: TestPresenter
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,5 +27,9 @@ class  TestActivity:Activity(), IUI {
         recyclerView.adapter = testPresenter.adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         testPresenter.onUIReady(this)
+    }
+
+    override fun onCombineRequestInflateUI(combine: IFloorCombine?) {
+        testPresenter.notifyDataChanged(combine)
     }
 }
