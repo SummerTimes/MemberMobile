@@ -1,11 +1,14 @@
-package com.kk.app.login.bean
+package com.kk.app.login.bean;
+
+import java.util.List;
 
 /**
  * @author kk
  * @datetime: 2018/10/24
  * @desc:
  */
-class CommonBean {
+public class CommonBean {
+
     /**
      * children : []
      * courseId : 13
@@ -16,15 +19,18 @@ class CommonBean {
      * userControlSetTop : false
      * visible : 1
      */
-    private val courseId = 0
-    private val id = 0
-    private val name: String? = null
-    private val order = 0
-    private val parentChapterId = 0
-    private val userControlSetTop = false
-    private val visible = 0
-    private val children: List<*>? = null
-    override fun toString(): String {
+
+    private int courseId;
+    private int id;
+    private String name;
+    private int order;
+    private int parentChapterId;
+    private boolean userControlSetTop;
+    private int visible;
+    private List<?> children;
+
+    @Override
+    public String toString() {
         return "CommonBean{" +
                 "courseId=" + courseId +
                 ", id=" + id +
@@ -34,6 +40,6 @@ class CommonBean {
                 ", userControlSetTop=" + userControlSetTop +
                 ", visible=" + visible +
                 ", children=" + children +
-                '}'
+                '}';
     }
 }

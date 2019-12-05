@@ -21,46 +21,24 @@ import com.kk.app.mine.presenter.MinePresenter
  * @desc:
  */
 class MineActivity : AppCompatActivity(), IUI {
+
     private var mKey = 0
-    private var mRvView: RecyclerView? = null
-    private var mMinePresenter: MinePresenter? = null
-    private var mAdapter: RecyclerView.Adapter<*>? = null
+    private lateinit var mMinePresenter: MinePresenter
+    private lateinit var mAdapter: RecyclerView.Adapter<*>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mKey = MinePresenter.Companion.preLoad(params)
-        initPresenter()
+        mMinePresenter = MinePresenter(mKey)
         setContentView(R.layout.mine_main_activity)
         initView()
-        initListener()
-    }
-
-    /**
-     * 监听是否有数据
-     */
-    private fun initListener() {
-        PreLoader.listenData<String>(mKey, object : GroupedDataListener<String?> {
-            override fun keyInGroup(): String {
-                return MinDataLoad.Companion.MINE_LIST_KEY
-            }
-
-            override fun onDataArrived(str: String) {
-                Log.e("xp", "---网络数据----$str")
-            }
-        })
-    }
-
-    private fun initPresenter() {
-        if (null == mMinePresenter) {
-            mMinePresenter = MinePresenter(mKey)
-        }
-        mMinePresenter!!.bindActivity(this)
     }
 
     private fun initView() {
-        mRvView = findViewById(R.id.rv_view)
+        val mRvView = findViewById<RecyclerView>(R.id.rv_view)
         mAdapter = mMinePresenter!!.adapter
-        mRvView.setLayoutManager(LinearLayoutManager(this))
-        mRvView.setAdapter(mAdapter)
+        mRvView.layoutManager = LinearLayoutManager(this)
+        mRvView.adapter = mMinePresenter.adapter
         mMinePresenter!!.onUIReady(this)
     }
 

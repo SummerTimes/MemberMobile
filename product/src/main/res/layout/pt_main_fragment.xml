@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/colorAccent"
-        android:text="体系" />
+        android:text="product" />
 
 </LinearLayout>

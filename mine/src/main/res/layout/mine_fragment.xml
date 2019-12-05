@@ -11,8 +11,7 @@
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
         android:gravity="center"
-        android:text="我的" />
+        android:text="mine" />
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import com.kk.app.mine.constant.MineConstant
 class MineFragment : Fragment() {
     private var rootView: View? = null
     private var mParam: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
