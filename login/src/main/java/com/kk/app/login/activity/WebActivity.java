@@ -5,10 +5,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -18,12 +17,10 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.kk.app.lib.widget.NoDoubleClickListener;
 import com.kk.app.lib.widget.neterror.NeterrorLayout;
 import com.kk.app.login.R;
 import com.kk.app.util.NetUtil;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

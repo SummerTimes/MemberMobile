@@ -1,8 +1,8 @@
 package com.kk.app.mine.combines
 
-import com.kk.app.lib.recyclerview.manager.ICombinesProvider
-import com.kk.app.lib.recyclerview.manager.IFloorCombine
-import com.kk.app.lib.recyclerview.manager.TestCombine
+import com.kk.app.lib.rv.manager.ICombinesProvider
+import com.kk.app.lib.rv.manager.IFloorCombine
+import com.kk.app.lib.rv.manager.TestCombine
 import java.util.*
 
 /**

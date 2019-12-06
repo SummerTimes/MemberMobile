@@ -5,14 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
-import android.util.Log
 import com.billy.android.preloader.PreLoader
-import com.billy.android.preloader.interfaces.GroupedDataListener
-import com.kk.app.lib.recyclerview.manager.IFloorCombine
-import com.kk.app.lib.recyclerview.manager.IUI
+import com.kk.app.lib.rv.manager.IFloorCombine
+import com.kk.app.lib.rv.manager.IUI
 import com.kk.app.mine.R
 import com.kk.app.mine.constant.MineConstant
-import com.kk.app.mine.dataload.MinDataLoad
 import com.kk.app.mine.presenter.MinePresenter
 
 /**
@@ -28,7 +25,7 @@ class MineActivity : AppCompatActivity(), IUI {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mKey = MinePresenter.Companion.preLoad(params)
+        mKey = MinePresenter.preLoad(params)
         mMinePresenter = MinePresenter(mKey)
         setContentView(R.layout.mine_main_activity)
         initView()
@@ -49,7 +46,7 @@ class MineActivity : AppCompatActivity(), IUI {
      */
     private val params: String
         private get() {
-            val mParams = intent.getStringExtra(MineConstant.Companion.KRY_PARAM)
+            val mParams = intent.getStringExtra(MineConstant.KRY_PARAM)
             return if (TextUtils.isEmpty(mParams)) {
                 ""
             } else mParams

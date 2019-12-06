@@ -53,7 +53,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.google.code.gson:gson:2.8.6"
     implementation "com.kk.app:lib_web:$lib_web"
     implementation "com.kk.app:lib_image:$lib_image"
     implementation "com.kk.app:lib_widget:$lib_widget"

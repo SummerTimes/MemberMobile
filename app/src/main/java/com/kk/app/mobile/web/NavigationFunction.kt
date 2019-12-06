@@ -26,7 +26,7 @@ class NavigationFunction : AbstractFunction() {
      * @param context
      */
     private fun openSelfStoreMapPage(webView: BridgeWebView, context: Activity) {
-        webView.registerFunction(NAVIGATION_TRANS) { method, data, url, ijsCallFunction ->
+        /*webView.registerFunction(NAVIGATION_TRANS) { method, data, url, ijsCallFunction ->
             val info = "玩我呢？"
             try {
                 val entity = JSEntity()
@@ -40,7 +40,7 @@ class NavigationFunction : AbstractFunction() {
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
-        }
+        }*/
     }
 
     companion object {

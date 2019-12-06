@@ -5,23 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
 import com.billy.cc.core.component.CCResult;
-import com.kk.app.banner.Banner;
-import com.kk.app.banner.listener.OnBannerListener;
 import com.kk.app.image.GlideImageView;
 import com.kk.app.lib.network.NetworkCallback;
 import com.kk.app.lib.network.NetworkHelper;
 import com.kk.app.lib.widget.utils.LxStatusBarUtil;
 import com.kk.app.login.R;
-import com.kk.app.login.bean.CommonBean;
-import com.kk.app.login.bean.CommonList;
-import com.kk.app.login.util.LoginUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -22,6 +22,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.ext.deps.cc
-    implementation "com.kk.app:cnetwork:$cnetwork"
-    implementation "com.kk.app:lib_networkinterceptor:$lib_networkinterceptor"
+    implementation "com.kk.app:network:$network"
+    implementation "com.kk.app:lib_interceptor:$lib_interceptor"
 }

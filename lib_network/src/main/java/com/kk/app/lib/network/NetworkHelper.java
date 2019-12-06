@@ -6,24 +6,19 @@ import android.content.pm.PackageInfo;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponentCallback;
 import com.google.gson.Gson;
+import com.kk.app.lib.interceptor.DES;
+import com.kk.app.lib.interceptor.NetworkEncryptInterceptor;
+import com.kk.app.lib.interceptor.NetworkGsonInterceptor;
+import com.kk.app.lib.interceptor.cache.CacheOption;
 import com.kk.app.lib.network.constant.NetworkConstant;
-import com.kk.app.lib.networkinterceptor.DES;
-import com.kk.app.lib.networkinterceptor.NetworkEncryptInterceptor;
-import com.kk.app.lib.networkinterceptor.NetworkGsonInterceptor;
-import com.kk.app.lib.networkinterceptor.NetworkOpenApiInterceptor;
-import com.kk.app.lib.networkinterceptor.cache.CacheOption;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Map;
-import java.util.Set;
 
 
 /**
@@ -357,7 +352,6 @@ public class NetworkHelper {
     /**
      * 关联生命周期请求中间件接口(POST)
      *
-     * @param fragment Fragment
      * @param url      url
      * @param data     请求数据
      * @param method   请求方法（POST/GET）
@@ -384,7 +378,6 @@ public class NetworkHelper {
 //                .addInterceptor(new NetworkGsonInterceptor(callback))
 //                .addInterceptor(NetworkEncryptInterceptor.get());
 //    }
-
     public static <T> String query(String url, String data, String method, CacheOption cacheOption, NetworkCallback<T> callback) {
         CC.Builder builder = genAppMwBuilder(url, data, method, cacheOption, callback);
 

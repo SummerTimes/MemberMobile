@@ -1,11 +1,6 @@
 package com.kk.app.mobile
 
 import android.content.Intent
-import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
-import android.graphics.drawable.Icon
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
@@ -13,12 +8,8 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.ViewStub
 import android.widget.Toast
-import com.kk.app.lore.activity.RecommendActivity
-import com.kk.app.mine.activity.MineActivity
 import com.kk.app.mobile.constant.AppMethod
 import com.kk.app.mobile.kit.AppPageKit
-import com.kk.app.product.activity.ProductMainActivity
-import java.util.*
 
 /**
  * @author kk
@@ -38,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         (findViewById<View>(R.id.vs_mainPage) as ViewStub).inflate()
         mAppPageKit = AppPageKit(this)
-        //        setupShortcuts();
     }
 
     override fun onResume() {
@@ -51,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setIntent(intent)
         if (getIntent().extras != null) {
             if (null != mAppPageKit) {
-                mAppPageKit!!.onIntentAction(getIntent().extras.getString(AppMethod.Companion.KRY_PARAM))
+                mAppPageKit!!.onIntentAction(getIntent().extras.getString(AppMethod.KRY_PARAM))
             }
         }
     }
@@ -81,7 +71,7 @@ class MainActivity : AppCompatActivity() {
      * 桌面快捷启动1、发微博；2、热门微博；3、扫一扫
      */
     private fun setupShortcuts() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
             val mShortcutManager = getSystemService(ShortcutManager::class.java)
             val infos: MutableList<ShortcutInfo> = ArrayList()
             var intent: Intent
@@ -120,6 +110,6 @@ class MainActivity : AppCompatActivity() {
                     .setIntent(intent).setIntents(arrayOf(mainIntent, intent)).build()
             infos.add(info)
             mShortcutManager.dynamicShortcuts = infos
-        }
+        }*/
     }
 }
