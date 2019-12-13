@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.floor_title_text.*
 class TestFloor : KotlinFloor<String>() {
 
     override fun onMyBind(holder: KotlinHolder) {
-        holder.tv_name.text = data
+        holder.tv_name. text = data
     }
 
     override fun viewType(): Int {

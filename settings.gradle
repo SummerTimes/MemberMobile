@@ -5,7 +5,7 @@ include ':app'
 //include ':lib_image'
 //include ':lib_widget'
 //include ':lib_banner'
-include ':lib_rv'
+//include ':lib_rv'
 //include ':webview'
 
 //include ':network'
@@ -14,7 +14,7 @@ include ':lib_rv'
 //include ':lib_interceptor'
 
 //include ':login'
-include ':lore'
+//include ':lore'
 //include ':mine'
 //include ':product'
 
