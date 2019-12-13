@@ -1,7 +1,8 @@
 package com.kk.app.lib.rv.kln
 
-import com.kk.app.lib.recyclerview.R
+import com.kk.app.lib.rv.R
 import kotlinx.android.synthetic.main.floor_title_text.*
+
 
 /**
  * 作者：杨松

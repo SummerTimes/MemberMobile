@@ -1,11 +1,11 @@
 package com.kk.app.lib.rv.title;
 
-import android.view.ViewGroup;
+import com.kk.app.lib.rv.R;
 
+import android.view.ViewGroup;
 import com.kk.app.lib.rv.BaseFloorHolderFactory;
 import com.kk.app.lib.rv.FloorViewType;
 import com.kk.app.lib.rv.BaseFloorHolder;
-import com.kk.app.lib.recyclerview.R;
 
 
 /**

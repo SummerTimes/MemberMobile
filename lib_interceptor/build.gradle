@@ -23,6 +23,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api rootProject.ext.deps.cc
     implementation "com.kk.app:lib_util:$lib_util"
-    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "com.google.code.gson:gson:2.8.5"
     implementation "com.jakewharton:disklrucache:2.0.2"
 }

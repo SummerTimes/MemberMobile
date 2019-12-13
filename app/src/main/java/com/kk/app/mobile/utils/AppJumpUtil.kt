@@ -17,33 +17,33 @@ object AppJumpUtil {
      *
      * @param context
      */
-    fun onStartLogin(context: Context?) {
+//    fun onStartLogin(context: Context?) {
 //        CC.obtainBuilder("loginComponent")
 //                .setContext(context)
 //                .setActionName("LoginActivity")
 //                .addParam("param", "登陆/模块")
 //                .build()
 //                .callAsync { cc, result -> Log.e("xp", "登陆$result") }
-    }
+//    }
 
     /**
      * 个人中心
      *
      * @param context
      */
-    fun onStartMine(context: Context?) {
+//    fun onStartMine(context: Context?) {
 //        CC.obtainBuilder("mineComponent")
 //                .setContext(context)
 //                .setActionName("MineActivity")
 //                .addParam("param", "个人中心/模块")
 //                .build()
 //                .callAsync { cc, result -> Log.e("xp", "个人中心$result") }
-    }
+//    }
 
     /**
      * 打开WebView
      */
-    fun onStartWebView(context: Context?) {
+//    fun onStartWebView(context: Context?) {
 //        val jsonObject = JSONObject()
 //        try {
 //            jsonObject.put("title", "商家客服")
@@ -58,5 +58,5 @@ object AppJumpUtil {
 //                .setContext(context)
 //                .build()
 //                .callAsync { cc, result -> Log.e("xp", "---------WebView--------$result") }
-    }
+//    }
 }

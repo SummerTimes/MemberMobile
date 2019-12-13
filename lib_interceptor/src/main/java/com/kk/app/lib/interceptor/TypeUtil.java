@@ -1,5 +1,6 @@
 package com.kk.app.lib.interceptor;
 
+
 import com.google.gson.internal.$Gson$Types;
 
 import java.lang.reflect.ParameterizedType;
@@ -12,7 +13,7 @@ import java.lang.reflect.Type;
 class TypeUtil {
 
     /**
-     * Returns the type from super class's type parameter in {@link $Gson$Types#canonicalize
+     * Returns the type from super class's type parameter in
      * canonical form}.
      */
     static Type getSuperclassTypeParameter(Class<?> subclass, int index) {

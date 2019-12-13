@@ -2,12 +2,8 @@ package com.kk.app.mobile.web
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import com.kk.app.web.bljsbridge.AbstractFunction
-import com.kk.app.web.bljsbridge.BridgeConfig
 import com.kk.app.web.bljsbridge.BridgeWebView
-import com.kk.app.web.bljsbridge.JSEntity
-import org.json.JSONObject
 
 /**
  * @author kk
