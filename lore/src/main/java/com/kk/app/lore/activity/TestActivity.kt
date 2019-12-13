@@ -22,8 +22,8 @@ class TestActivity : Activity(), IUI {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         testPresenter = TestPresenter(1)
-        setContentView(R.layout.activity_test)
-        val recyclerView = findViewById<RecyclerView>(R.id.container)
+        setContentView(R.layout.lore_test_activity)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv)
         recyclerView.adapter = testPresenter.adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         testPresenter.onUIReady(this)

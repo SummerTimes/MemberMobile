@@ -14,7 +14,7 @@ class RecommendActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recommend)
+        setContentView(R.layout.lore_main_activity)
         initView()
     }
 
