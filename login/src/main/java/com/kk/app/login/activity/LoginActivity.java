@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         String Url = "https://www.wanandroid.com/user/login";
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("username", "lxtime");
-            jsonObject.put("password", "123456789");
+            jsonObject.put("username", "naivetimes");
+            jsonObject.put("password", "123456");
             NetworkHelper.queryApi(Url, jsonObject.toString(), NetworkHelper.HTTP_POST, new NetworkCallback<String>() {
                 @Override
                 public void onSuccess(@NonNull CCResult rawResult, String str) {

@@ -791,12 +791,27 @@ public class NetworkHelper {
                 .setActionName(method)
                 .addParam("retry", RETRY_NUM)
                 .addParam("url", url)
-                .addParam("headers", getPhoneIdHeader(null))
+                .addParam("headers", getHeader(null))
                 .addParam("data", data)
                 .addInterceptor(new NetworkGsonInterceptor(callback))
                 .build();
 
         return cc.callAsyncCallbackOnMainThread(new NetworkComponentCallback<>(callback));
+    }
+
+    private static JSONObject getHeader(JSONObject header) {
+        if (header == null) {
+            header = new JSONObject();
+        }
+        try {
+            header.put("Connection", "Keep-Alive");
+            header.put("Host", "www.wanandroid.com");
+            header.put("Accept-Encoding", "gzip, deflate");
+            header.put("Cookie", "gzip, deflate");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return header;
     }
 
     private static String getServiceResponseData(JSONObject responseObj) {
@@ -854,7 +869,8 @@ public class NetworkHelper {
             header = new JSONObject();
         }
         try {
-            header.put("Cookie", "https://www.wanandroid.com/");
+            header.put("Content-Type", "application/x-www-form-urlencoded");
+            header.put("Cookie", "");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

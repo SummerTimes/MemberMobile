@@ -2,7 +2,10 @@ package com.kk.app.mobile
 
 import android.app.Application
 import android.support.multidex.MultiDex
-//import com.kk.app.lib.network.NetworkConfig
+import android.util.Log
+import com.kk.app.lib.network.NetworkConfig
+import com.kk.app.lib.widget.component.ComponentManager
+import com.kk.app.lib.widget.component.IComponentInit
 
 /**
  * @author kk
@@ -10,11 +13,23 @@ import android.support.multidex.MultiDex
  * @desc 程序入口
  */
 class MemberApplication : Application() {
-
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
-//        NetworkConfig.setup(this, "prd")
+        NetworkConfig.setup(this, "prd")
+        initComponent(this);
+    }
+
+    /**
+     * 初始化组件Application
+     */
+    private fun initComponent(memberApplication: MemberApplication) {
+        Log.e("xp", "------initComponent----");
+        val component: List<IComponentInit> = ComponentManager.getApplication()
+        for (componentInit in component) {
+            Log.e("xp", "-----初始化------init------")
+            componentInit.onInit(memberApplication)
+        }
     }
 
 }
