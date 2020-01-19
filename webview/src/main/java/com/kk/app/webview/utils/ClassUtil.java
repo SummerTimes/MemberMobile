@@ -17,10 +17,9 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 /**
- * 类相关的工具类
- *
- * @author <a href="mailto:ohergal@gmail.com">ohergal</a>
- *
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc <a href="mailto:ohergal@gmail.com">ohergal</a>
  */
 public class ClassUtil {
 

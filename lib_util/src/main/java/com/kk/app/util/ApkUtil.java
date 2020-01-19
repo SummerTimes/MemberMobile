@@ -8,11 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.util.DisplayMetrics;
 
-import java.io.File;
-import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.util.Iterator;
 import java.util.List;

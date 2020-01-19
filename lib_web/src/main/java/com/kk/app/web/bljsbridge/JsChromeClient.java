@@ -7,8 +7,9 @@ import android.webkit.WebView;
 
 
 /**
- * 作者：杨松
- * 日期：2017/10/24 13:59
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 class JsChromeClient extends WebChromeClient implements IWebClientCallBack {
 

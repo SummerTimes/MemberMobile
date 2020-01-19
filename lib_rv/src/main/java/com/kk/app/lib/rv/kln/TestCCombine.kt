@@ -3,8 +3,9 @@ import com.kk.app.lib.rv.manager.IUI
 import com.kk.app.lib.rv.kln.TestFloor
 
 /**
- * 作者：杨松
- * 日期：2018/7/23 19:07
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 class TestCCombine(key: Int) : AbstractFloorCombine(key) {
 

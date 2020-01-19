@@ -14,12 +14,11 @@ import com.klcw.app.web.R;
 
 import org.json.JSONObject;
 
-
 /**
- * 作者：杨松
- * 日期：2018/3/16 15:08
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class StoreTitle extends BaseTitle {
 
     private View title_btn_left;

@@ -2,8 +2,8 @@ package com.kk.app.lore.activity
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kk.app.lib.rv.manager.IFloorCombine
 import com.kk.app.lib.rv.manager.IUI
 import com.kk.app.lore.R

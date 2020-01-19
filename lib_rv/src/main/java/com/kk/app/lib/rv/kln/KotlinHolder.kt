@@ -1,11 +1,12 @@
 package com.kk.app.lib.rv.kln
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
 /**
- * 作者：杨松
- * 日期：2018/7/23 19:00
- */
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
+*/
 class KotlinHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer

@@ -1,16 +1,16 @@
 package com.kk.app.lib.rv.kln;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
-
-
 /**
- * 作者：杨松
- * 日期：2018/7/23 19:03
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 public class KAdapter extends RecyclerView.Adapter<KotlinHolder> {
 

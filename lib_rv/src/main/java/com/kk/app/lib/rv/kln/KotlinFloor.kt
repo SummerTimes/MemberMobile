@@ -1,11 +1,11 @@
 package com.kk.app.lib.rv.kln
 
 /**
- * 作者：杨松
- * 日期：2018/7/23 19:05
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 abstract class KotlinFloor<T> {
-
 
     var data: T? = null
 

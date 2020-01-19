@@ -2,8 +2,6 @@ package com.kk.app.webview.title;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.CallSuper;
-import android.support.annotation.LayoutRes;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +10,9 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 
 
+import androidx.annotation.CallSuper;
+import androidx.annotation.LayoutRes;
+
 import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.kk.app.web.bljsbridge.IJSCallFunction;
 import com.kk.app.web.bljsbridge.INativeCallBack;
@@ -19,12 +20,11 @@ import com.kk.app.web.bljsbridge.INativeCallBack;
 import java.lang.ref.WeakReference;
 import java.util.Stack;
 
-
 /**
- * 作者：杨松
- * 日期：2017/4/24 16:33
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public abstract class BaseTitle implements ITitle {
 
     private View mView;
@@ -51,7 +51,8 @@ public abstract class BaseTitle implements ITitle {
 
     protected abstract void initOnCreateTitle();
 
-    protected abstract @LayoutRes int getLayout();
+    protected abstract @LayoutRes
+    int getLayout();
 
     protected abstract void onSetTitle(String data);
 

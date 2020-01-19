@@ -1,9 +1,10 @@
 package com.kk.app.web.bljsbridge;
 
 /**
- * Created by kk on 2017/3/9.
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class JSEntity {
 
     public String status;

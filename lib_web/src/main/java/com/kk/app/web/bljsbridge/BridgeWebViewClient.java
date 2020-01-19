@@ -20,7 +20,9 @@ import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 
 /**
- * Created by bruce on 10/28/15.
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 public class BridgeWebViewClient extends WebViewClient {
 

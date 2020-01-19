@@ -7,12 +7,11 @@ import android.view.ViewGroup;
 import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.kk.app.web.bljsbridge.IJSCallFunction;
 
-
 /**
- * 作者：杨松
- * 日期：2017/4/24 16:31
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public interface ITitle {
 
     void registerFunction(BridgeWebView bridgeWebView);

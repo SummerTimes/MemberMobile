@@ -11,6 +11,11 @@ import com.klcw.app.web.R;
 import java.util.logging.Logger;
 
 
+/**
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
+ */
 public final class DaySignTitle extends BaseTitle {
 
     private BridgeWebView mBridgeWebView;

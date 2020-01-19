@@ -12,12 +12,11 @@ import com.tencent.sonic.sdk.SonicSessionConfig;
 
 import org.json.JSONObject;
 
-
 /**
- * 作者：杨松
- * 日期：2017/9/20 14:43
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class WebComponent implements IComponent {
 
 

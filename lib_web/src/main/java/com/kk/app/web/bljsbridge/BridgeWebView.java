@@ -17,6 +17,11 @@ import android.webkit.WebViewClient;
 
 import com.tencent.sonic.sdk.SonicSession;
 
+/**
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
+ */
 @SuppressLint("SetJavaScriptEnabled")
 public class BridgeWebView extends WebView {
 

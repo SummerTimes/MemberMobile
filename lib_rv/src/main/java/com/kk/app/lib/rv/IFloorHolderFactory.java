@@ -1,14 +1,14 @@
 package com.kk.app.lib.rv;
 
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+
 /**
- * 楼层工厂接口
- *
- * @author billy.qi
- * @since 18/1/18 18:01
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 楼层工厂接口
  */
 public interface IFloorHolderFactory {
 

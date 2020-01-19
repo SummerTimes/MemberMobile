@@ -1,6 +1,7 @@
 package com.kk.app.lib.network;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.billy.cc.core.component.CCResult;
 import com.kk.app.lib.interceptor.TypeToken;

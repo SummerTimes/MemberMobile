@@ -6,12 +6,10 @@ import android.widget.TextView;
 import com.kk.app.lib.rv.Floor;
 import com.kk.app.lib.rv.BaseFloorHolder;
 
-
 /**
- * 纯文字的title标题的ViewHolder
- *
- * @author billy.qi
- * @since 18/1/18 20:40
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 纯文字的title标题的ViewHolder
  */
 public class FloorTitleTextHolder extends BaseFloorHolder<Floor<TitleTextUnit>> {
 

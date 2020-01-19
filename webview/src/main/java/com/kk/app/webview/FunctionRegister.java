@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 作者：杨松
- * 日期：2017/9/20 15:28
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class FunctionRegister implements IFunction {
 
     static List<IFunctionRegisterManager> mFunctionManagers = new ArrayList<>();

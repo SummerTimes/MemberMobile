@@ -1,10 +1,9 @@
 package com.kk.app.lib.rv;
 
 /**
- * UI楼层的viewType清单，每种楼层UI控件的ViewType固定，并且唯一
- *
- * @author billy.qi
- * @since 18/1/18 18:56
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc UI楼层的viewType清单，每种楼层UI控件的ViewType固定，并且唯一
  */
 public interface FloorViewType {
 

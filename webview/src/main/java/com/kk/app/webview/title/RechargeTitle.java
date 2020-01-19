@@ -12,12 +12,11 @@ import com.klcw.app.web.R;
 
 import org.json.JSONObject;
 
-
 /**
- * @author uis
- *         日期：2017/5/27 13:00
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public final class RechargeTitle extends BaseTitle {
 
     private BridgeWebView mBridgeWebView;

@@ -12,12 +12,11 @@ import com.klcw.app.web.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 /**
- * 作者：杨松
- * 日期：2017/5/4 18:32
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public final class ECardTitle extends BaseTitle {
 
     private static String CHANGE_STATE = "BLElectronCard" + "#" + "exchangeState";

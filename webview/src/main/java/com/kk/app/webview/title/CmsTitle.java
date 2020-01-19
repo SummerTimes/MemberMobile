@@ -14,11 +14,11 @@ import com.klcw.app.web.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 /**
- * Created by arise on 2018/4/2.
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class CmsTitle extends BaseTitle {
 
     private TextView titleContent;

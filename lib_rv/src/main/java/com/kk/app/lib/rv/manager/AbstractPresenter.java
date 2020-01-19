@@ -1,9 +1,10 @@
 package com.kk.app.lib.rv.manager;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kk.app.lib.rv.combine.ILoadMore;
 
@@ -11,12 +12,11 @@ import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-
 /**
- * 作者：杨松
- * 日期：2018/1/29 15:07
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public abstract class AbstractPresenter implements INetManager, Serializable {
 
     protected final int mKey;

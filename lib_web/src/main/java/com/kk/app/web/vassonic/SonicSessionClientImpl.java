@@ -15,13 +15,16 @@ package com.kk.app.web.vassonic;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+
 import com.tencent.sonic.sdk.SonicSessionClient;
+
 import java.util.HashMap;
 
 /**
- *  a implement of SonicSessionClient which need to connect webview and content data.
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc a implement of SonicSessionClient which need to connect webview and content data.
  */
-
 public class SonicSessionClientImpl extends SonicSessionClient {
 
     private WebView webView;

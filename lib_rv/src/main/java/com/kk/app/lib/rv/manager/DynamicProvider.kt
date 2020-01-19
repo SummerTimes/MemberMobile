@@ -1,8 +1,9 @@
 package com.kk.app.lib.rv.manager
 
 /**
- * 作者：杨松
- * 日期：2018/7/25 18:44
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 abstract class DynamicProvider : ICombinesProvider {
 

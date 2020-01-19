@@ -1,8 +1,8 @@
 package com.kk.app.lib.rv.manager;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
@@ -15,8 +15,9 @@ import java.util.List;
 
 
 /**
- * 作者：杨松
- * 日期：2018/1/22 15:09
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 public abstract class AbstractFloorCombine implements IFloorCombine, Serializable {
 

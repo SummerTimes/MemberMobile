@@ -3,14 +3,11 @@ package com.kk.app.lib.rv.util;
 import com.billy.android.preloader.PreLoader;
 import com.billy.android.preloader.interfaces.GroupedDataListener;
 
-
 /**
- * 预加载简单封装，防止多次监听
- *
- * @author menglp
- * @since 2018/2/8 15:18
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 预加载简单封装，防止多次监听
  */
-
 public class PreLoaderHelper {
     /**
      * 单次listen

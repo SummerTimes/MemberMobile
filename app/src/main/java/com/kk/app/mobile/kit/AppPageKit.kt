@@ -1,14 +1,14 @@
 package com.kk.app.mobile.kit
 
-import android.support.annotation.DrawableRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.billy.cc.core.component.CC
 import com.kk.app.lib.widget.utils.LxStatusBarUtil
 import com.kk.app.mobile.R

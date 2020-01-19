@@ -7,11 +7,10 @@ import com.kk.app.lib.rv.BaseFloorHolderFactory;
 import com.kk.app.lib.rv.FloorViewType;
 import com.kk.app.lib.rv.BaseFloorHolder;
 
-
 /**
- * 纯文字的title
- * @author billy.qi
- * @since 18/1/18 20:38
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 纯文字的title
  */
 public class FloorTitleTextHolerFactory extends BaseFloorHolderFactory {
     @Override

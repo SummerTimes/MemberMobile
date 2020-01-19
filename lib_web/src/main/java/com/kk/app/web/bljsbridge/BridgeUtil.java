@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 
 /**
  * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 public class BridgeUtil {
 

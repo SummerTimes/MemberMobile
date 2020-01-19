@@ -7,12 +7,11 @@ import android.widget.TextView;
 import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.klcw.app.web.R;
 
-
 /**
- * FlyFish
- * 2017/7/14 16:12
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class AnfbLoginTitle extends BaseTitle {
 
     private View title_btn_right;

@@ -8,6 +8,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
+ */
 public class SerializableList<E> extends ArrayList<E> implements Externalizable {
     public SerializableList() {
         super();

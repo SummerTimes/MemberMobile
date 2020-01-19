@@ -7,15 +7,12 @@ import android.widget.TextView;
 import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.klcw.app.web.R;
 
-
-
 /**
- * 作者：杨松
- * 日期：2017/4/24 17:23
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class ShareTitle extends BaseTitle {
-
 
     private View title_btn_right;
     private View share_in_title;
@@ -35,7 +32,9 @@ public class ShareTitle extends BaseTitle {
             @Override
             public void onClick(View view) {
                 Activity activity = getActivity();
-                if (activity != null) goBack(bridgeWebView);
+                if (activity != null) {
+                    goBack(bridgeWebView);
+                }
             }
         });
         share_in_title.setOnClickListener(new View.OnClickListener() {

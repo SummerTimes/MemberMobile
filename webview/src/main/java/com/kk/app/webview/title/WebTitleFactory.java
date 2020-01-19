@@ -11,19 +11,15 @@ import com.kk.app.web.bljsbridge.BridgeWebView;
 import org.json.JSONObject;
 
 /**
- * 作者：杨松
- * 日期：2017/4/20 10:41
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class WebTitleFactory {
 
     public static ITitle produceWebTitle(String url, Activity activity, BridgeWebView bridgeWebView) {
-
         Intent intent = activity.getIntent();
-
         String params = intent.getStringExtra("params");
-        Log.e("xp", "---------params---------" + params);
-        Log.e("xp", "---------url---------" + url);
         try {
             JSONObject jsonObject = new JSONObject(params);
             String address = jsonObject.optString("address");
@@ -33,7 +29,6 @@ public class WebTitleFactory {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         if (url.contains("eCardList")) {
             return new ECardTitle(activity);
         }
@@ -43,9 +38,7 @@ public class WebTitleFactory {
         if (url.contains("giftCardTheme")) {
             return new NoShareTitle(activity);
         }
-        if (url.contains("myComment")
-                || url.contains("myCollection")
-                ) {
+        if (url.contains("myComment") || url.contains("myCollection")) {
             return new NoShareTitle(activity);
         }
         if (url.contains("/#/recharge")) {

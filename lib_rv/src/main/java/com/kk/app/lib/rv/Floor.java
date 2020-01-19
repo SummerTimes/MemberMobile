@@ -1,12 +1,11 @@
 package com.kk.app.lib.rv;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
- * 楼层信息
- *
- * @author billy.qi
- * @since 18/1/18 19:40
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 楼层信息
  */
 public class Floor<DATA> {
 

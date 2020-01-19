@@ -10,12 +10,10 @@ import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.klcw.app.web.R;
 
 /**
- * 作者：杨松
- * 日期：2017/7/17 16:06
- *
  * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class CommonTitle extends BaseTitle {
 
 

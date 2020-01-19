@@ -7,12 +7,11 @@ import android.widget.TextView;
 import com.kk.app.web.bljsbridge.BridgeWebView;
 import com.klcw.app.web.R;
 
-
 /**
- * 作者：杨松
- * 日期：2017/11/28 14:11
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class BuyListTitle extends BaseTitle {
 
     private View iv_back;

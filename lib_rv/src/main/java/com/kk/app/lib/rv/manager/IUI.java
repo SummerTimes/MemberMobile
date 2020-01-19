@@ -1,10 +1,10 @@
 package com.kk.app.lib.rv.manager;
 
 /**
- * 作者：杨松
- * 日期：2018/1/22 15:11
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public interface IUI {
 
     void onCombineRequestInflateUI(IFloorCombine combine);

@@ -3,8 +3,8 @@ package com.kk.app.web.bljsbridge;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 
+import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
@@ -12,10 +12,10 @@ import com.kk.app.web.function.register.IFunction;
 
 
 /**
- * 作者：杨松
- * 日期：2017/9/5 11:55
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public abstract class AbstractFunction implements IFunction {
 
 

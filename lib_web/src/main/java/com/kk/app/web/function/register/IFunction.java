@@ -7,10 +7,10 @@ import android.content.Intent;
 import com.kk.app.web.bljsbridge.BridgeWebView;
 
 /**
- * 作者：杨松
- * 日期：2017/5/23 09:58
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public interface IFunction {
 
     void registerFunction(BridgeWebView webView, Context context);

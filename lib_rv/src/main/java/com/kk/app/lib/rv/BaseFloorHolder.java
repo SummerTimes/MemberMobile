@@ -1,7 +1,8 @@
 package com.kk.app.lib.rv;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import io.reactivex.annotations.Nullable;
 

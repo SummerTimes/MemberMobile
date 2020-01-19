@@ -1,10 +1,10 @@
 package com.kk.app.product.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.billy.cc.core.component.CC
 import com.kk.app.product.R
 import com.kk.app.product.constant.ProductConstant

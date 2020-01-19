@@ -1,11 +1,12 @@
 package com.kk.app.lib.rv.manager;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kk.app.lib.rv.Floor;
 import com.kk.app.lib.rv.FloorViewHolderMaker;
@@ -16,13 +17,11 @@ import com.kk.app.lib.rv.kln.KotlinHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * 作者：杨松
- * 日期：2018/1/22 15:18
- * 该类负责楼层的组装
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class FloorManager {
 
     private final RecyclerView.Adapter mAdapter;

@@ -4,9 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-
-/***
- * @功能说明：网络工具类
+/**
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc网络工具类
  */
 public class NetUtils {
 
@@ -17,14 +18,10 @@ public class NetUtils {
      * @return
      */
     public static boolean checkNet(Context context) {
-        // 获取到wifi和mobile连接方式
         Context applicationContext = context.getApplicationContext();
         boolean wifiConnection = isWIFIConnection(applicationContext);
         boolean mobileConnection = isMobileConnection(applicationContext);
-
         if (!wifiConnection && !mobileConnection) {
-            // 如果都不能连接
-            // 提示用户设置当前网络——跳转到设置界面
             return false;
         }
         return true;
@@ -37,10 +34,8 @@ public class NetUtils {
      * @return
      */
     public static boolean isWIFIConnection(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = manager
-                .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (networkInfo == null) {
             return false;
         }
@@ -54,10 +49,8 @@ public class NetUtils {
      * @return
      */
     public static boolean isMobileConnection(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = manager
-                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         if (networkInfo != null) {
             return networkInfo.isConnected();
         }

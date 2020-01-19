@@ -15,7 +15,11 @@ import com.klcw.app.web.R;
 
 import java.util.logging.Logger;
 
-
+/**
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
+ */
 public class RightMoreTitle extends BaseTitle implements View.OnClickListener {
 
     private ImageView mBackImage;

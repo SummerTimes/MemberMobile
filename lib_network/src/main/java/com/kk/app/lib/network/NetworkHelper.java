@@ -3,9 +3,10 @@ package com.kk.app.lib.network;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;

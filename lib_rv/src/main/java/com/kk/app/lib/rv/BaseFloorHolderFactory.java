@@ -5,10 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * 楼层ViewHolder工厂
- *
- * @author billy.qi
- * @since 18/1/18 20:05
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc 楼层ViewHolder工厂
  */
 public abstract class BaseFloorHolderFactory implements IFloorHolderFactory {
 

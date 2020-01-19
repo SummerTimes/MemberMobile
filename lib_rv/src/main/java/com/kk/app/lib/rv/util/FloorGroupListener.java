@@ -1,18 +1,16 @@
 package com.kk.app.lib.rv.util;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.billy.android.preloader.interfaces.GroupedDataListener;
 import com.kk.app.lib.rv.manager.AbstractFloorCombine;
 
-
 /**
- * 作者：杨松
- * 日期：2018/6/8 10:28
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class FloorGroupListener<Data> implements GroupedDataListener<Data> {
-
 
     private final AbstractFloorCombine combine;
     private final GroupedDataListener<Data> groupedDataListener;

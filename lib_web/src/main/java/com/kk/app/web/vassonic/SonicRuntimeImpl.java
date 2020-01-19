@@ -15,11 +15,12 @@ package com.kk.app.web.vassonic;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.WebResourceResponse;
+
+import androidx.annotation.NonNull;
 
 import com.tencent.sonic.sdk.SonicRuntime;
 import com.tencent.sonic.sdk.SonicSessionClient;
@@ -36,9 +37,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * the sonic host application must implement SonicRuntime to do right things.
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc  the sonic host application must implement SonicRuntime to do right things.
  */
-
 public class SonicRuntimeImpl extends SonicRuntime {
 
     static ThreadFactory factory = new ThreadFactory() {

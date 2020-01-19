@@ -6,6 +6,7 @@ repositories {
     maven { url "${artifactory_contextUrl}/${artifactory_snapshot_repoKey}" }
     maven { url "${artifactory_contextUrl}/${artifactory_release_repoKey}" }
     maven { url 'http://localhost:8081/nexus/content/groups/android_public/' }
+    google()
 }
 
 dependencies {

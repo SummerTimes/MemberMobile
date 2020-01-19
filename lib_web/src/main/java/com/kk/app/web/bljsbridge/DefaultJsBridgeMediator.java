@@ -3,10 +3,10 @@ package com.kk.app.web.bljsbridge;
 import android.util.ArrayMap;
 import android.util.Log;
 
-
 /**
- * 作者：杨松
- * 日期：2018/1/9 14:57
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 public class DefaultJsBridgeMediator implements IJSBridgeMediator {
 

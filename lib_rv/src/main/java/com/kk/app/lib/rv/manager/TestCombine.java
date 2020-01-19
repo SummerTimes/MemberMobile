@@ -4,12 +4,11 @@ import com.kk.app.lib.rv.Floor;
 import com.kk.app.lib.rv.FloorViewType;
 import com.kk.app.lib.rv.title.TitleTextUnit;
 
-
 /**
- * 作者：杨松
- * 日期：2018/1/22 16:40
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
-
 public class TestCombine extends AbstractFloorCombine {
 
     public TestCombine(int key) {

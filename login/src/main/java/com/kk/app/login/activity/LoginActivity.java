@@ -1,12 +1,13 @@
 package com.kk.app.login.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.billy.cc.core.component.CCResult;
-import com.kk.app.image.GlideImageView;
 import com.kk.app.lib.network.NetworkCallback;
 import com.kk.app.lib.network.NetworkHelper;
 import com.kk.app.lib.widget.utils.LxStatusBarUtil;
@@ -24,7 +25,6 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private List<String> mUrls;
-    private GlideImageView mSivPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

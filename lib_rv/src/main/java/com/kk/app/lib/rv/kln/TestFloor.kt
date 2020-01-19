@@ -3,10 +3,10 @@ package com.kk.app.lib.rv.kln
 import com.kk.app.lib.rv.R
 import kotlinx.android.synthetic.main.floor_title_text.*
 
-
 /**
- * 作者：杨松
- * 日期：2018/7/23 19:31
+ * @author kk
+ * @datetime 2018/10/01
+ * @desc
  */
 class TestFloor : KotlinFloor<String>() {
 

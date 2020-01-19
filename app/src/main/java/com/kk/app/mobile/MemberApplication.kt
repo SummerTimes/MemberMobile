@@ -1,8 +1,8 @@
 package com.kk.app.mobile
 
 import android.app.Application
-import android.support.multidex.MultiDex
 import android.util.Log
+import androidx.multidex.MultiDex
 import com.kk.app.lib.network.NetworkConfig
 import com.kk.app.lib.widget.component.ComponentManager
 import com.kk.app.lib.widget.component.IComponentInit
@@ -27,7 +27,6 @@ class MemberApplication : Application() {
         Log.e("xp", "------initComponent----");
         val component: List<IComponentInit> = ComponentManager.getApplication()
         for (componentInit in component) {
-            Log.e("xp", "-----初始化------init------")
             componentInit.onInit(memberApplication)
         }
     }
