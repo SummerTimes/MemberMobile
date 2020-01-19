@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 import com.kk.app.lib.widget.R;
 
 
@@ -20,7 +22,7 @@ import com.kk.app.lib.widget.R;
  * @desc:
  */
 @SuppressLint("DrawAllocation")
-public class PasswordInputView extends android.support.v7.widget.AppCompatEditText {
+public class PasswordInputView extends AppCompatEditText {
 
     private int passwordLength = 6;
     private int borderWidth = 8; //px

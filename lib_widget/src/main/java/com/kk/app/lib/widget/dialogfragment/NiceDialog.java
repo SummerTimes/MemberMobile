@@ -1,6 +1,7 @@
 package com.kk.app.lib.widget.dialogfragment;
 
-import android.support.annotation.LayoutRes;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * @Auther: yd

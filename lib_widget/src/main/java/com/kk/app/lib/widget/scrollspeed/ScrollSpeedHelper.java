@@ -1,8 +1,9 @@
 package com.kk.app.lib.widget.scrollspeed;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.view.animation.AccelerateInterpolator;
+
+import androidx.viewpager.widget.ViewPager;
 
 import java.lang.reflect.Field;
 

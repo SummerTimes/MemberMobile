@@ -41,7 +41,7 @@ subprojects { p ->
 }
 
 ext {
-    compileVersion = 28
+    compileVersion = 29
     minVersion = 19
     supportVersion = '28.0.0'
     rxAndroid = '2.0.1'
