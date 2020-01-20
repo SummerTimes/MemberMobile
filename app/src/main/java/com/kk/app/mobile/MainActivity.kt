@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setIntent(intent)
         if (getIntent().extras != null) {
             if (null != mAppPageKit) {
-                mAppPageKit!!.onIntentAction(getIntent().extras.getString(AppMethod.KRY_PARAM))
+                getIntent().extras?.getString(AppMethod.KRY_PARAM)?.let { mAppPageKit!!.onIntentAction(it) }
             }
         }
     }
